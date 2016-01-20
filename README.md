@@ -1,6 +1,9 @@
 This repository contains all assignments and projects for,
+
 CS5610 Web Development
+
 Spring 2016
+
 Northeastern University (Seattle campus)
 
 
