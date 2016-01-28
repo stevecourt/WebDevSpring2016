@@ -8,7 +8,7 @@
     <meta name="description" content="Form Maker - Home">
     <meta name="author" content="Stephen Court">
 
-    <title>Welcome!</title>
+    <title>Admin</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -37,11 +37,6 @@
                 <li><a href="#">Username</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
-            <!--
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
-            -->
         </div>
     </div>
 </nav>
@@ -60,16 +55,62 @@
         <!-- Page Content -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Admin</h1>
+            <h2 class="sub-header">Users</h2>
 
-            <h4>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec,
-                mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend
-                tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis
-                pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus
-                aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula,
-                a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra.
-                Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.
-            </h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+
+                    <!-- INVESTIGATE THIS FURTHER.  IS A FORM GROUP REQUIRED?  WHAT DO ALL THE PIECES DO -->
+                    <thead>
+                    <tr>
+                        <th>
+                            <label for="inputText1" class="col-sm-2 control-label">Username</label>
+                            <input type="text" class="form-control" id="inputText1" placeholder="Username">
+                        </th>
+                        <th>
+                            <label for="inputText2" class="col-sm-2 control-label">Password</label>
+                            <input type="text" class="form-control" id="inputText2" placeholder="Password">
+                        </th>
+                        <th>
+                            <label for="inputText3" class="col-sm-2 control-label">Role</label>
+                            <input type="text" class="form-control" id="inputText3" placeholder="Role">
+                        </th>
+                        <th>
+                            <label for="inputText4" class="col-sm-2 control-label">Action</label>
+                            <input type="text" class="form-control" id="inputText4" placeholder="Action">
+                        </th>
+                        <!--
+                        <div class="form-group">
+                            <label for="inputText1" class="col-sm-2 control-label">Username:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputText1" placeholder="Username">
+                            </div>
+                        </div>
+                        -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Alice</td>
+                        <td></td>
+                        <td>student</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Bob</td>
+                        <td></td>
+                        <td>faculty | admin</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Charlie</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
