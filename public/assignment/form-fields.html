@@ -63,69 +63,115 @@
 
             <form>
                 <div class="form-group">
+                    <div class="col-xs-7">
+                        <label for="firstNameInput" style="padding-top: 10px">First Name:</label>
+                        <input type="text" class="form-control" id="firstNameInput" placeholder="First Name">
+                    </div>
+                    <div class="col-xs-5">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="padding-top: 43px"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="firstNameInput">First Name:</label>
-                    <input type="text" class="form-control" id="firstNameInput" placeholder="First Name">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                    <div class="col-xs-7">
+                        <label for="lastNameInput" style="padding-top: 15px">Last Name:</label>
+                        <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name">
+                    </div>
+                    <div class="col-xs-5">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="padding-top: 48px"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="lastNameInput">Last Name:</label>
-                    <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name">
+                    <div class="col-xs-7">
+                        <label for="dobInput" style="padding-top: 15px">Date of Birth:</label>
+                        <input type="date" class="form-control" id="dobInput" placeholder="Select Date">
+                    </div>
+                    <div class="col-xs-5">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="padding-top: 48px"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="dobInput">Date of Birth:</label>
-                    <input type="date" class="form-control" id="dobInput" placeholder="Select Date">
+                    <div class="col-xs-7">
+                        <label for="genderInput" style="padding-top: 15px">Gender:</label>
+                        <select class="form-control" id="genderInput">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-5">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="padding-top: 48px"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                    </div>
                 </div>
+
+
+                <div class="col-xs-7">
+                    <label style="padding-top: 20px">Roles:</label>
+                    <div class="checkbox" style="margin-top: 0px">
+                        <label>
+                            <input type="checkbox"> Admin
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Student
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> User
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-xs-7">
+                    <label style="padding-top: 20px">License Agreement:</label>
+                    <div class="radio" style="margin-top: 0px">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            Yes
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                <hr>
+                </div>
+
                 <div class="form-group">
-                    <label for="genderInput">Gender:</label>
-                    <select class="form-control" id="genderInput">
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </div>
-                <label>Roles:</label>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Admin
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Student
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> User
-                    </label>
-                </div>
-                <label>License Agreement:</label>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                        Yes
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                        No
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="newFieldInput">Add New Field:</label>
-                    <select class="form-control" id="newFieldInput">
-                        <option>Single Line Text</option>
-                        <option>Date</option>
-                        <option>Dropdown</option>
-                        <option>Checkboxes</option>
-                        <option>Radio Buttons</option>
-                        <option>Paragraph Text Field</option>
-                    </select>
+                    <div class="col-xs-7">
+                        <label for="newFieldInput">Add New Field:</label>
+                        <select class="form-control" id="newFieldInput">
+                            <option>Single Line Text</option>
+                            <option>Date</option>
+                            <option>Dropdown</option>
+                            <option>Checkboxes</option>
+                            <option>Radio Buttons</option>
+                            <option>Paragraph Text Field</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-5">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true" style="padding-top: 33px"></span>
+                    </div>
                 </div>
             </form>
         </div>
