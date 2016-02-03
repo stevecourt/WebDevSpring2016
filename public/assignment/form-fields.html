@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this temptyle.css -->
     <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,11 +65,11 @@
             <form>
                 <div class="form-group">
                     <div class="col-xs-7">
-                        <label for="firstNameInput" style="padding-top: 10px">First Name:</label>
+                        <label for="firstNameInput" class="firstRowLabelInput">First Name:</label>
                         <input type="text" class="form-control" id="firstNameInput" placeholder="First Name">
                     </div>
                     <div class="col-xs-5">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="padding-top: 43px"></span>
+                        <span class="glyphicon glyphicon-pencil firstRowIcons" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
@@ -77,11 +78,11 @@
 
                 <div class="form-group">
                     <div class="col-xs-7">
-                        <label for="lastNameInput" style="padding-top: 15px">Last Name:</label>
+                        <label for="lastNameInput" class="mainRowLabelInput">Last Name:</label>
                         <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name">
                     </div>
                     <div class="col-xs-5">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="padding-top: 48px"></span>
+                        <span class="glyphicon glyphicon-pencil mainRowIcons" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
@@ -90,11 +91,11 @@
 
                 <div class="form-group">
                     <div class="col-xs-7">
-                        <label for="dobInput" style="padding-top: 15px">Date of Birth:</label>
+                        <label for="dobInput" class="mainRowLabelInput">Date of Birth:</label>
                         <input type="date" class="form-control" id="dobInput" placeholder="Select Date">
                     </div>
                     <div class="col-xs-5">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="padding-top: 48px"></span>
+                        <span class="glyphicon glyphicon-pencil mainRowIcons" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
@@ -103,14 +104,14 @@
 
                 <div class="form-group">
                     <div class="col-xs-7">
-                        <label for="genderInput" style="padding-top: 15px">Gender:</label>
+                        <label for="genderInput" class="mainRowLabelInput">Gender:</label>
                         <select class="form-control" id="genderInput">
                             <option>Male</option>
                             <option>Female</option>
                         </select>
                     </div>
                     <div class="col-xs-5">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="padding-top: 48px"></span>
+                        <span class="glyphicon glyphicon-pencil mainRowIcons" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
@@ -119,8 +120,8 @@
 
 
                 <div class="col-xs-7">
-                    <label style="padding-top: 20px">Roles:</label>
-                    <div class="checkbox" style="margin-top: 0px">
+                    <label class="checkOrRadioClusterLabel">Roles:</label>
+                    <div class="checkbox topCheckOrRadio">
                         <label>
                             <input type="checkbox"> Admin
                         </label>
@@ -138,8 +139,8 @@
                 </div>
 
                 <div class="col-xs-7">
-                    <label style="padding-top: 20px">License Agreement:</label>
-                    <div class="radio" style="margin-top: 0px">
+                    <label class="checkOrRadioClusterLabel">License Agreement:</label>
+                    <div class="radio topCheckOrRadio">
                         <label>
                             <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
                             Yes
@@ -170,7 +171,7 @@
                         </select>
                     </div>
                     <div class="col-xs-5">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true" style="padding-top: 33px"></span>
+                        <span class="glyphicon glyphicon-plus newFieldIconInputAlign" aria-hidden="true"></span>
                     </div>
                 </div>
             </form>
