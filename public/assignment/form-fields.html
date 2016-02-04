@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Form Maker - Home">
+    <meta name="description" content="Form Maker - Form-Fields">
     <meta name="author" content="Stephen Court">
 
     <title>Forms</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+          crossorigin="anonymous">
 
     <!-- Custom styles for this temptyle.css -->
     <link href="css/dashboard.css" rel="stylesheet">
@@ -25,7 +25,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -35,13 +36,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Username</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="profile.html">Username</a></li>
+                <li><a href="home.html">Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
+<!-- Main Content -->
 <div class="container-fluid">
     <div class="row">
         <!-- Side Menubar -->
@@ -57,11 +59,13 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Forms: Registration</h1>
 
+            <!-- Tabs -->
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="forms.html">Forms</a></li>
                 <li role="presentation" class="active"><a href="form-fields.html">Fields</a></li>
             </ul>
 
+            <!-- Form -->
             <form>
                 <div class="form-group">
                     <div class="col-xs-7">
@@ -117,7 +121,6 @@
                         <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                     </div>
                 </div>
-
 
                 <div class="col-xs-7">
                     <label class="checkOrRadioClusterLabel">Roles:</label>

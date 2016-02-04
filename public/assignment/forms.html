@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Form Maker - Home">
+    <meta name="description" content="Form Maker - Forms">
     <meta name="author" content="Stephen Court">
 
     <title>Forms</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+          crossorigin="anonymous">
 
     <!-- Custom styles for this temptyle.css -->
     <link href="css/dashboard.css" rel="stylesheet">
@@ -25,7 +25,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -35,13 +36,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Username</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="profile.html">Username</a></li>
+                <li><a href="home.html">Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
+<!-- Main Content -->
 <div class="container-fluid">
     <div class="row">
         <!-- Side Menubar -->
@@ -57,43 +59,32 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Forms</h1>
 
+            <!-- Tabs -->
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="forms.html">Forms</a></li>
                 <li role="presentation"><a href="form-fields.html">Fields</a></li>
             </ul>
 
+            <!-- Table -->
             <div class="table-responsive">
                 <table class="table table-striped">
-
-                    <!-- INVESTIGATE THIS FURTHER.  IS A FORM GROUP REQUIRED?  WHAT DO ALL THE PIECES DO -->
-                    <!-- COMMENTING THE LABEL CLASS ALIGNED THE GLYPHICONS, BUT PROBABLY NEED DIFFERENT CLASS -->
-                    <!-- IS THERE SUCH A THING AS A HEADER ROW, FOR BETTER ALIGNMENT? -->
                     <thead>
                     <tr>
                         <th>
-                            <label for="inputText1"> <!--class="col-sm-2 control-label"-->
+                            <label for="inputText1">
                                 <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Form Name
                             </label>
                             <input type="text" class="form-control" id="inputText1" placeholder="name">
                         </th>
                         <th>
-                            <label> <!--class="col-sm-2 control-label"-->
+                            <label>
                                 Action
                             </label>
                             <p class="headerIconInputAlign">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                             </p>
-
                         </th>
-                        <!--
-                        <div class="form-group">
-                            <label for="inputText1" class="col-sm-2 control-label">Username:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputText1" placeholder="Username">
-                            </div>
-                        </div>
-                        -->
                     </tr>
                     </thead>
                     <tbody>
