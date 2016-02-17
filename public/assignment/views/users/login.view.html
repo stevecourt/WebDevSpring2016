@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Form Maker - Register">
+    <meta name="description" content="Form Maker - Login">
     <meta name="author" content="Stephen Court">
 
-    <title>Register</title>
+    <title>Login</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           crossorigin="anonymous">
 
     <!-- Custom styles for this temptyle.css -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,14 +31,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home.view.html">Form Maker</a>
+            <a class="navbar-brand" href="../home/home.view.html">Form Maker</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="register.view.html">Register</a></li>
                 <li><a href="login.view.html">Login</a></li>
                 <li><a href="profile.view.html">Username</a></li>
-                <li><a href="home.view.html">Logout</a></li>
+                <li><a href="../home/home.view.html">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -50,15 +50,15 @@
         <!-- Side Menubar -->
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="home.view.html">Home</a></li>
+                <li><a href="../home/home.view.html">Home</a></li>
                 <li><a href="profile.view.html">Profile</a></li>
-                <li><a href="admin.view.html">Admin</a></li>
-                <li><a href="forms.view.html">Forms</a></li>
+                <li><a href="../admin/admin.view.html">Admin</a></li>
+                <li><a href="../forms/forms.view.html">Forms</a></li>
             </ul>
         </div>
         <!-- Page Content -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Register</h1>
+            <h1 class="page-header">Login</h1>
 
             <!-- Registration Fields -->
             <form class="form-horizontal">
@@ -75,22 +75,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword1" class="col-sm-2 control-label">Verify Password:</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword2" placeholder="Verify Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail1" class="col-sm-2 control-label">Email:</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
-                    </div>
-                </div>
-                <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <!-- Might revert back to the commented out button, depending on future functionality. -->
-                        <!-- <button type="submit" class="btn btn-default">Register</button> -->
-                        <a class="btn btn-default" href="profile.view.html" role="button">Register</a>
+                        <!-- <button type="submit" class="btn btn-default">Login</button> -->
+                        <a class="btn btn-default" href="profile.view.html" role="button">Login</a>
                     </div>
                 </div>
             </form>
