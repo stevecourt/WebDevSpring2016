@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="FormBuilderApp">
-<!--<html lang="en">-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Form Maker - Index">
+    <meta name="description" content="Form Maker">
     <meta name="author" content="Stephen Court">
 
     <title>Form Maker</title>
@@ -26,16 +26,14 @@
     <script src="config.js"></script>
     <script src="views/header/header.controller.js"></script>
     <script src="views/sidebar/sidebar.controller.js"></script>
-
 </head>
 
-<body ng-controller="MainController">
-<!-- <body ng-app="">-->
+<body>
+<!-- INSTRUCTIONS SAY TO DECLARE THE CONTROLLER AS BELOW, BUT IT STOPS THE RENDERING -->
+<!-- <body ng-controller="views/main/MainController">-->
 
 <!-- REMOVED THE WHOLE NAV TAG FOR THE HEADER. WAS THAT RIGHT??? -->
 <div ng-include="'views/header/header.view.html'"></div>
-<div ng-include="'views/hello.html'"></div>
-<div ng-include="'hello.html'"></div>
 
 <div class="container-fluid">
     <div class="row">
@@ -45,6 +43,5 @@
         <div ng-view></div>
     </div>
 </div>
-
 </body>
 </html>
