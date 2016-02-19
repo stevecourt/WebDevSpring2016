@@ -1,3 +1,1 @@
-/**
- * Created by stephencourt on 2/17/16.
- */
+"use strict";

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="FormBuilderApp">
+<!--<html lang="en">-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,40 +11,40 @@
 
     <title>Form Maker</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          crossorigin="anonymous">
-
-    <!-- Custom styles for this temptyle.css -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="css/dashboard.css" rel="stylesheet">
+
+    <!-- CDNs -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
+
 </head>
 
 <body ng-controller="MainController">
+<!-- <body ng-app="">-->
 
 <!-- REMOVED THE WHOLE NAV TAG FOR THE HEADER. WAS THAT RIGHT??? -->
-<div ng-include="'views/header/header.view.html'">
-</div>
+<div ng-include="'views/header/header.view.html'"></div>
+<div ng-include="'views/hello.html'"></div>
+<div ng-include="'hello.html'"></div>
 
 <div class="container-fluid">
     <div class="row">
         <!-- REMOVED THE WHOLE NAV TAG FOR THE SIDEBAR.  WAS THAT RIGHT??? -->
-        <div ng-include="'views/sidebar/sidebar.view.html'">
-        </div>
-        <!-- SHOULD THE CLASS BE DELETED??? -->
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view>
-        </div>
+        <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+        <!-- SHOULD THE CLASS BE DELETED??? DELETE THIS OR ADD CLASS BACK -->
+        <div ng-view></div>
     </div>
 </div>
-
-<!-- JavaScript libraries
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
-<script src="app.js"></script>
-<script src="config.js"></script>
 
 </body>
 </html>
