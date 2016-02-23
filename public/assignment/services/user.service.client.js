@@ -5,12 +5,10 @@
         .module("FormBuilderApp")
         .factory("UserService", userService);
 
-    // LOOK UP WHAT PARAMS SHOULD BE HERE
-    // JOSE HAD $http, $q
-    function userService() {
+    function userService($rootScope) {
 
-        // SHOULD THIS BE INITIALIZED FIRST???
-        var users = [
+        var users = [];
+        users = [
             {"_id":123, "firstName":"Alice", "lastName":"Wonderland",
                 "username":"alice", "password":"alice", "roles": ["student"]},
             {"_id":234, "firstName":"Bob", "lastName":"Hope",
@@ -28,7 +26,7 @@
             findAllUsers: findAllUsers,
             createUser: createUser,
             deleteUserById: deleteUserById,
-            updateUser: updateUser
+            updateUser: updateUser,
         };
         return api;
 
