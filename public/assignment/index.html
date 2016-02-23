@@ -30,16 +30,17 @@
 </head>
 
 <body ng-controller="MainController">
-<!-- INSTRUCTIONS SAY TO DECLARE THE CONTROLLER AS BELOW, BUT IT STOPS THE RENDERING -->
-<!-- <body ng-controller="MainController"> -->
-<!-- REMOVED THE WHOLE NAV TAG FOR THE HEADER. WAS THAT RIGHT??? -->
+
+<!-- Header / Nav-bar -->
 <div ng-include="'views/header/header.view.html'"></div>
 
 <div class="container-fluid">
     <div class="row">
-        <!-- REMOVED THE WHOLE NAV TAG FOR THE SIDEBAR.  WAS THAT RIGHT??? -->
+
+        <!-- Sidebar -->
         <div ng-include="'views/sidebar/sidebar.view.html'"></div>
-        <!-- SHOULD THE CLASS BE DELETED??? DELETE THIS OR ADD CLASS BACK -->
+
+        <!-- SHOULD THE CLASS BE DELETED??? POSSIBLY ADD CLASS BACK -->
         <div ng-view></div>
     </div>
 </div>
