@@ -2,9 +2,9 @@
 
 (function(){
     angular
-        .module("FormBuilderApp", ["ngRoute"])
-        .controller("SidebarController", SidebarController);
-    function SidebarController($scope) {
+        .module("FormBuilderApp")
+        .controller("SidebarController", sidebarController);
+    function sidebarController($scope) {
         // ADD FUNCTION BODY
     }
 })();

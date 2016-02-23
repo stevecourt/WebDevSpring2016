@@ -24,14 +24,14 @@
     <!-- JavaScript -->
     <script src="app.js"></script>
     <script src="config.js"></script>
+    <script src="views/main/main.controller.js"></script>
     <script src="views/header/header.controller.js"></script>
     <script src="views/sidebar/sidebar.controller.js"></script>
 </head>
 
-<body>
+<body ng-controller="MainController">
 <!-- INSTRUCTIONS SAY TO DECLARE THE CONTROLLER AS BELOW, BUT IT STOPS THE RENDERING -->
-<!-- <body ng-controller="views/main/MainController">-->
-
+<!-- <body ng-controller="MainController"> -->
 <!-- REMOVED THE WHOLE NAV TAG FOR THE HEADER. WAS THAT RIGHT??? -->
 <div ng-include="'views/header/header.view.html'"></div>
 

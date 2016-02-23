@@ -3,9 +3,9 @@
 (function(){
     angular
         .module("FormBuilderApp", ["ngRoute"])
-        .controller("LoginController", LoginController);
+        .controller("LoginController", loginController);
     // $scope, $location - USE THESE PARAMS???
-    function LoginController() {
+    function loginController() {
         //BODY HERE
         //$scope.$location = $location;
     }

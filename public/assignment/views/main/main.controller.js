@@ -2,9 +2,9 @@
 
 (function(){
     angular
-        .module("FormBuilderApp", ["ngRoute"])
-        .controller("MainController", MainController);
-    function MainController($scope, $location) {
+        .module("FormBuilderApp")
+        .controller("MainController", mainController);
+    function mainController($scope, $location) {
         $scope.$location = $location;
     }
 })();

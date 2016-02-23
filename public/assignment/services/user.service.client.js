@@ -3,11 +3,11 @@
 (function () {
     angular
         .module("FormBuilderApp", ["ngRoute"])
-        .factory("UserService", UserService);
+        .factory("UserService", userService);
 
     // LOOK UP WHAT PARAMS SHOULD BE HERE
     // JOSE HAD $http, $q
-    function UserService() {
+    function userService() {
 
         // SHOULD THIS BE INITIALIZED FIRST???
         var users = [

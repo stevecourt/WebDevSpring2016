@@ -2,9 +2,9 @@
 
 (function(){
     angular
-        .module("FormBuilderApp", ["ngRoute"])
-        .controller("HeaderController", HeaderController);
-    function HeaderController($scope) {
+        .module("FormBuilderApp")
+        .controller("HeaderController", headerController);
+    function headerController($scope) {
         // ADD FUNCTION BODY
     }
 })();
