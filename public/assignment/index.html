@@ -11,6 +11,7 @@
 
     <title>Form Maker</title>
 
+    <!-- CONSIDER MOVING STYLE.CSS TO THIS LEVEL NOW -->
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="css/dashboard.css" rel="stylesheet">
@@ -21,12 +22,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
 
-    <!-- JavaScript -->
+    <!-- Angular App and Routing -->
     <script src="app.js"></script>
     <script src="config.js"></script>
+
+    <!-- Controllers -->
     <script src="views/main/main.controller.js"></script>
     <script src="views/header/header.controller.js"></script>
     <script src="views/sidebar/sidebar.controller.js"></script>
+    <script src="views/users/register.controller.js"></script>
+    <script src="views/users/profile.controller.js"></script>
+    <script src="views/users/login.controller.js"></script>
+    <script src="views/forms/forms.controller.js"></script>
+
+    <!-- Services -->
+    <script src="services/user.service.client.js"></script>
+    <script src="services/forms.service.client.js"></script>
+
 </head>
 
 <body ng-controller="MainController">

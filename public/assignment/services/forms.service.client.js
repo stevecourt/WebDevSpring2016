@@ -2,7 +2,7 @@
 
 (function () {
     angular
-        .module("FormBuilderApp", ["ngRoute"])
+        .module("FormBuilderApp")
         .factory("FormService", formService);
 
     // LOOK UP WHAT PARAMS SHOULD BE HERE

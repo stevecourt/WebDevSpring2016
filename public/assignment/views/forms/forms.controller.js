@@ -2,7 +2,7 @@
 
 (function(){
     angular
-        .module("FormBuilderApp", ["ngRoute"])
+        .module("FormBuilderApp")
         .controller("FormController", formController);
     // $scope, $location - USE THESE PARAMS???
     function formController() {

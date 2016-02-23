@@ -2,11 +2,11 @@
 
 (function(){
     angular
-        .module("FormBuilderApp", ["ngRoute"])
+        .module("FormBuilderApp")
         .controller("ProfileController", profileController);
     // $scope, $location - USE THESE PARAMS???
-    function profileController() {
+    function profileController($scope, $location) {
         //BODY HERE
-        //$scope.$location = $location;
+        $scope.$location = $location;
     }
 })();
