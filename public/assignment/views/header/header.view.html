@@ -14,9 +14,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ng-hide="currentUser"><a href="#/register">Register</a></li>
                 <li ng-hide="currentUser"><a href="#/login">Login</a></li>
-                <li ng-show="currentUser"><a href="#/home">Logout</a></li>
-                <!-- TO DO: CHANGE THE Username TEXT CHANGE TO SHOW THE ACTUAL USERNAME -->
-                <li ng-show="currentUser"><a href="#/profile">Username</a></li>
+                <li ng-click=logout() ng-show="currentUser"><a href="">Logout</a></li>
+                <li ng-show="currentUser"><a href="#/profile">{{currentUser.username}}</a></li>
                 <li ng-show="currentUser"><a href="#/profile">Profile</a></li>
                 <li ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0"><a href="#/admin">Admin</a></li>
             </ul>

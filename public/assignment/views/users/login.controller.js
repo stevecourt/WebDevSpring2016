@@ -4,8 +4,11 @@
     angular
         .module("FormBuilderApp")
         .controller("LoginController", loginController);
+
     function loginController($scope, $rootScope, $location, UserService) {
+
         $scope.login = login;
+
         function login(username, password) {
             var callback = function(aUser) {
                 if (aUser === null) {

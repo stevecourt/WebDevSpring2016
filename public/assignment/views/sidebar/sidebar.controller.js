@@ -4,7 +4,8 @@
     angular
         .module("FormBuilderApp")
         .controller("SidebarController", sidebarController);
-    function sidebarController($scope) {
-        // ADD FUNCTION BODY
+
+    function sidebarController() {
+        // No event handlers currently required.
     }
 })();
