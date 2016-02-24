@@ -15,11 +15,10 @@
                 <li ng-hide="currentUser"><a href="#/register">Register</a></li>
                 <li ng-hide="currentUser"><a href="#/login">Login</a></li>
                 <li ng-show="currentUser"><a href="#/home">Logout</a></li>
-                <!-- SHOULD THE Username TEXT CHANGE TO SHOW THE USER??? -->
+                <!-- TO DO: CHANGE THE Username TEXT CHANGE TO SHOW THE ACTUAL USERNAME -->
                 <li ng-show="currentUser"><a href="#/profile">Username</a></li>
                 <li ng-show="currentUser"><a href="#/profile">Profile</a></li>
-                <li ng-show="currentUser"><a href="#/admin">Admin</a></li>
-                <!-- ADD "currentUser.roles.indexOf('admin') >= 0" into the last ng-show later.  See Jose login ex.-->
+                <li ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0"><a href="#/admin">Admin</a></li>
             </ul>
         </div>
     </div>

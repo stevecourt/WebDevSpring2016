@@ -5,12 +5,10 @@
         .module("FormBuilderApp")
         .factory("FormService", formService);
 
-    // LOOK UP WHAT PARAMS SHOULD BE HERE
-    // JOSE HAD $http, $q
-    function formService() {
+    function formService($rootScope) {
 
-        // SHOULD THIS BE INITIALIZED FIRST???
-        var forms = [
+        var forms = [];
+        forms = [
             {"_id": "000", "title": "Contacts", "userId": 123},
             {"_id": "010", "title": "ToDo", "userId": 123},
             {"_id": "020", "title": "CDs", "userId": 234},
