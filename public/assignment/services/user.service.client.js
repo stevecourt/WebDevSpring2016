@@ -42,11 +42,14 @@
         }
 
         function findAllUsers(callback) {
-
+            callback(users);
         }
 
         function createUser(user, callback) {
-
+            var id = (new Date).getTime();
+            user._id = id;
+            users.push(user);
+            callback(user);
         }
 
         function deleteUserById(userId, callback) {

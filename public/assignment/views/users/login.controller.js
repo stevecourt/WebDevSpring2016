@@ -10,6 +10,7 @@
         $scope.login = login;
 
         function login(username, password) {
+
             var callback = function(aUser) {
                 if (aUser === null) {
                     alert("The username or password entered is not recognized.");
