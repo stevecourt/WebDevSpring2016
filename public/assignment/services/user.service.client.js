@@ -54,7 +54,13 @@
         }
 
         function updateUser(userId, user, callback) {
-
+            for (var i = 0; i < users.length; i++) {
+                if (users[i]._id === userId) {;
+                    users[i] = user;
+                    break;
+                }
+            }
+            callback(user);
         }
     }
 })();
