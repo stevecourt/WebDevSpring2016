@@ -22,10 +22,11 @@
                     //$rootScope.currentUser = aUser;
                     $rootScope.currentUser = {
                         "_id":aUser._id,
-                        "firstName":aUser.firstName,
-                        "lastName":aUser.lastName,
-                        "username":aUser.username,
-                        "password":aUser.password,
+                        "firstName": aUser.firstName,
+                        "lastName": aUser.lastName,
+                        "username": aUser.username,
+                        "password": aUser.password,
+                        "email": aUser.email,
                         "roles": aUser.roles}
                     $location.url("/profile");
                 }
