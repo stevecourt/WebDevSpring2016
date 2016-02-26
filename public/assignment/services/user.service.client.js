@@ -19,7 +19,7 @@
                 "username":"dan", "password":"dan", "roles": ["faculty", "admin"]},
             {"_id":567, "firstName":"Edward", "lastName":"Norton",
                 "username":"ed", "password":"ed", "roles": ["student"]}
-        ]
+        ];
 
         var api = {
             findUsersByUsernameAndPassword: findUsersByUsernameAndPassword,
@@ -53,17 +53,23 @@
         }
 
         function deleteUserById(userId, callback) {
-
+            for (var i = 0; i < users.length; i++) {
+                if (users[i]._id === userId) {
+                    users.splice(i, 1);
+                    break;
+                }
+            }
+            callback(users);
         }
 
         function updateUser(userId, user, callback) {
             for (var i = 0; i < users.length; i++) {
-                if (users[i]._id === userId) {;
+                if (users[i]._id === userId) {
                     users[i] = user;
+                    callback(users[i]);
                     break;
                 }
             }
-            callback(user);
         }
     }
 })();

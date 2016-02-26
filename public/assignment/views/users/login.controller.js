@@ -16,7 +16,17 @@
                     alert("The username or password entered is not recognized.");
                 }
                 else {
-                    $rootScope.currentUser = aUser;
+                    // TODO: The commented line can replace the subsequent line once the database is used.
+                    // This temporarily prevents an issue where the user profile can be updated
+                    // without clicking the update button.
+                    //$rootScope.currentUser = aUser;
+                    $rootScope.currentUser = {
+                        "_id":aUser._id,
+                        "firstName":aUser.firstName,
+                        "lastName":aUser.lastName,
+                        "username":aUser.username,
+                        "password":aUser.password,
+                        "roles": aUser.roles}
                     $location.url("/profile");
                 }
             }
