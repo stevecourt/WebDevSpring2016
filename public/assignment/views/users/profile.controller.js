@@ -1,6 +1,6 @@
 "use strict";
 
-(function(){
+(function () {
     angular
         .module("FormBuilderApp")
         .controller("ProfileController", profileController);
@@ -12,11 +12,13 @@
 
         function update(user) {
 
-            var callback = function(aUser) {
+            // Confirmation message triggers ng-show visibility in the view.
+            var callback = function (aUser) {
                 $scope.message = "Profile updated successfully. (Click to close.)";
                 $rootScope.currentUser = aUser;
                 $location.url("/profile");
-            }
+            };
+
             UserService.updateUser(user._id, user, callback);
         }
 
