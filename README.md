@@ -6,6 +6,10 @@ Spring 2016
 
 Northeastern University (Seattle campus)
 
+Both are under development at the following location.
+
+http://webdev2016-courtstephen.rhcloud.com
+
 
 The OpenShift `nodejs` cartridge documentation can be found at:
 
