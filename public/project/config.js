@@ -2,32 +2,32 @@
 
 (function () {
     angular
-        .module("FormBuilderApp", ["ngRoute"])
+        .module("BookExchangeApp", ["ngRoute"])
         .config(function ($routeProvider) {
             $routeProvider
                 .when("/home", {
                     templateUrl: "views/home/home.view.html",
                     controller: "HomeController"
                 })
-                .when("/forms", {
-                    templateUrl: "views/forms/forms.view.html",
-                    controller: "FormController"
+                .when("/book", {
+                    templateUrl: "views/book/book.view.html",
+                    controller: "BookController"
                 })
-                .when("/register", {
-                    templateUrl: "views/users/register.view.html",
-                    controller: "RegisterController"
+                .when("/location", {
+                    templateUrl: "views/location/location.view.html",
+                    controller: "LocationController"
                 })
-                .when("/login", {
-                    templateUrl: "views/users/login.view.html",
-                    controller: "LoginController"
+                .when("/provider", {
+                    templateUrl: "views/provider/provider.view.html",
+                    controller: "ProviderController"
                 })
-                .when("/profile", {
-                    templateUrl: "views/users/profile.view.html",
-                    controller: "ProfileController"
+                .when("/user", {
+                    templateUrl: "views/user/user.view.html",
+                    controller: "UserController"
                 })
-                .when("/admin", {
-                    templateUrl: "views/admin/admin.view.html",
-                    controller: "AdminController"
+                .when("/wishlist", {
+                    templateUrl: "views/wishlist/wishlist.view.html",
+                    controller: "wishlistController"
                 })
                 .otherwise({
                     redirectTo: "/home"

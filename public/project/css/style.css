@@ -1,0 +1,46 @@
+/*
+ * Style adjustments
+ */
+
+/* FORMS PAGE */
+/* Move down buttons in forms header to align with input field */
+.headerIconInputAlign{
+    margin-bottom: 0px;
+}
+
+
+/* FIELDS PAGE */
+/* Move down first row position in a form's fields */
+.firstRowLabelInput{
+    padding-top: 10px;
+}
+
+/* Move down first row icons in a form's fields */
+.firstRowIcons {
+    padding-top: 43px;
+}
+
+/* Move down main row position in a form's fields */
+.mainRowLabelInput{
+    padding-top: 15px;
+}
+
+/* Move down main row icons in a form's fields */
+.mainRowIcons {
+    padding-top: 48px;
+}
+
+/* Move down the label for a check box or radio button cluster in a form's fields */
+.checkOrRadioClusterLabel {
+    padding-top: 20px;
+}
+
+/* Move up a check box or radio button cluster in a form's fields */
+.topCheckOrRadio {
+    margin-top: 0px;
+}
+
+/* Move down Add New Field icon to align with input field */
+.newFieldIconInputAlign{
+    position: relative; top: 33px;
+}
