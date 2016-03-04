@@ -13,13 +13,21 @@
                     templateUrl: "views/book/book.view.html",
                     controller: "BookController"
                 })
+                .when("/details", {
+                    templateUrl: "views/details/details.view.html",
+                    controller: "DetailsController"
+                })
                 .when("/location", {
                     templateUrl: "views/location/location.view.html",
                     controller: "LocationController"
                 })
-                .when("/provider", {
-                    templateUrl: "views/provider/provider.view.html",
-                    controller: "ProviderController"
+                .when("/maker", {
+                    templateUrl: "views/maker/maker.view.html",
+                    controller: "MakerController"
+                })
+                .when("/search", {
+                    templateUrl: "views/search/search.view.html",
+                    controller: "SearchController"
                 })
                 .when("/user", {
                     templateUrl: "views/user/user.view.html",
@@ -27,10 +35,10 @@
                 })
                 .when("/wishlist", {
                     templateUrl: "views/wishlist/wishlist.view.html",
-                    controller: "wishlistController"
+                    controller: "WishlistController"
                 })
                 .otherwise({
-                    redirectTo: "/home"
+                    redirectTo: "/"
                 });
         });
 })();

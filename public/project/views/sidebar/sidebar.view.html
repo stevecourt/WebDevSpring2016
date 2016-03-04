@@ -1,17 +1,25 @@
-<div class="col-sm-3 col-md-2 sidebar">
+<div id="sidebar" class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar" ng-controller="SidebarController">
         <li ng-class="{'active' : $location.url().indexOf('home') != -1}">
             <a href="#/home">Home</a>
         </li>
-        <li ng-show="currentUser" ng-class="{'active' : $location.url().indexOf('profile') != -1}">
-            <a href="#/profile">Profile</a>
+        <li ng-class="{'active' : $location.url().indexOf('user') != -1}">
+            <a href="#/user">User</a>
         </li>
-        <li ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0"
-            ng-class="{'active' : $location.url().indexOf('admin') != -1}">
-            <a href="#/admin">Admin</a>
+        <li ng-class="{'active' : $location.url().indexOf('book') != -1}">
+            <a href="#/book">Book</a>
         </li>
-        <li ng-show="currentUser" ng-class="{'active' : $location.url().indexOf('forms') != -1}">
-            <a href="#/forms">Forms</a>
+        <li ng-class="{'active' : $location.url().indexOf('wishlist') != -1}">
+            <a href="#/wishlist">Wishlist</a>
+        </li>
+        <li ng-class="{'active' : $location.url().indexOf('location') != -1}">
+            <a href="#/location">Location</a>
+        </li>
+        <li ng-class="{'active' : $location.url().indexOf('maker') != -1}">
+            <a href="#/maker">Maker</a>
+        </li>
+        <li ng-class="{'active' : $location.url().indexOf('search') != -1}">
+            <a href="#/search">Search</a>
         </li>
     </ul>
 </div>
