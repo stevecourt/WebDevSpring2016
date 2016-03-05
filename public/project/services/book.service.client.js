@@ -7,29 +7,33 @@
 
     function bookService() {
 
-        var forms = [];
-        forms = [
-            {"_id": "000", "title": "Contacts", "userId": 123},
-            {"_id": "010", "title": "ToDo", "userId": 123},
-            {"_id": "020", "title": "CDs", "userId": 234}
+        var books = [];
+        books = [
+            {"isbn": 1212121212121, "wishlist": "Wishlist1", "location": "LocationA"},
+            {"isbn": 2323232323232, "wishlist": "Wishlist2", "location": "LocationB"},
+            {"isbn": 3434343434343, "wishlist": "Wishlist3", "location": "LocationC"}
         ];
 
+        // CRUD operations
         var api = {
-            createFormForUser: createFormForUser,
-            findAllFormsForUser: findAllFormsForUser,
-            deleteFormById: deleteFormById,
-            updateFormById: updateFormById
+            findAllBooks: findAllBooks,
+            createBook: createBook,
+            selectBook: readBook,
+            updateBook: updateBook,
+            deleteBook: deleteBook,
         };
         return api;
 
-        function createFormForUser(userId, form, callback) {
-            form._id = (new Date).getTime();
-            form.userId = userId;
-            forms.push(form);
-            callback(form);
+        function findAllBooks(callback) {
+            callback(books);
         }
 
-        function findAllFormsForUser(userId, callback) {
+        function createBook(book, callback) {
+            forms.push(form);
+            callback(forms);
+        }
+
+        function readBook(userId, callback) {
             var userForms = [];
             for (var i = 0; i < forms.length; i++) {
                 if (forms[i].userId === userId) {
@@ -39,17 +43,7 @@
             callback(userForms);
         }
 
-        function deleteFormById(formId, callback) {
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i]._id === formId) {
-                    forms.splice(i, 1);
-                    break;
-                }
-            }
-            callback(forms);
-        }
-
-        function updateFormById(formId, newForm, callback) {
+        function updateBook(formId, newForm, callback) {
             for (var i = 0; i < forms.length; i++) {
                 if (forms[i]._id === formId) {
                     forms[i] = newForm;
@@ -57,6 +51,16 @@
                     break;
                 }
             }
+        }
+
+        function deleteBook(formId, callback) {
+            for (var i = 0; i < forms.length; i++) {
+                if (forms[i]._id === formId) {
+                    forms.splice(i, 1);
+                    break;
+                }
+            }
+            callback(forms);
         }
     }
 })();

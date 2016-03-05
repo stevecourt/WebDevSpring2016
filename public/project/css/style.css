@@ -2,10 +2,10 @@
  * Style adjustments
  */
 
-/* FORMS PAGE */
-/* Move down buttons in forms header to align with input field */
-.headerIconInputAlign{
-    margin-bottom: 0px;
+/* DOMAIN PAGES */
+/* Maintain horizontal alignment of CRUD buttons */
+.inlineCrud{
+    width: 100px;
 }
 
 
