@@ -16,51 +16,46 @@
 
         // CRUD operations
         var api = {
-            findAllBooks: findAllBooks,
             createBook: createBook,
-            selectBook: readBook,
+            findAllBooks: findAllBooks,
             updateBook: updateBook,
             deleteBook: deleteBook,
         };
         return api;
 
+        function createBook(book, callback) {
+            // Creates a new object to be added.
+            var newBook = {
+                isbn: book.isbn,
+                wishlist: book.wishlist,
+                location: book.location
+            };
+            books.push(newBook);
+            callback(books);
+        }
+
         function findAllBooks(callback) {
             callback(books);
         }
 
-        function createBook(book, callback) {
-            forms.push(form);
-            callback(forms);
+        function updateBook(book, callback) {
+            // Creates a new object to be updated.
+            var newBook = {
+                isbn: book.isbn,
+                wishlist: book.wishlist,
+                location: book.location
+            };
+            callback(newBook);
         }
 
-        function readBook(userId, callback) {
-            var userForms = [];
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i].userId === userId) {
-                    userForms.push(forms[i]);
-                }
-            }
-            callback(userForms);
-        }
-
-        function updateBook(formId, newForm, callback) {
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i]._id === formId) {
-                    forms[i] = newForm;
-                    callback(forms[i]);
+        function deleteBook(book, callback) {
+            for (var i = 0; i < books.length; i++) {
+                if (books[i].isbn === book.isbn) {
+                    books.splice(i, 1);
                     break;
                 }
             }
-        }
-
-        function deleteBook(formId, callback) {
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i]._id === formId) {
-                    forms.splice(i, 1);
-                    break;
-                }
-            }
-            callback(forms);
+            callback(books);
         }
     }
 })();

@@ -3,60 +3,59 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .factory("HomeService", homeService);
+        .factory("BookService", bookService);
 
-    function homeService() {
+    function bookService() {
 
-        var forms = [];
-        forms = [
-            {"_id": "000", "title": "Contacts", "userId": 123},
-            {"_id": "010", "title": "ToDo", "userId": 123},
-            {"_id": "020", "title": "CDs", "userId": 234}
+        var books = [];
+        books = [
+            {"isbn": 1212121212121, "wishlist": "Wishlist1", "location": "LocationA"},
+            {"isbn": 2323232323232, "wishlist": "Wishlist2", "location": "LocationB"},
+            {"isbn": 3434343434343, "wishlist": "Wishlist3", "location": "LocationC"}
         ];
 
+        // CRUD operations
         var api = {
-            createFormForUser: createFormForUser,
-            findAllFormsForUser: findAllFormsForUser,
-            deleteFormById: deleteFormById,
-            updateFormById: updateFormById
+            createBook: createBook,
+            findAllBooks: findAllBooks,
+            updateBook: updateBook,
+            deleteBook: deleteBook,
         };
         return api;
 
-        function createFormForUser(userId, form, callback) {
-            form._id = (new Date).getTime();
-            form.userId = userId;
-            forms.push(form);
-            callback(form);
+        function createBook(book, callback) {
+            // Creates a new object to be added.
+            var newBook = {
+                isbn: book.isbn,
+                wishlist: book.wishlist,
+                location: book.location
+            };
+            books.push(newBook);
+            callback(books);
         }
 
-        function findAllFormsForUser(userId, callback) {
-            var userForms = [];
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i].userId === userId) {
-                    userForms.push(forms[i]);
-                }
-            }
-            callback(userForms);
+        function findAllBooks(callback) {
+            callback(books);
         }
 
-        function deleteFormById(formId, callback) {
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i]._id === formId) {
-                    forms.splice(i, 1);
+        function updateBook(book, callback) {
+            // Creates a new object to be updated.
+            var newBook = {
+                isbn: book.isbn,
+                wishlist: book.wishlist,
+                location: book.location
+            };
+            callback(newBook);
+        }
+
+        function deleteBook(book, callback) {
+            for (var i = 0; i < books.length; i++) {
+                if (books[i].isbn === book.isbn) {
+                    books.splice(i, 1);
                     break;
                 }
             }
-            callback(forms);
-        }
-
-        function updateFormById(formId, newForm, callback) {
-            for (var i = 0; i < forms.length; i++) {
-                if (forms[i]._id === formId) {
-                    forms[i] = newForm;
-                    callback(forms[i]);
-                    break;
-                }
-            }
+            callback(books);
         }
     }
 })();

@@ -23,19 +23,55 @@
         }
 
         function addBook(book) {
+            var callback = function (books) {
+                // Get all books for rendering.
+                // Note: Retain this format for easier modification later to books per domain object.
+                BookService.findAllBooks(
+                    function (books) {
+                        $scope.allBooks = books;
+                    }
+                )
+            };
 
+            BookService.createBook(book, callback);
         }
 
         function selectBook(index) {
-
+            $scope.selectedBookIndex = index;
+            $scope.book = {
+                isbn: $scope.allBooks[index].isbn,
+                wishlist: $scope.allBooks[index].wishlist,
+                location: $scope.allBooks[index].location
+            };
         }
 
         function changeBook(book) {
+            var callback = function (newBook) {
+                $scope.allBooks[$scope.selectedBookIndex] = newBook;
+                // Get all books for rendering.
+                // Note: Retain this format for easier modification later to books per domain object.
+                BookService.findAllBooks(
+                    function (books) {
+                        $scope.allBooks = books;
+                    }
+                )
+            };
 
+            BookService.updateBook(book, callback);
         }
 
         function removeBook(book) {
+            var callback = function (books) {
+                // Get all books for rendering.
+                // Note: Retain this format for easier modification later to books per domain object.
+                BookService.findAllBooks(
+                    function (books) {
+                        $scope.allBooks = books;
+                    }
+                )
+            };
 
+            BookService.deleteBook(book, callback);
         }
     }
 })();
