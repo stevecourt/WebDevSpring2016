@@ -1,38 +1,44 @@
-<h1>Books</h1>
+<h1>Users</h1>
 
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ISBN</th>
-            <th>Wishlist</th>
-            <th>Location</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>email</th>
+            <th>Username</th>
+            <th>Password</th>
             <th>&nbsp</th>
         </tr>
         <tr>
-            <th><input ng-model="book.isbn" class="form-control"/></th>
-            <th><input ng-model="book.wishlist" class="form-control"/></th>
-            <th><input ng-model="book.location" class="form-control"/></th>
+            <th><input ng-model="user.firstName" class="form-control"/></th>
+            <th><input ng-model="user.lastName" class="form-control"/></th>
+            <th><input ng-model="user.email" class="form-control"/></th>
+            <th><input ng-model="user.username" class="form-control"/></th>
+            <th><input ng-model="user.password" class="form-control"/></th>
             <th class="inlineCrud">
-                <button ng-click="addBook(book)" class="btn btn-primary">
+                <button ng-click="addUser(user)" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
-                <button ng-click="changeBook(book)" class="btn btn-primary btn-success">
+                <button ng-click="changeUser(user)" class="btn btn-primary btn-success">
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </button>
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="book in allBooks">
-            <td>{{book.isbn}}</td>
-            <td><a href="#/wishlist">{{book.wishlist}}</a></td>
-            <td><a href="#/location">{{book.location}}</a></td>
+        <tr ng-repeat="user in allUsers">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</a></td>
+            <td>{{user.email}}</a></td>
+            <td>{{user.username}}</a></td>
+            <td>{{user.password}}</a></td>
             <td>
-                <button ng-click="removeBook(book)" class="btn btn-danger">
+                <button ng-click="removeUser(user)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
-                <button ng-click="selectBook($index)" class="btn btn-info">
+                <button ng-click="selectUser($index)" class="btn btn-info">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </button>
             </td>

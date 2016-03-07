@@ -3,75 +3,77 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .controller("BookController", bookController);
+        .controller("UserController", userController);
 
-    function bookController($scope, BookService) {
+    function userController($scope, UserService) {
 
-        $scope.addBook = addBook;
-        $scope.selectBook = selectBook;
-        $scope.changeBook = changeBook;
-        $scope.removeBook = removeBook;
+        $scope.addUser = addUser;
+        $scope.selectUser = selectUser;
+        $scope.changeUser = changeUser;
+        $scope.removeUser = removeUser;
 
-        // Get all books for rendering.
-        getAllBooks();
-        function getAllBooks() {
-            var callback = function (books) {
-                $scope.allBooks = books;
+        // Get all users for rendering.
+        getAllUsers();
+        function getAllUsers() {
+            var callback = function (users) {
+                $scope.allUsers = users;
             };
 
-            BookService.findAllBooks(callback);
+            UserService.findAllUsers(callback);
         }
 
-        function addBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function addUser(user) {
+            var callback = function (users) {
+                // Get all users for rendering.
+                // Note: Retain this format for easier modification later to users per domain object.
+                UserService.findAllUsers(
+                    function (users) {
+                        $scope.allUsers = users;
                     }
                 )
             };
 
-            BookService.createBook(book, callback);
+            UserService.createUser(user, callback);
         }
 
-        function selectBook(index) {
-            $scope.selectedBookIndex = index;
-            $scope.book = {
-                isbn: $scope.allBooks[index].isbn,
-                wishlist: $scope.allBooks[index].wishlist,
-                location: $scope.allBooks[index].location
+        function selectUser(index) {
+            $scope.selectedUserIndex = index;
+            $scope.user = {
+                firstName: $scope.allUsers[index].firstName,
+                lastName: $scope.allUsers[index].lastName,
+                email: $scope.allUsers[index].email,
+                username: $scope.allUsers[index].username,
+                password: $scope.allUsers[index].password
             };
         }
 
-        function changeBook(book) {
-            var callback = function (newBook) {
-                $scope.allBooks[$scope.selectedBookIndex] = newBook;
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function changeUser(user) {
+            var callback = function (newUser) {
+                $scope.allUsers[$scope.selectedUserIndex] = newUser;
+                // Get all users for rendering.
+                // Note: Retain this format for easier modification later to users per domain object.
+                UserService.findAllUsers(
+                    function (users) {
+                        $scope.allUsers = users;
                     }
                 )
             };
 
-            BookService.updateBook(book, callback);
+            UserService.updateUser(user, callback);
         }
 
-        function removeBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function removeUser(user) {
+            var callback = function (users) {
+                // Get all users for rendering.
+                // Note: Retain this format for easier modification later to users per domain object.
+                UserService.findAllUsers(
+                    function (users) {
+                        $scope.allUsers = users;
                     }
                 )
             };
 
-            BookService.deleteBook(book, callback);
+            UserService.deleteUser(user, callback);
         }
     }
 })();

@@ -3,59 +3,60 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .factory("BookService", bookService);
+        .factory("UserService", userService);
 
-    function bookService() {
+    function userService() {
 
-        var books = [];
-        books = [
-            {"isbn": 1212121212121, "wishlist": "Wishlist1", "location": "LocationA"},
-            {"isbn": 2323232323232, "wishlist": "Wishlist2", "location": "LocationB"},
-            {"isbn": 3434343434343, "wishlist": "Wishlist3", "location": "LocationC"}
+        var users = [];
+        users = [
+            {"firstName": "Al", "lastName": "Einstein", "email": "ea@gmail.com", "username": "madscientist", "password": "emc2"},
+            {"firstName": "King", "lastName": "Kong", "email": "kk@gmail.com", "username": "bigdude", "password": "aarrgghh"},
+            {"firstName": "David", "lastName": "Beckham", "email": "db7@gmail.com", "username": "backs", "password": "posh"},
+            {"firstName": "Liz", "lastName": "Windsor", "email": "er2@gmail.com", "username": "qe2", "password": "corgi"}
         ];
 
         // CRUD operations
         var api = {
-            createBook: createBook,
-            findAllBooks: findAllBooks,
-            updateBook: updateBook,
-            deleteBook: deleteBook,
+            createUser: createUser,
+            findAllUsers: findAllUsers,
+            updateUser: updateUser,
+            deleteUser: deleteUser,
         };
         return api;
 
-        function createBook(book, callback) {
+        function createUser(user, callback) {
             // Creates a new object to be added.
-            var newBook = {
-                isbn: book.isbn,
-                wishlist: book.wishlist,
-                location: book.location
+            var newUser = {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                username: user.username,
+                password: user.password
             };
-            books.push(newBook);
-            callback(books);
+            users.push(newUser);
+            callback(users);
         }
 
-        function findAllBooks(callback) {
-            callback(books);
+        function findAllUsers(callback) {
+            callback(users);
         }
 
-        function updateBook(book, callback) {
+        function updateUser(user, callback) {
             // Creates a new object to be updated.
-            var newBook = {
-                isbn: book.isbn,
-                wishlist: book.wishlist,
-                location: book.location
+            var newUser = {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                username: user.username,
+                password: user.password
             };
-            callback(newBook);
+            callback(newUser);
         }
 
-        function deleteBook(book, callback) {
-            for (var i = 0; i < books.length; i++) {
-                if (books[i].isbn === book.isbn) {
-                    books.splice(i, 1);
-                    break;
-                }
-            }
-            callback(books);
+        function deleteUser(user, callback) {
+            var index = users.indexOf(user);
+            users.splice(index, 1);
+            callback(users);
         }
     }
 })();

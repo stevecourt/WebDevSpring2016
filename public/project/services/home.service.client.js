@@ -3,59 +3,62 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .factory("BookService", bookService);
+        .factory("HomeService", homeService);
 
-    function bookService() {
+    function homeService() {
 
-        var books = [];
-        books = [
-            {"isbn": 1212121212121, "wishlist": "Wishlist1", "location": "LocationA"},
-            {"isbn": 2323232323232, "wishlist": "Wishlist2", "location": "LocationB"},
-            {"isbn": 3434343434343, "wishlist": "Wishlist3", "location": "LocationC"}
+        var homes = [];
+        homes = [
+            {"title": "Book Exchanger",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
+                "Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus," +
+                "ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit," +
+                "et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna." +
+                "Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis." +
+                "Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula," +
+                "a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus" +
+                "viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.",
+                "image": "Image1"}
         ];
 
         // CRUD operations
         var api = {
-            createBook: createBook,
-            findAllBooks: findAllBooks,
-            updateBook: updateBook,
-            deleteBook: deleteBook,
+            createHome: createHome,
+            findAllHomes: findAllHomes,
+            updateHome: updateHome,
+            deleteHome: deleteHome
         };
         return api;
 
-        function createBook(book, callback) {
+        function createHome(home, callback) {
             // Creates a new object to be added.
-            var newBook = {
-                isbn: book.isbn,
-                wishlist: book.wishlist,
-                location: book.location
+            var newHome = {
+                title: home.title,
+                text: home.text,
+                image: home.image
             };
-            books.push(newBook);
-            callback(books);
+            homes.push(newHome);
+            callback(homes);
         }
 
-        function findAllBooks(callback) {
-            callback(books);
+        function findAllHomes(callback) {
+            callback(homes);
         }
 
-        function updateBook(book, callback) {
+        function updateHome(home, callback) {
             // Creates a new object to be updated.
-            var newBook = {
-                isbn: book.isbn,
-                wishlist: book.wishlist,
-                location: book.location
+            var newHome = {
+                title: home.title,
+                text: home.text,
+                image: home.image
             };
-            callback(newBook);
+            callback(newHome);
         }
 
-        function deleteBook(book, callback) {
-            for (var i = 0; i < books.length; i++) {
-                if (books[i].isbn === book.isbn) {
-                    books.splice(i, 1);
-                    break;
-                }
-            }
-            callback(books);
+        function deleteHome(home, callback) {
+            var index = homes.indexOf(home);
+            homes.splice(index, 1);
+            callback(homes);
         }
     }
 })();

@@ -19,7 +19,7 @@
             createBook: createBook,
             findAllBooks: findAllBooks,
             updateBook: updateBook,
-            deleteBook: deleteBook,
+            deleteBook: deleteBook
         };
         return api;
 
@@ -49,12 +49,8 @@
         }
 
         function deleteBook(book, callback) {
-            for (var i = 0; i < books.length; i++) {
-                if (books[i].isbn === book.isbn) {
-                    books.splice(i, 1);
-                    break;
-                }
-            }
+            var index = books.indexOf(book);
+            books.splice(index, 1);
             callback(books);
         }
     }

@@ -3,59 +3,70 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .factory("BookService", bookService);
+        .factory("LocationService", locationService);
 
-    function bookService() {
+    function locationService() {
 
-        var books = [];
-        books = [
-            {"isbn": 1212121212121, "wishlist": "Wishlist1", "location": "LocationA"},
-            {"isbn": 2323232323232, "wishlist": "Wishlist2", "location": "LocationB"},
-            {"isbn": 3434343434343, "wishlist": "Wishlist3", "location": "LocationC"}
+        var locations = [];
+        locations = [
+            {"address": "1 1st Ave Seattle",
+                "capacity": "100",
+                "type": "Coffee Shop",
+                "open": "8am",
+                "close": "5pm",
+                "notes": "Please come and get a book!"},
+            {"address": "2 1st Ave Seattle",
+                "capacity": "50",
+                "type": "Individual",
+                "open": "N/A",
+                "close": "N/A",
+                "notes": "... or just watch a movie!"}
         ];
 
         // CRUD operations
         var api = {
-            createBook: createBook,
-            findAllBooks: findAllBooks,
-            updateBook: updateBook,
-            deleteBook: deleteBook,
+            createLocation: createLocation,
+            findAllLocations: findAllLocations,
+            updateLocation: updateLocation,
+            deleteLocation: deleteLocation,
         };
         return api;
 
-        function createBook(book, callback) {
+        function createLocation(location, callback) {
             // Creates a new object to be added.
-            var newBook = {
-                isbn: book.isbn,
-                wishlist: book.wishlist,
-                location: book.location
+            var newLocation = {
+                address: location.address,
+                capacity: location.capacity,
+                type: location.type,
+                open: location.open,
+                close: location.close,
+                notes: location.notes
             };
-            books.push(newBook);
-            callback(books);
+            locations.push(newLocation);
+            callback(locations);
         }
 
-        function findAllBooks(callback) {
-            callback(books);
+        function findAllLocations(callback) {
+            callback(locations);
         }
 
-        function updateBook(book, callback) {
+        function updateLocation(location, callback) {
             // Creates a new object to be updated.
-            var newBook = {
-                isbn: book.isbn,
-                wishlist: book.wishlist,
-                location: book.location
+            var newLocation = {
+                address: location.address,
+                capacity: location.capacity,
+                type: location.type,
+                open: location.open,
+                close: location.close,
+                notes: location.notes
             };
-            callback(newBook);
+            callback(newLocation);
         }
 
-        function deleteBook(book, callback) {
-            for (var i = 0; i < books.length; i++) {
-                if (books[i].isbn === book.isbn) {
-                    books.splice(i, 1);
-                    break;
-                }
-            }
-            callback(books);
+        function deleteLocation(location, callback) {
+            var index = locations.indexOf(location);
+            locations.splice(index, 1);
+            callback(locations);
         }
     }
 })();

@@ -3,75 +3,78 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .controller("BookController", bookController);
+        .controller("LocationController", locationController);
 
-    function bookController($scope, BookService) {
+    function locationController($scope, LocationService) {
 
-        $scope.addBook = addBook;
-        $scope.selectBook = selectBook;
-        $scope.changeBook = changeBook;
-        $scope.removeBook = removeBook;
+        $scope.addLocation = addLocation;
+        $scope.selectLocation = selectLocation;
+        $scope.changeLocation = changeLocation;
+        $scope.removeLocation = removeLocation;
 
-        // Get all books for rendering.
-        getAllBooks();
-        function getAllBooks() {
-            var callback = function (books) {
-                $scope.allBooks = books;
+        // Get all locations for rendering.
+        getAllLocations();
+        function getAllLocations() {
+            var callback = function (locations) {
+                $scope.allLocations = locations;
             };
 
-            BookService.findAllBooks(callback);
+            LocationService.findAllLocations(callback);
         }
 
-        function addBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function addLocation(location) {
+            var callback = function (locations) {
+                // Get all locations for rendering.
+                // Note: Retain this format for easier modification later to locations per domain object.
+                LocationService.findAllLocations(
+                    function (locations) {
+                        $scope.allLocations = locations;
                     }
                 )
             };
 
-            BookService.createBook(book, callback);
+            LocationService.createLocation(location, callback);
         }
 
-        function selectBook(index) {
-            $scope.selectedBookIndex = index;
-            $scope.book = {
-                isbn: $scope.allBooks[index].isbn,
-                wishlist: $scope.allBooks[index].wishlist,
-                location: $scope.allBooks[index].location
+        function selectLocation(index) {
+            $scope.selectedLocationIndex = index;
+            $scope.location = {
+                address: $scope.allLocations[index].address,
+                capacity: $scope.allLocations[index].capacity,
+                type: $scope.allLocations[index].type,
+                open: $scope.allLocations[index].open,
+                close: $scope.allLocations[index].close,
+                notes: $scope.allLocations[index].notes
             };
         }
 
-        function changeBook(book) {
-            var callback = function (newBook) {
-                $scope.allBooks[$scope.selectedBookIndex] = newBook;
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function changeLocation(location) {
+            var callback = function (newLocation) {
+                $scope.allLocations[$scope.selectedLocationIndex] = newLocation;
+                // Get all locations for rendering.
+                // Note: Retain this format for easier modification later to locations per domain object.
+                LocationService.findAllLocations(
+                    function (locations) {
+                        $scope.allLocations = locations;
                     }
                 )
             };
 
-            BookService.updateBook(book, callback);
+            LocationService.updateLocation(location, callback);
         }
 
-        function removeBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function removeLocation(location) {
+            var callback = function (locations) {
+                // Get all locations for rendering.
+                // Note: Retain this format for easier modification later to locations per domain object.
+                LocationService.findAllLocations(
+                    function (locations) {
+                        $scope.allLocations = locations;
                     }
                 )
             };
 
-            BookService.deleteBook(book, callback);
+            LocationService.deleteLocation(location, callback);
         }
     }
 })();

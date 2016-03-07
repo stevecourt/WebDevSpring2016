@@ -1,38 +1,47 @@
-<h1>Books</h1>
+<h1>Locations</h1>
 
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ISBN</th>
-            <th>Wishlist</th>
-            <th>Location</th>
+            <th>Address</th>
+            <th>Capacity</th>
+            <th>Type</th>
+            <th>Open</th>
+            <th>Close</th>
+            <th>Notes</th>
             <th>&nbsp</th>
         </tr>
         <tr>
-            <th><input ng-model="book.isbn" class="form-control"/></th>
-            <th><input ng-model="book.wishlist" class="form-control"/></th>
-            <th><input ng-model="book.location" class="form-control"/></th>
+            <th><input ng-model="location.address" class="form-control"/></th>
+            <th><input ng-model="location.capacity" class="form-control"/></th>
+            <th><input ng-model="location.type" class="form-control"/></th>
+            <th><input ng-model="location.open" class="form-control"/></th>
+            <th><input ng-model="location.close" class="form-control"/></th>
+            <th><input ng-model="location.notes" class="form-control"/></th>
             <th class="inlineCrud">
-                <button ng-click="addBook(book)" class="btn btn-primary">
+                <button ng-click="addLocation(location)" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
-                <button ng-click="changeBook(book)" class="btn btn-primary btn-success">
+                <button ng-click="changeLocation(location)" class="btn btn-primary btn-success">
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </button>
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="book in allBooks">
-            <td>{{book.isbn}}</td>
-            <td><a href="#/wishlist">{{book.wishlist}}</a></td>
-            <td><a href="#/location">{{book.location}}</a></td>
+        <tr ng-repeat="location in allLocations">
+            <td>{{location.address}}</td>
+            <td>{{location.capacity}}</a></td>
+            <td>{{location.type}}</a></td>
+            <td>{{location.open}}</a></td>
+            <td>{{location.close}}</a></td>
+            <td>{{location.notes}}</a></td>
             <td>
-                <button ng-click="removeBook(book)" class="btn btn-danger">
+                <button ng-click="removeLocation(location)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
-                <button ng-click="selectBook($index)" class="btn btn-info">
+                <button ng-click="selectLocation($index)" class="btn btn-info">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </button>
             </td>

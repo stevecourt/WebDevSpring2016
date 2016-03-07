@@ -3,75 +3,75 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .controller("BookController", bookController);
+        .controller("HomeController", homeController);
 
-    function bookController($scope, BookService) {
+    function homeController($scope, HomeService) {
 
-        $scope.addBook = addBook;
-        $scope.selectBook = selectBook;
-        $scope.changeBook = changeBook;
-        $scope.removeBook = removeBook;
+        $scope.addHome = addHome;
+        $scope.selectHome = selectHome;
+        $scope.changeHome = changeHome;
+        $scope.removeHome = removeHome;
 
-        // Get all books for rendering.
-        getAllBooks();
-        function getAllBooks() {
-            var callback = function (books) {
-                $scope.allBooks = books;
+        // Get all homes for rendering.
+        getAllHomes();
+        function getAllHomes() {
+            var callback = function (homes) {
+                $scope.allHomes = homes;
             };
 
-            BookService.findAllBooks(callback);
+            HomeService.findAllHomes(callback);
         }
 
-        function addBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function addHome(home) {
+            var callback = function (homess) {
+                // Get all homes for rendering.
+                // Note: Retain this format for easier modification later to homes per domain object.
+                HomeService.findAllHomes(
+                    function (homes) {
+                        $scope.allHomes = homes;
                     }
                 )
             };
 
-            BookService.createBook(book, callback);
+            HomeService.createHome(home, callback);
         }
 
-        function selectBook(index) {
-            $scope.selectedBookIndex = index;
-            $scope.book = {
-                isbn: $scope.allBooks[index].isbn,
-                wishlist: $scope.allBooks[index].wishlist,
-                location: $scope.allBooks[index].location
+        function selectHome(index) {
+            $scope.selectedHomeIndex = index;
+            $scope.home = {
+                title: $scope.allHomes[index].title,
+                text: $scope.allHomes[index].text,
+                image: $scope.allHomes[index].image
             };
         }
 
-        function changeBook(book) {
-            var callback = function (newBook) {
-                $scope.allBooks[$scope.selectedBookIndex] = newBook;
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function changeHome(home) {
+            var callback = function (newHome) {
+                $scope.allHomes[$scope.selectedHomeIndex] = newHome;
+                // Get all homes for rendering.
+                // Note: Retain this format for easier modification later to homes per domain object.
+                HomeService.findAllHomes(
+                    function (homes) {
+                        $scope.allHomes = homes;
                     }
                 )
             };
 
-            BookService.updateBook(book, callback);
+            HomeService.updateHome(home, callback);
         }
 
-        function removeBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function removeHome(home) {
+            var callback = function (homes) {
+                // Get all homes for rendering.
+                // Note: Retain this format for easier modification later to homes per domain object.
+                HomeService.findAllHomes(
+                    function (homes) {
+                        $scope.allHomes = homes;
                     }
                 )
             };
 
-            BookService.deleteBook(book, callback);
+            HomeService.deleteHome(home, callback);
         }
     }
 })();
