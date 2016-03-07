@@ -3,75 +3,77 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .controller("BookController", bookController);
+        .controller("WishlistController", wishlistController);
 
-    function bookController($scope, BookService) {
+    function wishlistController($scope, WishlistService) {
 
-        $scope.addBook = addBook;
-        $scope.selectBook = selectBook;
-        $scope.changeBook = changeBook;
-        $scope.removeBook = removeBook;
+        $scope.addWishlist = addWishlist;
+        $scope.selectWishlist = selectWishlist;
+        $scope.changeWishlist = changeWishlist;
+        $scope.removeWishlist = removeWishlist;
 
-        // Get all books for rendering.
-        getAllBooks();
-        function getAllBooks() {
-            var callback = function (books) {
-                $scope.allBooks = books;
+        // Get all wishlists for rendering.
+        getAllWishlists();
+        function getAllWishlists() {
+            var callback = function (wishlists) {
+                $scope.allWishlists = wishlists;
             };
 
-            BookService.findAllBooks(callback);
+            WishlistService.findAllWishlists(callback);
         }
 
-        function addBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function addWishlist(wishlist) {
+            var callback = function (wishlists) {
+                // Get all wishlists for rendering.
+                // Note: Retain this format for easier modification later to wishlists per domain object.
+                WishlistService.findAllWishlists(
+                    function (wishlists) {
+                        $scope.allWishlists = wishlists;
                     }
                 )
             };
 
-            BookService.createBook(book, callback);
+            WishlistService.createWishlist(wishlist, callback);
         }
 
-        function selectBook(index) {
-            $scope.selectedBookIndex = index;
-            $scope.book = {
-                isbn: $scope.allBooks[index].isbn,
-                wishlist: $scope.allBooks[index].wishlist,
-                location: $scope.allBooks[index].location
+        function selectWishlist(index) {
+            $scope.selectedWishlistIndex = index;
+            $scope.wishlist = {
+                id: $scope.allWishlists[index].id,
+                address: $scope.allWishlists[index].address,
+                distance: $scope.allWishlists[index].distance,
+                name: $scope.allWishlists[index].name,
+                userId: $scope.allWishlists[index].userId
             };
         }
 
-        function changeBook(book) {
-            var callback = function (newBook) {
-                $scope.allBooks[$scope.selectedBookIndex] = newBook;
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function changeWishlist(wishlist) {
+            var callback = function (newWishlist) {
+                $scope.allWishlists[$scope.selectedWishlistIndex] = newWishlist;
+                // Get all wishlists for rendering.
+                // Note: Retain this format for easier modification later to wishlists per domain object.
+                WishlistService.findAllWishlists(
+                    function (wishlists) {
+                        $scope.allWishlists = wishlists;
                     }
                 )
             };
 
-            BookService.updateBook(book, callback);
+            WishlistService.updateWishlist(wishlist, callback);
         }
 
-        function removeBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function removeWishlist(wishlist) {
+            var callback = function (wishlists) {
+                // Get all wishlists for rendering.
+                // Note: Retain this format for easier modification later to wishlists per domain object.
+                WishlistService.findAllWishlists(
+                    function (wishlists) {
+                        $scope.allWishlists = wishlists;
                     }
                 )
             };
 
-            BookService.deleteBook(book, callback);
+            WishlistService.deleteWishlist(wishlist, callback);
         }
     }
 })();

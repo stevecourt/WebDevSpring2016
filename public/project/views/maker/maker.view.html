@@ -4,35 +4,53 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ISBN</th>
-            <th>Wishlist</th>
-            <th>Location</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Web</th>
+            <th>Notes</th>
+            <th>Application</th>
+            <th>User's ID</th>
             <th>&nbsp</th>
         </tr>
         <tr>
-            <th><input ng-model="book.isbn" class="form-control"/></th>
-            <th><input ng-model="book.wishlist" class="form-control"/></th>
-            <th><input ng-model="book.location" class="form-control"/></th>
+            <th><input ng-model="maker.id" class="form-control"/></th>
+            <th><input ng-model="maker.name" class="form-control"/></th>
+            <th><input ng-model="maker.address" class="form-control"/></th>
+            <th><input ng-model="maker.phone" class="form-control"/></th>
+            <th><input ng-model="maker.email" class="form-control"/></th>
+            <th><input ng-model="maker.web" class="form-control"/></th>
+            <th><input ng-model="maker.notes" class="form-control"/></th>
+            <th><input ng-model="maker.application" class="form-control"/></th>
+            <th><input ng-model="maker.userId" class="form-control"/></th>
             <th class="inlineCrud">
-                <button ng-click="addBook(book)" class="btn btn-primary">
+                <button ng-click="addMaker(maker)" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
-                <button ng-click="changeBook(book)" class="btn btn-primary btn-success">
+                <button ng-click="changeMaker(maker)" class="btn btn-primary btn-success">
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </button>
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="book in allBooks">
-            <td>{{book.isbn}}</td>
-            <td><a href="#/wishlist">{{book.wishlist}}</a></td>
-            <td><a href="#/location">{{book.location}}</a></td>
+        <tr ng-repeat="maker in allMakers">
+            <td>{{maker.id}}</td>
+            <td>{{maker.name}}</a></td>
+            <td>{{maker.address}}</a></td>
+            <td>{{maker.phone}}</td>
+            <td>{{maker.email}}</a></td>
+            <td><a href="#/maker">{{maker.web}}</a></td>
+            <td>{{maker.notes}}</td>
+            <td>{{maker.application}}</a></td>
+            <td><a href="#/user">{{maker.userId}}</a></td>
             <td>
-                <button ng-click="removeBook(book)" class="btn btn-danger">
+                <button ng-click="removeMaker(maker)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
-                <button ng-click="selectBook($index)" class="btn btn-info">
+                <button ng-click="selectMaker($index)" class="btn btn-info">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </button>
             </td>

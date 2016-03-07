@@ -3,75 +3,81 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .controller("BookController", bookController);
+        .controller("MakerController", makerController);
 
-    function bookController($scope, BookService) {
+    function makerController($scope, MakerService) {
 
-        $scope.addBook = addBook;
-        $scope.selectBook = selectBook;
-        $scope.changeBook = changeBook;
-        $scope.removeBook = removeBook;
+        $scope.addMaker = addMaker;
+        $scope.selectMaker = selectMaker;
+        $scope.changeMaker = changeMaker;
+        $scope.removeMaker = removeMaker;
 
-        // Get all books for rendering.
-        getAllBooks();
-        function getAllBooks() {
-            var callback = function (books) {
-                $scope.allBooks = books;
+        // Get all makers for rendering.
+        getAllMakers();
+        function getAllMakers() {
+            var callback = function (makers) {
+                $scope.allMakers = makers;
             };
 
-            BookService.findAllBooks(callback);
+            MakerService.findAllMakers(callback);
         }
 
-        function addBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function addMaker(maker) {
+            var callback = function (makers) {
+                // Get all makers for rendering.
+                // Note: Retain this format for easier modification later to makers per domain object.
+                MakerService.findAllMakers(
+                    function (makers) {
+                        $scope.allMakers = makers;
                     }
                 )
             };
 
-            BookService.createBook(book, callback);
+            MakerService.createMaker(maker, callback);
         }
 
-        function selectBook(index) {
-            $scope.selectedBookIndex = index;
-            $scope.book = {
-                isbn: $scope.allBooks[index].isbn,
-                wishlist: $scope.allBooks[index].wishlist,
-                location: $scope.allBooks[index].location
+        function selectMaker(index) {
+            $scope.selectedMakerIndex = index;
+            $scope.maker = {
+                id: $scope.allMakers[index].id,
+                name: $scope.allMakers[index].name,
+                address: $scope.allMakers[index].address,
+                phone: $scope.allMakers[index].phone,
+                email: $scope.allMakers[index].email,
+                web: $scope.allMakers[index].web,
+                notes: $scope.allMakers[index].notes,
+                application: $scope.allMakers[index].application,
+                userId: $scope.allMakers[index].userId
             };
         }
 
-        function changeBook(book) {
-            var callback = function (newBook) {
-                $scope.allBooks[$scope.selectedBookIndex] = newBook;
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function changeMaker(maker) {
+            var callback = function (newMaker) {
+                $scope.allMakers[$scope.selectedMakerIndex] = newMaker;
+                // Get all makers for rendering.
+                // Note: Retain this format for easier modification later to makers per domain object.
+                MakerService.findAllMakers(
+                    function (makers) {
+                        $scope.allMakers = makers;
                     }
                 )
             };
 
-            BookService.updateBook(book, callback);
+            MakerService.updateMaker(maker, callback);
         }
 
-        function removeBook(book) {
-            var callback = function (books) {
-                // Get all books for rendering.
-                // Note: Retain this format for easier modification later to books per domain object.
-                BookService.findAllBooks(
-                    function (books) {
-                        $scope.allBooks = books;
+        function removeMaker(maker) {
+            var callback = function (makers) {
+                // Get all makers for rendering.
+                // Note: Retain this format for easier modification later to makers per domain object.
+                MakerService.findAllMakers(
+                    function (makers) {
+                        $scope.allMakers = makers;
                     }
                 )
             };
 
-            BookService.deleteBook(book, callback);
+            MakerService.deleteMaker(maker, callback);
         }
     }
 })();
