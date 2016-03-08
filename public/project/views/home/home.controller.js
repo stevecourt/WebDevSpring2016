@@ -39,6 +39,7 @@
         function selectHome(index) {
             $scope.selectedHomeIndex = index;
             $scope.home = {
+                id: $scope.allHomes[index].id,
                 title: $scope.allHomes[index].title,
                 text: $scope.allHomes[index].text,
                 image: $scope.allHomes[index].image

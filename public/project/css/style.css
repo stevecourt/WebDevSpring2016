@@ -3,11 +3,15 @@
  */
 
 /* DOMAIN PAGES */
-/* Maintain horizontal alignment of CRUD buttons */
-.inlineCrud{
-    width: 100px;
+/* Prevent CRUD buttons from stacking at certain screen widths */
+.buttonsNoWrap{
+    white-space: nowrap;
 }
 
+/* Allow text properties to wrap on small screens */
+.wrapInMobile{
+    white-space: normal !important;
+}
 
 /* FIELDS PAGE */
 /* Move down first row position in a form's fields */

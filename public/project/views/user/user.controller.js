@@ -39,11 +39,13 @@
         function selectUser(index) {
             $scope.selectedUserIndex = index;
             $scope.user = {
+                id: $scope.allUsers[index].id,
                 firstName: $scope.allUsers[index].firstName,
                 lastName: $scope.allUsers[index].lastName,
                 email: $scope.allUsers[index].email,
                 username: $scope.allUsers[index].username,
-                password: $scope.allUsers[index].password
+                password: $scope.allUsers[index].password,
+                type: $scope.allUsers[index].type
             };
         }
 

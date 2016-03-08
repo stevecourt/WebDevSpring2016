@@ -9,15 +9,25 @@
             <th>Email</th>
             <th>Username</th>
             <th>Password</th>
+            <th>Type</th>
             <th>&nbsp</th>
         </tr>
         <tr>
-            <th><input ng-model="user.firstName" class="form-control"/></th>
-            <th><input ng-model="user.lastName" class="form-control"/></th>
-            <th><input ng-model="user.email" class="form-control"/></th>
-            <th><input ng-model="user.username" class="form-control"/></th>
-            <th><input ng-model="user.password" class="form-control"/></th>
-            <th class="inlineCrud">
+            <th><input ng-model="user.firstName" class="form-control" type="text"/></th>
+            <th><input ng-model="user.lastName" class="form-control" type="text"/></th>
+            <th><input ng-model="user.email" class="form-control" type="email"/></th>
+            <th><input ng-model="user.username" class="form-control" type="text"/></th>
+            <th><input ng-model="user.password" class="form-control" type="password"/></th>
+            <th>
+                <select ng-model="user.type" class="form-control" type="text">
+                    <option value="standard">Standard</option>
+                    <option value="location">Location</option>
+                    <option value="maker">Maker</option>
+                    <option value="location & maker">Loc & Maker</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </th>
+            <th class="buttonsNoWrap">
                 <button ng-click="addUser(user)" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
@@ -29,12 +39,13 @@
         </thead>
         <tbody>
         <tr ng-repeat="user in allUsers">
-            <td>{{user.firstName}}</td>
+            <td>{{user.id}}</td>
             <td>{{user.lastName}}</a></td>
             <td>{{user.email}}</a></td>
             <td>{{user.username}}</a></td>
             <td>{{user.password}}</a></td>
-            <td>
+            <td>{{user.type}}</a></td>
+            <td class="buttonsNoWrap">
                 <button ng-click="removeUser(user)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
