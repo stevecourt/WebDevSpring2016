@@ -9,9 +9,9 @@
 
         var books = [];
         books = [
-            {"isbn": 1212121212121, "wishlist": "Wishlist1", "location": "LocationA"},
-            {"isbn": 2323232323232, "wishlist": "Wishlist2", "location": "LocationB"},
-            {"isbn": 3434343434343, "wishlist": "Wishlist3", "location": "LocationC"}
+            {"isbn": "978-3-16-148410-0", "wishlist": 301, "location": 401},
+            {"isbn": "978-4-16-148410-0", "wishlist": 302, "location": 402},
+            {"isbn": "978-5-16-148410-0", "wishlist": 303, "location": 403}
         ];
 
         // CRUD operations

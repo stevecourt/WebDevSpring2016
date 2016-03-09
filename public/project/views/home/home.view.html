@@ -13,7 +13,7 @@
             <th><input ng-model="home.title" class="form-control" type="text"/></th>
             <th><input ng-model="home.text" class="form-control" type="text"/></th>
             <th><input ng-model="home.image" class="form-control" type="text"/></th>
-            <th class="buttonsNoWrap">
+            <th class="text-nowrap">
                 <button ng-click="addHome(home)" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
@@ -28,7 +28,7 @@
             <td class="wrapInMobile">{{home.title}}</td>
             <td class="wrapInMobile">{{home.text}}</a></td>
             <td><a href="#/home">{{home.image}}</a></td>
-            <td class="buttonsNoWrap">
+            <td class="text-nowrap">
                 <button ng-click="removeHome(home)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>

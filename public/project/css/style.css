@@ -3,14 +3,14 @@
  */
 
 /* DOMAIN PAGES */
-/* Prevent CRUD buttons from stacking at certain screen widths */
-.buttonsNoWrap{
-    white-space: nowrap;
-}
-
 /* Allow text properties to wrap on small screens */
 .wrapInMobile{
     white-space: normal !important;
+}
+
+/* Size inputs of type number */
+.mediumNumberInput{
+    width: 100px;
 }
 
 /* FIELDS PAGE */

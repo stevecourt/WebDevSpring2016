@@ -19,7 +19,7 @@
             <th><input ng-model="location.open" class="form-control"/></th>
             <th><input ng-model="location.close" class="form-control"/></th>
             <th><input ng-model="location.notes" class="form-control"/></th>
-            <th class="inlineCrud">
+            <th class="text-nowrap">
                 <button ng-click="addLocation(location)" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
@@ -37,7 +37,7 @@
             <td>{{location.open}}</a></td>
             <td>{{location.close}}</a></td>
             <td>{{location.notes}}</a></td>
-            <td>
+            <td class="text-nowrap">
                 <button ng-click="removeLocation(location)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>

@@ -19,7 +19,7 @@
             <th><input ng-model="user.username" class="form-control" type="text"/></th>
             <th><input ng-model="user.password" class="form-control" type="password"/></th>
             <th>
-                <select ng-model="user.type" class="form-control" type="text">
+                <select ng-model="user.type" class="form-control">
                     <option value="standard">Standard</option>
                     <option value="location">Location</option>
                     <option value="maker">Maker</option>
@@ -27,7 +27,7 @@
                     <option value="admin">Admin</option>
                 </select>
             </th>
-            <th class="buttonsNoWrap">
+            <th class="text-nowrap">
                 <button ng-click="addUser(user)" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
@@ -45,7 +45,7 @@
             <td>{{user.username}}</a></td>
             <td>{{user.password}}</a></td>
             <td>{{user.type}}</a></td>
-            <td class="buttonsNoWrap">
+            <td class="text-nowrap">
                 <button ng-click="removeUser(user)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>

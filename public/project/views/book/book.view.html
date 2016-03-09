@@ -10,10 +10,10 @@
             <th>&nbsp</th>
         </tr>
         <tr>
-            <th><input ng-model="book.isbn" class="form-control"/></th>
-            <th><input ng-model="book.wishlist" class="form-control"/></th>
-            <th><input ng-model="book.location" class="form-control"/></th>
-            <th class="inlineCrud">
+            <th><input ng-model="book.isbn" class="form-control" type="text"/></th>
+            <th><input ng-model="book.wishlist" class="form-control" type="number"/></th>
+            <th><input ng-model="book.location" class="form-control" type="number"/></th>
+            <th class="text-nowrap">
                 <button ng-click="addBook(book)" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
@@ -28,7 +28,7 @@
             <td>{{book.isbn}}</td>
             <td><a href="#/wishlist">{{book.wishlist}}</a></td>
             <td><a href="#/location">{{book.location}}</a></td>
-            <td>
+            <td class="text-nowrap">
                 <button ng-click="removeBook(book)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
