@@ -39,12 +39,20 @@
         function selectLocation(index) {
             $scope.selectedLocationIndex = index;
             $scope.location = {
-                address: $scope.allLocations[index].address,
+                id: $scope.allLocations[index].id,
+                street: $scope.allLocations[index].street,
+                apartment: $scope.allLocations[index].apartment,
+                city: $scope.allLocations[index].city,
+                state: $scope.allLocations[index].state,
+                zip: $scope.allLocations[index].zip,
+                country: $scope.allLocations[index].country,
                 capacity: $scope.allLocations[index].capacity,
                 type: $scope.allLocations[index].type,
                 open: $scope.allLocations[index].open,
                 close: $scope.allLocations[index].close,
-                notes: $scope.allLocations[index].notes
+                notes: $scope.allLocations[index].notes,
+                application: $scope.allLocations[index].application,
+                userId: $scope.allLocations[index].userId
             };
         }
 

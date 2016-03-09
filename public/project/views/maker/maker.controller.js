@@ -41,7 +41,12 @@
             $scope.maker = {
                 id: $scope.allMakers[index].id,
                 name: $scope.allMakers[index].name,
-                address: $scope.allMakers[index].address,
+                street: $scope.allMakers[index].street,
+                apartment: $scope.allMakers[index].apartment,
+                city: $scope.allMakers[index].city,
+                state: $scope.allMakers[index].state,
+                zip: $scope.allMakers[index].zip,
+                country: $scope.allMakers[index].country,
                 phone: $scope.allMakers[index].phone,
                 email: $scope.allMakers[index].email,
                 web: $scope.allMakers[index].web,

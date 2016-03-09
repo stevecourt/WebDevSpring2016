@@ -16,7 +16,7 @@
             <th>&nbsp</th>
         </tr>
         <tr>
-            <th><input ng-model="wishlist.street1" class="form-control" type="text"/></th>
+            <th><input ng-model="wishlist.street" class="form-control" type="text"/></th>
             <th><input ng-model="wishlist.apartment" class="form-control" type="text"/></th>
             <th><input ng-model="wishlist.city" class="form-control" type="text"/></th>
             <th>
@@ -366,7 +366,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="wishlist in allWishlists">
-            <td class="wrapInMobile">{{wishlist.street1}}</td>
+            <td class="wrapInMobile">{{wishlist.street}}</td>
             <td>{{wishlist.apartment}}</td>
             <td>{{wishlist.city}}</td>
             <td>{{wishlist.state}}</td>

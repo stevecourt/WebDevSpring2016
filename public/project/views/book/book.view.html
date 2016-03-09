@@ -26,8 +26,16 @@
         <tbody>
         <tr ng-repeat="book in allBooks">
             <td>{{book.isbn}}</td>
-            <td><a href="#/wishlist">{{book.wishlist}}</a></td>
-            <td><a href="#/location">{{book.location}}</a></td>
+            <td>
+                <a href="#/wishlist">
+                    {{book.wishlist}}
+                </a>
+            </td>
+            <td>
+                <a href="#/location">
+                    {{book.location}}
+                </a>
+            </td>
             <td class="text-nowrap">
                 <button ng-click="removeBook(book)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

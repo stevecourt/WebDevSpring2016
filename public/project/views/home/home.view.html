@@ -26,8 +26,12 @@
         <tbody>
         <tr ng-repeat="home in allHomes">
             <td class="wrapInMobile">{{home.title}}</td>
-            <td class="wrapInMobile">{{home.text}}</a></td>
-            <td><a href="#/home">{{home.image}}</a></td>
+            <td class="wrapInMobile">{{home.text}}</td>
+            <td>
+                <a href="#/home">
+                    {{home.image}}
+                </a>
+            </td>
             <td class="text-nowrap">
                 <button ng-click="removeHome(home)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

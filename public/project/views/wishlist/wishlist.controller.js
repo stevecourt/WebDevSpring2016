@@ -40,8 +40,7 @@
             $scope.selectedWishlistIndex = index;
             $scope.wishlist = {
                 id: $scope.allWishlists[index].id,
-                street1: $scope.allWishlists[index].street1,
-                street2: $scope.allWishlists[index].street2,
+                street: $scope.allWishlists[index].street,
                 apartment: $scope.allWishlists[index].apartment,
                 city: $scope.allWishlists[index].city,
                 state: $scope.allWishlists[index].state,

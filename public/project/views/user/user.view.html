@@ -39,12 +39,12 @@
         </thead>
         <tbody>
         <tr ng-repeat="user in allUsers">
-            <td>{{user.id}}</td>
-            <td>{{user.lastName}}</a></td>
-            <td>{{user.email}}</a></td>
-            <td>{{user.username}}</a></td>
-            <td>{{user.password}}</a></td>
-            <td>{{user.type}}</a></td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.type}}</td>
             <td class="text-nowrap">
                 <button ng-click="removeUser(user)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

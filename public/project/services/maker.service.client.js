@@ -12,37 +12,52 @@
             {
                 "id": 201,
                 "name": "Alice's Arts",
-                "address": "6 N 6th St",
+                "street": "6 N 6th St",
+                "apartment": "6F",
+                "city": "Seattle",
+                "state": "WA",
+                "zip": "98006",
+                "country": "USA",
                 "phone": "206-123-4567",
                 "email": "aliceart@email.com",
                 "web": "www.aliceart.com",
                 "notes": "These are the best libraries ever!",
                 "application": "I want to build library boxes because it's a really good idea. Please say yes!",
-                "userId": "567"
+                "userId": 204
             },
             {
                 "id": 202,
                 "name": "Bob's Boxes",
-                "address": "7 N 7th St",
+                "street": "7 N 7th St",
+                "apartment": "7G",
+                "city": "Seattle",
+                "state": "WA",
+                "zip": "98007",
+                "country": "USA",
                 "phone": "206-234-5678",
                 "email": "bobbox@email.com",
                 "web": "www.bobbox.com",
                 "notes": "... until mine came along, which are better!",
                 "application": "I want to build library boxes because I have wood, nails a hammer and time on my " +
                 "hands. If you don't say yes, I'll have a lot of spare boxes!",
-                "userId": "678"
+                "userId": 205
             },
             {
                 "id": 203,
                 "name": "Carl's Collections",
-                "address": "8 N 8th St",
-                "phone": "206-123-4567",
+                "street": "8 N 8th St",
+                "apartment": "8H",
+                "city": "Seattle",
+                "state": "WA",
+                "zip": "98008",
+                "country": "USA",
+                "phone": "206-345-6789",
                 "email": "carlcollect@email.com",
                 "web": "www.carlcollect.com",
                 "notes": "Mine are adequate, but they're cheap!",
                 "application": "I want to build library boxes because I like building cheap, low quality products. " +
                 "Say yes! What have you got to lose?",
-                "userId": "789"
+                "userId": 206
             }
         ];
 
@@ -60,7 +75,12 @@
             var newMaker = {
                 id: maker.id,
                 name: maker.name,
-                address: maker.address,
+                street: maker.street,
+                apartment: maker.apartment,
+                city: maker.city,
+                state: maker.state,
+                zip: maker.zip,
+                country: maker.country,
                 phone: maker.phone,
                 email: maker.email,
                 web: maker.web,
@@ -81,7 +101,12 @@
             var newMaker = {
                 id: maker.id,
                 name: maker.name,
-                address: maker.address,
+                street: maker.street,
+                apartment: maker.apartment,
+                city: maker.city,
+                state: maker.state,
+                zip: maker.zip,
+                country: maker.country,
                 phone: maker.phone,
                 email: maker.email,
                 web: maker.web,

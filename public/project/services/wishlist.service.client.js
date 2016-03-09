@@ -11,8 +11,7 @@
         wishlists = [
             {
                 "id": 301,
-                "street1": "3 3rd Ave",
-                "street2": "",
+                "street": "3 3rd Ave",
                 "apartment": "",
                 "city": "Seattle",
                 "state": "WA",
@@ -24,8 +23,7 @@
             },
             {
                 "id": 302,
-                "street1": "4 4th Ave",
-                "street2": "",
+                "street": "4 4th Ave",
                 "apartment": "4",
                 "city": "Seattle",
                 "state": "WA",
@@ -37,8 +35,7 @@
             },
             {
                 "id": 303,
-                "street1": "5 5th Ave",
-                "street2": "",
+                "street": "5 5th Ave",
                 "apartment": "",
                 "city": "Seattle",
                 "state": "WA",
@@ -50,8 +47,7 @@
             },
             {
                 "id": 304,
-                "street1": "6 6th Ave",
-                "street2": "",
+                "street": "6 6th Ave",
                 "apartment": "6",
                 "city": "Seattle",
                 "state": "WA",
@@ -76,8 +72,7 @@
             // Creates a new object to be added.
             var newWishlist = {
                 id: (new Date).getTime(),
-                street1: wishlist.street1,
-                street2: wishlist.street2,
+                street: wishlist.street,
                 apartment: wishlist.apartment,
                 city: wishlist.city,
                 state: wishlist.state,
@@ -99,8 +94,7 @@
             // Creates a new object to be updated.
             var newWishlist = {
                 id: (new Date).getTime(),
-                street1: wishlist.street1,
-                street2: wishlist.street2,
+                street: wishlist.street,
                 apartment: wishlist.apartment,
                 city: wishlist.city,
                 state: wishlist.state,
