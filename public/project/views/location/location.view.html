@@ -380,19 +380,23 @@
         </thead>
         <tbody>
         <tr ng-repeat="location in allLocations">
-            <td class="wrapInMobile">{{location.street}}</td>
+            <td class="wrapInMobile">
+                <a href="#/location">
+                    {{location.street}}
+                </a>
+            </td>
             <td>{{location.apartment}}</td>
             <td>{{location.city}}</td>
             <td>{{location.state}}</td>
             <td>{{location.zip}}</td>
             <td>{{location.country}}</td>
-            <td>{{location.capacity}}</td>
+            <td class="text-right">{{location.capacity}}</td>
             <td>{{location.type}}</td>
             <td>{{location.open | date:'shortTime'}}</td>
             <td>{{location.close  | date:'shortTime'}}</td>
             <td class="wrapInMobile">{{location.notes}}</td>
             <td class="wrapInMobile">{{location.application}}</td>
-            <td>
+            <td class="text-right">
                 <a href="#/user">
                     {{location.userId}}
                 </a>

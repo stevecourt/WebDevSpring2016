@@ -362,14 +362,18 @@
         </thead>
         <tbody>
         <tr ng-repeat="maker in allMakers">
-            <td class="wrapInMobile">{{maker.name}}</td>
+            <td class="wrapInMobile">
+                <a href="#/maker">
+                    {{maker.name}}
+                </a>
+            </td>
             <td class="wrapInMobile">{{maker.street}}</td>
             <td>{{maker.apartment}}</td>
             <td>{{maker.city}}</td>
             <td>{{maker.state}}</td>
             <td>{{maker.zip}}</td>
             <td>{{maker.country}}</td>
-            <td>{{maker.phone}}</td>
+            <td class="text-nowrap">{{maker.phone}}</td>
             <td>{{maker.email}}</td>
             <td>
                 <a href="#/maker">
@@ -378,7 +382,7 @@
             </td>
             <td class="wrapInMobile">{{maker.notes}}</td>
             <td class="wrapInMobile">{{maker.application}}</td>
-            <td>
+            <td class="text-right">
                 <a href="#/user">
                     {{maker.userId}}
                 </a>

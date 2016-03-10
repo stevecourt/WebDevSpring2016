@@ -4,6 +4,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th>Name</th>
             <th>Street</th>
             <th>Apartment</th>
             <th>City</th>
@@ -11,11 +12,11 @@
             <th class="text-nowrap">Zip Code</th>
             <th>Country</th>
             <th>Distance</th>
-            <th>Name</th>
             <th class="text-nowrap">User's ID</th>
             <th>&nbsp</th>
         </tr>
         <tr>
+            <th><input ng-model="wishlist.name" class="form-control" type="text"/></th>
             <th><input ng-model="wishlist.street" class="form-control" type="text"/></th>
             <th><input ng-model="wishlist.apartment" class="form-control" type="text"/></th>
             <th><input ng-model="wishlist.city" class="form-control" type="text"/></th>
@@ -352,7 +353,6 @@
                     <option value="100">100 Miles</option>
                 </select>
             </th>
-            <th><input ng-model="wishlist.name" class="form-control" type="text"/></th>
             <th><input ng-model="wishlist.userId" class="form-control" type="number"/></th>
             <th class="text-nowrap">
                 <button ng-click="addWishlist(wishlist)" class="btn btn-primary">
@@ -366,19 +366,19 @@
         </thead>
         <tbody>
         <tr ng-repeat="wishlist in allWishlists">
+            <td class="wrapInMobile">
+                <a href="#/wishlist">
+                    {{wishlist.name}}
+                </a>
+            </td>
             <td class="wrapInMobile">{{wishlist.street}}</td>
             <td>{{wishlist.apartment}}</td>
             <td>{{wishlist.city}}</td>
             <td>{{wishlist.state}}</td>
             <td>{{wishlist.zip}}</td>
             <td>{{wishlist.country}}</td>
-            <td>{{wishlist.distance}}</td>
-            <td class="wrapInMobile">
-                <a href="#/wishlist">
-                    {{wishlist.name}}
-                </a>
-            </td>
-            <td>
+            <td class="text-right">{{wishlist.distance}}</td>
+            <td class="text-right">
                 <a href="#/user">
                     {{wishlist.userId}}
                 </a>

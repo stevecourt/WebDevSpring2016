@@ -11,6 +11,7 @@
         wishlists = [
             {
                 "id": 301,
+                "name": "Al's List",
                 "street": "3 3rd Ave",
                 "apartment": "",
                 "city": "Seattle",
@@ -18,11 +19,11 @@
                 "zip": 98001,
                 "country": "USA",
                 "distance": "25",
-                "name": "Al's List",
                 "userId": 201
             },
             {
                 "id": 302,
+                "name": "Learn to read List",
                 "street": "4 4th Ave",
                 "apartment": "4",
                 "city": "Seattle",
@@ -30,11 +31,11 @@
                 "zip": 98002,
                 "country": "USA",
                 "distance": "30",
-                "name": "Learn to read List",
                 "userId": 202
             },
             {
                 "id": 303,
+                "name": "Posh List",
                 "street": "5 5th Ave",
                 "apartment": "",
                 "city": "Seattle",
@@ -42,11 +43,11 @@
                 "zip": 98003,
                 "country": "USA",
                 "distance": "40",
-                "name": "Posh List",
                 "userId": 203
             },
             {
                 "id": 304,
+                "name": "Our List",
                 "street": "6 6th Ave",
                 "apartment": "6",
                 "city": "Seattle",
@@ -54,7 +55,6 @@
                 "zip": 98004,
                 "country": "USA",
                 "distance": "100",
-                "name": "Our List",
                 "userId": 204
             }
         ];
@@ -72,6 +72,7 @@
             // Creates a new object to be added.
             var newWishlist = {
                 id: (new Date).getTime(),
+                name: wishlist.name,
                 street: wishlist.street,
                 apartment: wishlist.apartment,
                 city: wishlist.city,
@@ -79,7 +80,6 @@
                 zip: wishlist.zip,
                 country: wishlist.country,
                 distance: wishlist.distance,
-                name: wishlist.name,
                 userId: wishlist.userId
             };
             wishlists.push(newWishlist);
@@ -94,6 +94,7 @@
             // Creates a new object to be updated.
             var newWishlist = {
                 id: (new Date).getTime(),
+                name: wishlist.name,
                 street: wishlist.street,
                 apartment: wishlist.apartment,
                 city: wishlist.city,
@@ -101,7 +102,6 @@
                 zip: wishlist.zip,
                 country: wishlist.country,
                 distance: wishlist.distance,
-                name: wishlist.name,
                 userId: wishlist.userId
             };
             callback(newWishlist);
