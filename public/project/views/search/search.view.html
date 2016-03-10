@@ -1,0 +1,25 @@
+<h1>Search Books in Open Library API</h1>
+<h2>Search</h2>
+<input ng-model="bookTitle" class="form-control"/>
+<a href="#/search/{{bookTitle}}" class="btn btn-primary btn-block">
+    Search
+</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Cover</th>
+        <th>Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-click="selectBook(book)" ng-repeat="book in data.Search">
+        <td>
+            <img height="100px" ng-src="{{book.Poster}}"/>
+        </td>
+        <td>
+            <a href="#/details/{{book.imdbID}}">{{book.Title}}</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
