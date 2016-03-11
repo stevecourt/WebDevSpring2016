@@ -1,14 +1,4 @@
 (function(){
-    //var SEARCN_URL = "http://www.omdbapi.com/?s=TITLE&page=PAGE&type=movie";
-    //var SEARCH_URL = "http://openlibrary.org/search.json?title=TITLE";
-/*    var SEARCH_URL = "http://openlibrary.org/search.json?" +
-        "title=TITLE&" +
-        "author=AUTHOR&" +
-        "isbn=ISBN&" +
-        "subject=SUBJECT&" +
-        "place=PLACE&" +
-        "person=PERSON&" +
-        "publisher=PUBLISHER";*/
 
     angular
         .module("BookExchangeApp")
@@ -19,14 +9,27 @@
         function init() {
             var bookTitle = $routeParams.title;
             var bookAuthor = $routeParams.author;
-            if(bookTitle || bookAuthor) {
-                fetchBook(bookTitle, bookAuthor);
+            var bookIsbn = $routeParams.isbn;
+            var bookSubject = $routeParams.subject;
+            var bookPlace = $routeParams.place;
+            var bookPerson = $routeParams.person;
+            var bookPublisher = $routeParams.publisher;
+            if(bookTitle || bookAuthor || bookIsbn || bookSubject || bookPlace || bookPerson || bookPublisher) {
+                fetchBook(bookTitle, bookAuthor, bookIsbn, bookSubject, bookPlace, bookPerson, bookPublisher);
             }
         }
         init();
 
-        function fetchBook(bookTitle, bookAuthor) {
-            BookService.findBooksBySearchTerms(bookTitle, bookAuthor, renderBooks);
+        function fetchBook(bookTitle, bookAuthor, bookIsbn, bookSubject, bookPlace, bookPerson, bookPublisher) {
+            BookService.findBooksBySearchTerms(
+                bookTitle,
+                bookAuthor,
+                bookIsbn,
+                bookSubject,
+                bookPlace,
+                bookPerson,
+                bookPublisher,
+                renderBooks);
         }
 
         function renderBooks(response) {

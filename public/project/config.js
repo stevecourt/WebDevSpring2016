@@ -33,7 +33,7 @@
                     templateUrl: "views/search/search.view.html",
                     controller: "SearchController"
                 })
-                .when("/search/:title?/:author?", {
+                .when("/search/:title?/:author?/:isbn?/:subject?/:place?/:person?/:publisher?", {
                     templateUrl: "views/search/search.view.html",
                     controller: "SearchController"
                 })

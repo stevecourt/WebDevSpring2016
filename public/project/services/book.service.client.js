@@ -69,7 +69,7 @@
             callback(books);
         }
 
-        function findBooksBySearchTerms(title, author, callback) {
+        function findBooksBySearchTerms(title, author, isbn, subject, place, person, publisher, callback) {
             var url = SEARCH_URL;
                 //.replace("TITLE", title)
                 //.replace("AUTHOR", author);
@@ -83,6 +83,36 @@
                 addAmpersand();
                 url += "author=";
                 url += author;
+                notFirstParam = true;
+            }
+            if (isbn) {
+                addAmpersand();
+                url += "isbn=";
+                url += isbn;
+                notFirstParam = true;
+            }
+            if (subject) {
+                addAmpersand();
+                url += "subject=";
+                url += subject;
+                notFirstParam = true;
+            }
+            if (place) {
+                addAmpersand();
+                url += "place=";
+                url += place;
+                notFirstParam = true;
+            }
+            if (person) {
+                addAmpersand();
+                url += "person=";
+                url += person;
+                notFirstParam = true;
+            }
+            if (publisher) {
+                addAmpersand();
+                url += "publisher=";
+                url += publisher;
                 notFirstParam = true;
             }
             $http.get(url)
