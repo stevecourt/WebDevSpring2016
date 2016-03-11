@@ -53,13 +53,6 @@
 
 <!-- Header / Nav-bar -->
 <div ng-include="'views/header/header.view.html'"></div>
-<div ng-show=
-             "$location.url().indexOf('search') === 1 ||
-                     $location.url().indexOf('details') === 1 ||
-                     $location.url().indexOf('editions') === 1"
-     class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"
-     ng-include="'views/tab/tab.view.html'">
-</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -67,8 +60,14 @@
         <!-- Sidebar -->
         <div ng-include="'views/sidebar/sidebar.view.html'"></div>
 
-
         <!-- Main body: injected content -->
+        <div ng-show=
+                     "$location.url().indexOf('search') === 1 ||
+                     $location.url().indexOf('details') === 1 ||
+                     $location.url().indexOf('editions') === 1"
+             class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"
+             ng-include="'views/tab/tab.view.html'">
+        </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>
     </div>
 </div>

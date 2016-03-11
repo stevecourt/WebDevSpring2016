@@ -1,6 +1,6 @@
 (function(){
     //var SEARCN_URL = "http://www.omdbapi.com/?s=TITLE&page=PAGE&type=movie";
-    var SEARCH_URL = "http://openlibrary.org/search.json?title=TITLE";
+    //var SEARCH_URL = "http://openlibrary.org/search.json?title=TITLE";
 /*    var SEARCH_URL = "http://openlibrary.org/search.json?" +
         "title=TITLE&" +
         "author=AUTHOR&" +
@@ -14,18 +14,19 @@
         .module("BookExchangeApp")
         .controller("SearchController", SearchController);
 
-    function SearchController($scope, $http, $routeParams, $location, BookService) {
+    function SearchController($scope, $routeParams, BookService) {
 
         function init() {
             var bookTitle = $routeParams.title;
-            if(bookTitle) {
-                fetchBook(bookTitle);
+            var bookAuthor = $routeParams.author;
+            if(bookTitle || bookAuthor) {
+                fetchBook(bookTitle, bookAuthor);
             }
         }
         init();
 
-        function fetchBook(bookTitle) {
-            BookService.findBooksByTitle(bookTitle, renderBooks);
+        function fetchBook(bookTitle, bookAuthor) {
+            BookService.findBooksBySearchTerms(bookTitle, bookAuthor, renderBooks);
         }
 
         function renderBooks(response) {

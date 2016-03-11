@@ -3,7 +3,9 @@
 (function () {
 
     //var SEARCN_URL = "http://www.omdbapi.com/?s=TITLE&page=PAGE&type=movie";
-    var SEARCH_URL = "http://openlibrary.org/search.json?title=TITLE";
+    //var SEARCH_URL = "http://openlibrary.org/search.json?title=TITLE";
+    //var SEARCH_URL = "http://openlibrary.org/search.json?title=TITLE&author=AUTHOR";
+    var SEARCH_URL = "http://openlibrary.org/search.json?";
     /*    var SEARCH_URL = "http://openlibrary.org/search.json?" +
      "title=TITLE&" +
      "author=AUTHOR&" +
@@ -32,7 +34,7 @@
             findAllBooks: findAllBooks,
             updateBook: updateBook,
             deleteBook: deleteBook,
-            findBooksByTitle: findBooksByTitle
+            findBooksBySearchTerms: findBooksBySearchTerms
         };
         return api;
 
@@ -67,11 +69,30 @@
             callback(books);
         }
 
-        function findBooksByTitle(title, callback) {
-            var url = SEARCH_URL
-                .replace("TITLE", title);
+        function findBooksBySearchTerms(title, author, callback) {
+            var url = SEARCH_URL;
+                //.replace("TITLE", title)
+                //.replace("AUTHOR", author);
+            var notFirstParam = false;
+            if (title) {
+                url += "title=";
+                url += title;
+                notFirstParam = true;
+            }
+            if (author) {
+                addAmpersand();
+                url += "author=";
+                url += author;
+                notFirstParam = true;
+            }
             $http.get(url)
                 .success(callback);
+
+            function addAmpersand() {
+                if (notFirstParam) {
+                    url += "&";
+                }
+            }
         }
     }
 })();
