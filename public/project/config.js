@@ -9,13 +9,17 @@
                     templateUrl: "views/home/home.view.html",
                     controller: "HomeController"
                 })
+                .when("/user", {
+                    templateUrl: "views/user/user.view.html",
+                    controller: "UserController"
+                })
                 .when("/book", {
                     templateUrl: "views/book/book.view.html",
                     controller: "BookController"
                 })
-                .when("/details", {
-                    templateUrl: "views/details/details.view.html",
-                    controller: "DetailsController"
+                .when("/wishlist", {
+                    templateUrl: "views/wishlist/wishlist.view.html",
+                    controller: "WishlistController"
                 })
                 .when("/location", {
                     templateUrl: "views/location/location.view.html",
@@ -29,13 +33,17 @@
                     templateUrl: "views/search/search.view.html",
                     controller: "SearchController"
                 })
-                .when("/user", {
-                    templateUrl: "views/user/user.view.html",
-                    controller: "UserController"
+                .when("/search/:title", {
+                    templateUrl: "views/search/search.view.html",
+                    controller: "SearchController"
                 })
-                .when("/wishlist", {
-                    templateUrl: "views/wishlist/wishlist.view.html",
-                    controller: "WishlistController"
+                .when("/editions", {
+                    templateUrl: "views/editions/editions.view.html",
+                    controller: "EditionsController"
+                })
+                .when("/details", {
+                    templateUrl: "views/details/details.view.html",
+                    controller: "DetailsController"
                 })
                 .otherwise({
                     redirectTo: "/"

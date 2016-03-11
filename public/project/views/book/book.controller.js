@@ -1,6 +1,7 @@
 "use strict";
 
 (function () {
+
     angular
         .module("BookExchangeApp")
         .controller("BookController", bookController);
