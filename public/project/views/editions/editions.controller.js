@@ -23,7 +23,7 @@
         console.log(editionKeyArray);                    // DELETE
 
         function init() {
-            //fetchEdition(editionKey);
+            //fetchEdition(editionKey);//
         }
         init();
 
