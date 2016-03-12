@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<h1>Book Details from Open Library API</h1>
 
-</body>
-</html>
+<!-- Search results -->
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Cover</th>
+        <th>Title</th>
+        <th>Editions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            <a href="#/editions/{{book.edition_key}}"><img img height="100px" ng-src="{{book.thumbnail_url}}"/></a>
+        </td>
+        <td>
+            <a href="#/editions/{{book.edition_key}}">{{book.title}}</a>
+        </td>
+        <td>
+            <a href="#/editions/{{book.edition_key}}">{{book.publish_date}}</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>

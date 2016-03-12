@@ -2,18 +2,8 @@
 
 (function () {
 
-    //var SEARCN_URL = "http://www.omdbapi.com/?s=TITLE&page=PAGE&type=movie";
-    //var SEARCH_URL = "http://openlibrary.org/search.json?title=TITLE";
-    //var SEARCH_URL = "http://openlibrary.org/search.json?title=TITLE&author=AUTHOR";
     var SEARCH_URL = "http://openlibrary.org/search.json?";
-    /*    var SEARCH_URL = "http://openlibrary.org/search.json?" +
-     "title=TITLE&" +
-     "author=AUTHOR&" +
-     "isbn=ISBN&" +
-     "subject=SUBJECT&" +
-     "place=PLACE&" +
-     "person=PERSON&" +
-     "publisher=PUBLISHER";*/
+    //var EDITION_URL = "https://openlibrary.org/api/books?bibkeys=OLID:EDITION_OLID&format=json&jscmd=data";
 
     angular
         .module("BookExchangeApp")
@@ -34,7 +24,8 @@
             findAllBooks: findAllBooks,
             updateBook: updateBook,
             deleteBook: deleteBook,
-            findBooksBySearchTerms: findBooksBySearchTerms
+            findBooksBySearchTerms: findBooksBySearchTerms,
+            findEditionByOLID: findEditionByOLID
         };
         return api;
 
@@ -71,8 +62,6 @@
 
         function findBooksBySearchTerms(title, author, isbn, subject, place, person, publisher, callback) {
             var url = SEARCH_URL;
-                //.replace("TITLE", title)
-                //.replace("AUTHOR", author);
             var notFirstParam = false;
             if (title) {
                 url += "title=";
@@ -115,14 +104,24 @@
                 url += publisher;
                 notFirstParam = true;
             }
-            $http.get(url)
-                .success(callback);
 
             function addAmpersand() {
                 if (notFirstParam) {
                     url += "&";
                 }
             }
+
+            $http
+                .get(url)
+                .success(callback);
+
+        }
+
+        function findEditionByOLID(editionKey, callback) {
+            console.log("in findEditionByOLID");
+            $http
+                .get("/rest/edition/" + editionKey)
+                .success(callback);
         }
     }
 })();

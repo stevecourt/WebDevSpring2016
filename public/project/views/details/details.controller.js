@@ -1,3 +1,11 @@
-/**
- * Created by stephencourt on 3/4/16.
- */
+"use strict";
+
+(function () {
+    angular
+        .module("BookExchangeApp")
+        .controller("DetailsController", detailsController);
+
+    function detailsController() {
+        // No event handlers currently required.
+    }
+})();

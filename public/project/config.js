@@ -41,6 +41,10 @@
                     templateUrl: "views/editions/editions.view.html",
                     controller: "EditionsController"
                 })
+                .when("/editions/:edition_key", {
+                    templateUrl: "views/editions/editions.view.html",
+                    controller: "EditionsController"
+                })
                 .when("/details", {
                     templateUrl: "views/details/details.view.html",
                     controller: "DetailsController"

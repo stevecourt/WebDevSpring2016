@@ -90,15 +90,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-click="selectBook(book)" ng-repeat="book in data.docs">
+    <tr ng-repeat="book in data.docs">
         <td>
-            <a href="#/editions/{{book.edition_key}}"><img img height="100px" ng-src="{{book.cover}}"/></a>
+            <a href="#/details/{{book.cover}}"><img img height="100px" ng-src="{{book.cover}}"/></a>
         </td>
         <td>
-            <a href="#/editions/{{book.edition_key}}">{{book.title}}</a>
+            <a href="#/details/{{book.title}}">{{book.title}}</a>
         </td>
         <td>
-            <a href="#/editions/{{book.edition_key}}">{{book.edition_count}}</a>
+            <a href="#/details/{{book.edition_count}}">{{book.edition_count}}</a>
         </td>
     </tr>
     </tbody>
