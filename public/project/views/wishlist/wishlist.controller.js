@@ -18,21 +18,18 @@
             var callback = function (wishlists) {
                 $scope.allWishlists = wishlists;
             };
-
             WishlistService.findAllWishlists(callback);
         }
 
         function addWishlist(wishlist) {
             var callback = function (wishlists) {
                 // Get all wishlists for rendering.
-                // Note: Retain this format for easier modification later to wishlists per domain object.
                 WishlistService.findAllWishlists(
                     function (wishlists) {
                         $scope.allWishlists = wishlists;
                     }
                 )
             };
-
             WishlistService.createWishlist(wishlist, callback);
         }
 
@@ -56,28 +53,24 @@
             var callback = function (newWishlist) {
                 $scope.allWishlists[$scope.selectedWishlistIndex] = newWishlist;
                 // Get all wishlists for rendering.
-                // Note: Retain this format for easier modification later to wishlists per domain object.
                 WishlistService.findAllWishlists(
                     function (wishlists) {
                         $scope.allWishlists = wishlists;
                     }
                 )
             };
-
             WishlistService.updateWishlist(wishlist, callback);
         }
 
         function removeWishlist(wishlist) {
             var callback = function (wishlists) {
                 // Get all wishlists for rendering.
-                // Note: Retain this format for easier modification later to wishlists per domain object.
                 WishlistService.findAllWishlists(
                     function (wishlists) {
                         $scope.allWishlists = wishlists;
                     }
                 )
             };
-
             WishlistService.deleteWishlist(wishlist, callback);
         }
     }

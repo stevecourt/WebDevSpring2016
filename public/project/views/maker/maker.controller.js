@@ -18,21 +18,18 @@
             var callback = function (makers) {
                 $scope.allMakers = makers;
             };
-
             MakerService.findAllMakers(callback);
         }
 
         function addMaker(maker) {
             var callback = function (makers) {
                 // Get all makers for rendering.
-                // Note: Retain this format for easier modification later to makers per domain object.
                 MakerService.findAllMakers(
                     function (makers) {
                         $scope.allMakers = makers;
                     }
                 )
             };
-
             MakerService.createMaker(maker, callback);
         }
 
@@ -60,28 +57,24 @@
             var callback = function (newMaker) {
                 $scope.allMakers[$scope.selectedMakerIndex] = newMaker;
                 // Get all makers for rendering.
-                // Note: Retain this format for easier modification later to makers per domain object.
                 MakerService.findAllMakers(
                     function (makers) {
                         $scope.allMakers = makers;
                     }
                 )
             };
-
             MakerService.updateMaker(maker, callback);
         }
 
         function removeMaker(maker) {
             var callback = function (makers) {
                 // Get all makers for rendering.
-                // Note: Retain this format for easier modification later to makers per domain object.
                 MakerService.findAllMakers(
                     function (makers) {
                         $scope.allMakers = makers;
                     }
                 )
             };
-
             MakerService.deleteMaker(maker, callback);
         }
     }

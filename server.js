@@ -1,5 +1,5 @@
 var express = require('express');
-var https = require('https');
+var http = require('http');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
@@ -19,7 +19,7 @@ function getEditionData(req, res) {
         .replace("EDITION_OLID", editionOLID);
 
     console.log("about to make get call");
-    https.get(
+    http.get(
         //"https://openlibrary.org/api/books?bibkeys=OLID:OL22625549M&callback=processData&jscmd=data",
         EDITION_URL,
         function (response) {

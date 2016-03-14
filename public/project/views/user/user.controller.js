@@ -18,21 +18,18 @@
             var callback = function (users) {
                 $scope.allUsers = users;
             };
-
             UserService.findAllUsers(callback);
         }
 
         function addUser(user) {
             var callback = function (users) {
                 // Get all users for rendering.
-                // Note: Retain this format for easier modification later to users per domain object.
                 UserService.findAllUsers(
                     function (users) {
                         $scope.allUsers = users;
                     }
                 )
             };
-
             UserService.createUser(user, callback);
         }
 
@@ -53,28 +50,24 @@
             var callback = function (newUser) {
                 $scope.allUsers[$scope.selectedUserIndex] = newUser;
                 // Get all users for rendering.
-                // Note: Retain this format for easier modification later to users per domain object.
                 UserService.findAllUsers(
                     function (users) {
                         $scope.allUsers = users;
                     }
                 )
             };
-
             UserService.updateUser(user, callback);
         }
 
         function removeUser(user) {
             var callback = function (users) {
                 // Get all users for rendering.
-                // Note: Retain this format for easier modification later to users per domain object.
                 UserService.findAllUsers(
                     function (users) {
                         $scope.allUsers = users;
                     }
                 )
             };
-
             UserService.deleteUser(user, callback);
         }
     }

@@ -5,21 +5,25 @@
         .module("BookExchangeApp", ["ngRoute"])
         .config(function ($routeProvider) {
             $routeProvider
-                .when("/home", {
-                    templateUrl: "views/home/home.view.html",
-                    controller: "HomeController"
-                })
-                .when("/user", {
-                    templateUrl: "views/user/user.view.html",
-                    controller: "UserController"
-                })
                 .when("/book", {
                     templateUrl: "views/book/book.view.html",
                     controller: "BookController"
                 })
-                .when("/wishlist", {
-                    templateUrl: "views/wishlist/wishlist.view.html",
-                    controller: "WishlistController"
+                .when("/details", {
+                    templateUrl: "views/details/details.view.html",
+                    controller: "DetailsController"
+                })
+                .when("/editions", {
+                    templateUrl: "views/editions/editions.view.html",
+                    controller: "EditionsController"
+                })
+                .when("/editions/:edition_key", {
+                    templateUrl: "views/editions/editions.view.html",
+                    controller: "EditionsController"
+                })
+                .when("/home", {
+                    templateUrl: "views/home/home.view.html",
+                    controller: "HomeController"
                 })
                 .when("/location", {
                     templateUrl: "views/location/location.view.html",
@@ -37,17 +41,13 @@
                     templateUrl: "views/search/search.view.html",
                     controller: "SearchController"
                 })
-                .when("/editions", {
-                    templateUrl: "views/editions/editions.view.html",
-                    controller: "EditionsController"
+                .when("/user", {
+                    templateUrl: "views/user/user.view.html",
+                    controller: "UserController"
                 })
-                .when("/editions/:edition_key", {
-                    templateUrl: "views/editions/editions.view.html",
-                    controller: "EditionsController"
-                })
-                .when("/details", {
-                    templateUrl: "views/details/details.view.html",
-                    controller: "DetailsController"
+                .when("/wishlist", {
+                    templateUrl: "views/wishlist/wishlist.view.html",
+                    controller: "WishlistController"
                 })
                 .otherwise({
                     redirectTo: "/"

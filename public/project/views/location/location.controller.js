@@ -18,21 +18,18 @@
             var callback = function (locations) {
                 $scope.allLocations = locations;
             };
-
             LocationService.findAllLocations(callback);
         }
 
         function addLocation(location) {
             var callback = function (locations) {
                 // Get all locations for rendering.
-                // Note: Retain this format for easier modification later to locations per domain object.
                 LocationService.findAllLocations(
                     function (locations) {
                         $scope.allLocations = locations;
                     }
                 )
             };
-
             LocationService.createLocation(location, callback);
         }
 
@@ -60,28 +57,24 @@
             var callback = function (newLocation) {
                 $scope.allLocations[$scope.selectedLocationIndex] = newLocation;
                 // Get all locations for rendering.
-                // Note: Retain this format for easier modification later to locations per domain object.
                 LocationService.findAllLocations(
                     function (locations) {
                         $scope.allLocations = locations;
                     }
                 )
             };
-
             LocationService.updateLocation(location, callback);
         }
 
         function removeLocation(location) {
             var callback = function (locations) {
                 // Get all locations for rendering.
-                // Note: Retain this format for easier modification later to locations per domain object.
                 LocationService.findAllLocations(
                     function (locations) {
                         $scope.allLocations = locations;
                     }
                 )
             };
-
             LocationService.deleteLocation(location, callback);
         }
     }

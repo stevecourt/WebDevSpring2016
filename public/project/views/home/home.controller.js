@@ -18,21 +18,18 @@
             var callback = function (homes) {
                 $scope.allHomes = homes;
             };
-
             HomeService.findAllHomes(callback);
         }
 
         function addHome(home) {
             var callback = function (homess) {
                 // Get all homes for rendering.
-                // Note: Retain this format for easier modification later to homes per domain object.
                 HomeService.findAllHomes(
                     function (homes) {
                         $scope.allHomes = homes;
                     }
                 )
             };
-
             HomeService.createHome(home, callback);
         }
 
@@ -50,28 +47,24 @@
             var callback = function (newHome) {
                 $scope.allHomes[$scope.selectedHomeIndex] = newHome;
                 // Get all homes for rendering.
-                // Note: Retain this format for easier modification later to homes per domain object.
                 HomeService.findAllHomes(
                     function (homes) {
                         $scope.allHomes = homes;
                     }
                 )
             };
-
             HomeService.updateHome(home, callback);
         }
 
         function removeHome(home) {
             var callback = function (homes) {
                 // Get all homes for rendering.
-                // Note: Retain this format for easier modification later to homes per domain object.
                 HomeService.findAllHomes(
                     function (homes) {
                         $scope.allHomes = homes;
                     }
                 )
             };
-
             HomeService.deleteHome(home, callback);
         }
     }
