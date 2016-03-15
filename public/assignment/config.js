@@ -29,6 +29,10 @@
                     templateUrl: "views/admin/admin.view.html",
                     controller: "AdminController"
                 })
+                .when("/forms/:formId/fields", {
+                    templateUrl: "client/views/forms/fields.view.html",
+                    controller: "FieldController"
+                })
                 .otherwise({
                     redirectTo: "/home"
                 });
