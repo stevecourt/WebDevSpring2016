@@ -13,8 +13,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link href="css/dashboard.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="client/css/dashboard.css" rel="stylesheet">
+    <link href="client/css/style.css" rel="stylesheet">
 
     <!-- CDNs -->
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -27,17 +27,17 @@
     <script src="config.js"></script>
 
     <!-- Controllers -->
-    <script src="views/main/main.controller.js"></script>
-    <script src="views/header/header.controller.js"></script>
-    <script src="views/sidebar/sidebar.controller.js"></script>
-    <script src="views/users/register.controller.js"></script>
-    <script src="views/users/profile.controller.js"></script>
-    <script src="views/users/login.controller.js"></script>
-    <script src="views/forms/forms.controller.js"></script>
+    <script src="client/views/main/main.controller.js"></script>
+    <script src="client/views/header/header.controller.js"></script>
+    <script src="client/views/sidebar/sidebar.controller.js"></script>
+    <script src="client/views/register/register.controller.js"></script>
+    <script src="client/views/profile/profile.controller.js"></script>
+    <script src="client/views/login/login.controller.js"></script>
+    <script src="client/views/forms/forms.controller.js"></script>
 
     <!-- Services -->
-    <script src="services/user.service.client.js"></script>
-    <script src="services/forms.service.client.js"></script>
+    <script src="client/services/user.service.client.js"></script>
+    <script src="client/services/forms.service.client.js"></script>
     <script src="server/services/form.service.server.js"></script>
 
 </head>
@@ -45,13 +45,13 @@
 <body ng-controller="MainController">
 
 <!-- Header / Nav-bar -->
-<div ng-include="'views/header/header.view.html'"></div>
+<div ng-include="'client/views/header/header.view.html'"></div>
 
 <div class="container-fluid">
     <div class="row">
 
         <!-- Sidebar -->
-        <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+        <div ng-include="'client/views/sidebar/sidebar.view.html'"></div>
 
         <!-- Main body: injected content -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>
