@@ -22,7 +22,6 @@
     "express": "~3.4.4",
     "body-parser": "^1.15.0",
     "multer": "^1.1.0"
-    // TODO: Add http back in and resolve config issue
     //"http": "^0.0.0"
   },
   "devDependencies": {},
