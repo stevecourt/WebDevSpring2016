@@ -11,8 +11,9 @@ app.use(multer());
 
 app.get('/rest/edition/:editionKey', getEditionData);
 
+// TODO: uncomment when services built
 // For assignments only
-require('./public/assignment/server/app.js')(app);
+//require('./public/assignment/server/app.js')(app);
 
 // This section under development for project.
 function getEditionData(req, res) {
