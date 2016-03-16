@@ -17,6 +17,7 @@
                     templateUrl: "views/editions/editions.view.html",
                     controller: "EditionsController"
                 })
+                // TODO: Update with rest keyword and check functionality.
                 .when("/editions/:edition_key", {
                     templateUrl: "views/editions/editions.view.html",
                     controller: "EditionsController"

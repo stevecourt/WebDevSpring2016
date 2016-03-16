@@ -92,6 +92,7 @@
     <tbody>
     <tr ng-repeat="book in data.docs">
         <td>
+            <!-- TODO update URLs. Probably with rest/editions/{{???}}.  See Passing Path Parameters EX.-->
             <a href="#/details/{{book.cover}}"><img img height="100px" ng-src="{{book.cover}}"/></a>
         </td>
         <td>

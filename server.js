@@ -1,5 +1,5 @@
 var express = require('express');
-var http = require('http');
+var http = require('http'); // TODO: Resolve http config issue for project.
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
@@ -11,6 +11,10 @@ app.use(multer());
 
 app.get('/rest/edition/:editionKey', getEditionData);
 
+// For assignments only
+require('./public/assignment/server/app.js')(app);
+
+// This section under development for project.
 function getEditionData(req, res) {
 
     console.log("in server");
