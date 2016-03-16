@@ -10,8 +10,8 @@ module.exports = function (app) {
         findFormsByUserId: findFormsByUserId,
         findFormById: findFormById,
         findFormByTitle: findFormByTitle,
-        updateForm: updateForm,
-        deleteForm: deleteForm,
+        updateFormById: updateFormById,
+        deleteFormById: deleteFormById,
         addFormField: addFormField,
         findAllFormFields: findAllFormFields,
         findFormFieldById: findFormFieldById,
@@ -70,7 +70,7 @@ module.exports = function (app) {
         return formFound;
     }
 
-    function updateForm(formId, form) {
+    function updateFormById(formId, form) {
         for (var i = 0; forms.length; i++) {
             if (forms[i]._id === formId) {
                 forms[i] = form;
@@ -80,7 +80,7 @@ module.exports = function (app) {
         return forms;
     }
 
-    function deleteForm(formId) {
+    function deleteFormById(formId) {
         for (var i = 0; forms.length; i++) {
             if (forms[i]._id === formId) {
                 forms.splice(i, 1);
@@ -126,7 +126,6 @@ module.exports = function (app) {
     }
 
     function updateFormFieldById(formId, fieldId, field) {
-        var form = null;
         for (var i = 0; forms.length; i++) {
             if (forms[i]._id === formId) {
                 var fields = forms[j].fields;
@@ -139,23 +138,20 @@ module.exports = function (app) {
                 return forms[i];
             }
         }
-        return form;
     }
 
     function deleteFormFieldById(formId, fieldId) {
-        var form = null;
         for (var i = 0; forms.length; i++) {
             if (forms[i]._id === formId) {
                 var fields = forms[j].fields;
                 for (var j = 0; fields.length; j++) {
                     if (fields[j]._id === fieldId) {
                         forms[i].fields.splice(j, 1);
-                        return forms[i];
+                        return forms[i].fields;
                     }
                 }
-                return forms[i];
+                return forms[i].fields;
             }
         }
-        return form;
     }
 }

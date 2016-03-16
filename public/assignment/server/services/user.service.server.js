@@ -11,7 +11,7 @@ module.exports = function(app, userModel) {
     app.put("/api/assignment/user/:id", updateUserById);
     app.delete("/api/assignment/user/:id", deleteUserById);
 
-    function createUser(req, res) {
+    function createUser(req, res) { // Must need id creation in here. Not mentioned in assignment.
         var userObj = req.body;
         userModel
             .createUser(userObj)
@@ -29,18 +29,18 @@ module.exports = function(app, userModel) {
     }
 
     function findUserById(req, res) {
-        var userObjId = req.params.id;
+        var userId = req.params.id;
         userModel
-            .findUserById(userObjId)
+            .findUserById(userId)
             .then(function (user) {
                 res.json(user);
             });
     }
 
     function findUserByUsername(req, res) {
-        var userObjUsername = req.params.username;
+        var userUsername = req.params.username;
         userModel
-            .findUserByUsername(userObjUsername)
+            .findUserByUsername(userUsername)
             .then(function (user) {
                 res.json(user);
             });
@@ -56,19 +56,19 @@ module.exports = function(app, userModel) {
     }
 
     function updateUserById(req, res) {
-        var userObjId = req.params.id;
+        var userId = req.params.id;
         var userObj = req.body;
         userModel
-            .updateUser(userObjId, userObj)
+            .updateUser(userId, userObj)
             .then(function (users) {
                 res.json(users);
             });
     }
 
     function deleteUserById(req, res) {
-        var userObjId = req.params.id;
+        var userId = req.params.id;
         userModel
-            .deleteUserById(userObjId)
+            .deleteUserById(userId)
             .then(function (users) {
                 res.json(users);
             });
