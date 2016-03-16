@@ -8,10 +8,10 @@ module.exports = function (app) {
         createUser: createUser,
         findAllUsers: findAllUsers,
         findUserById: findUserById,
-        updateUser: updateUser,
-        deleteUser: deleteUser,
         findUserByUsername: findUserByUsername,
-        findUserByCredentials: findUserByCredentials
+        findUserByCredentials: findUserByCredentials,
+        updateUserById: updateUserById,
+        deleteUserById: deleteUserById
     };
     return api;
 
@@ -33,26 +33,6 @@ module.exports = function (app) {
             }
         }
         return userFound;
-    }
-
-    function updateUser(userId, user) {
-        for (var i = 0; users.length; i++) {
-            if (users[i]._id === userId) {
-                users[i] = user;
-                break;
-            }
-        }
-        return users;
-    }
-
-    function deleteUser(userId) {
-        for (var i = 0; users.length; i++) {
-            if (users[i]._id === userId) {
-                users.splice(i, 1);
-                break;
-            }
-        }
-        return users;
     }
 
     function findUserByUsername(username) {
@@ -77,5 +57,25 @@ module.exports = function (app) {
             }
         }
         return userFound;
+    }
+
+    function updateUserById(userId, user) {
+        for (var i = 0; users.length; i++) {
+            if (users[i]._id === userId) {
+                users[i] = user;
+                break;
+            }
+        }
+        return users;
+    }
+
+    function deleteUserById(userId) {
+        for (var i = 0; users.length; i++) {
+            if (users[i]._id === userId) {
+                users.splice(i, 1);
+                break;
+            }
+        }
+        return users;
     }
 }
