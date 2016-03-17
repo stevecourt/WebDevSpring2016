@@ -7,7 +7,7 @@
 
     function userService() {
 
-        var users = [];
+/*        var users = [];
         users = [
             {"_id":123, "firstName":"Alice", "lastName":"Wonderland",
                 "username":"alice", "password":"alice", "roles": ["student"]},
@@ -19,9 +19,10 @@
                 "username":"dan", "password":"dan", "roles": ["faculty", "admin"]},
             {"_id":567, "firstName":"Edward", "lastName":"Norton",
                 "username":"ed", "password":"ed", "roles": ["student"]}
-        ];
+        ];*/
 
         var api = {
+
             findUsersByUsernameAndPassword: findUsersByUsernameAndPassword,
             findAllUsers: findAllUsers,
             createUser: createUser,
