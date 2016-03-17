@@ -13,6 +13,10 @@ module.exports = function(app, userModel) {
 
     function createUser(req, res) { // Must need id creation in here. Not mentioned in assignment.
         var userObj = req.body;
+
+        // Create random ID
+        userObj._id = uuid.v1();
+
         userModel
             .createUser(userObj)
             .then(function (users) {

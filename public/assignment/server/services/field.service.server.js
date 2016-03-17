@@ -22,7 +22,8 @@ module.exports = function(app, formModel) {
         var formId = req.params.formId;
         var fieldObj = req.body;
 
-        // Use uuid to add new field id to field object.
+        // Create random ID
+        fieldObj._id = uuid.v1();
 
         formModel
             .addFormField(formId, fieldObj)
@@ -50,7 +51,7 @@ module.exports = function(app, formModel) {
             });
     }
 
-    function updateFormById(req, res) {
+    function updateFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         formModel
@@ -60,7 +61,7 @@ module.exports = function(app, formModel) {
             });
     }
 
-    function deleteFormById(req, res) {
+    function deleteFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         formModel

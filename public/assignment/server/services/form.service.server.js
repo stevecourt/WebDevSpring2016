@@ -25,7 +25,8 @@ module.exports = function(app, formModel) {
         var formObj = req.body;
         formObj.userId = userId;
 
-        // Use uuid to add form id.
+        // Create random ID
+        formObj._id = uuid.v1();
 
         formModel
             .createUser(formObj)

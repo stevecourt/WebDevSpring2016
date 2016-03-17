@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http'); // TODO: Resolve http config issue for project.
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var uuid = require('node-uuid'); // Should be var uuid = require('uuid'); Check if needs to be located in service
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
@@ -11,9 +12,8 @@ app.use(multer());
 
 app.get('/rest/edition/:editionKey', getEditionData);
 
-// TODO: uncomment when services built
 // For assignments only
-//require('./public/assignment/server/app.js')(app);
+require('./public/assignment/server/app.js')(app);
 
 // This section under development for project.
 function getEditionData(req, res) {
