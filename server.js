@@ -2,7 +2,7 @@ var express = require('express');
 var http = require('http'); // TODO: Resolve http config issue for project.
 var bodyParser = require('body-parser');
 var multer = require('multer');
-var uuid = require('node-uuid'); // Should be var uuid = require('uuid'); Check if needs to be located in service
+//var uuid = require('node-uuid'); // Should be var uuid = require('uuid'); Check if needs to be located in service
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
