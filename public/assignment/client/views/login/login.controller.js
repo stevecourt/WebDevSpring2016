@@ -7,32 +7,34 @@
 
     function loginController($scope, $rootScope, $location, UserService) {
 
-        $scope.login = login;
+        $scope.login = function(username, password) {
+            var returnedUser = UserService.findUserByCredentials(username, password)
+                .then(function (returnedUser) {
+                    //if (returnedUser == null) {
+                    //    alert("The username or password entered is not recognized.");
+                    //    console.log("The username or password entered is not recognized.");
+                    //} else {
 
-        function login(username, password) {
+                        console.log(returnedUser.data);
+                        console.log("Client Controller Path 1");
 
-            // Login verification occurs before setting the current user.
-            var callback = function (aUser) {
-                if (aUser === null) {
-                    alert("The username or password entered is not recognized.");
-                } else {
-                    // TODO: The commented line can replace the subsequent line once the database is used.
-                    // This temporarily prevents an issue where the user profile can be updated
-                    // without clicking the update button.
-                    //$rootScope.currentUser = aUser;
-                    $rootScope.currentUser = {
-                        "_id": aUser._id,
-                        "firstName": aUser.firstName,
-                        "lastName": aUser.lastName,
-                        "username": aUser.username,
-                        "password": aUser.password,
-                        "email": aUser.email,
-                        "roles": aUser.roles};
+                        // TODO: Can revert back to pass by reference when database is in use.
+                        $rootScope.currentUser = {
+                            "_id":returnedUser.data._id,
+                            "firstName": returnedUser.data.firstName,
+                            "lastName": returnedUser.data.lastName,
+                            "username": returnedUser.data.username,
+                            "password": returnedUser.data.password,
+                            "email": returnedUser.data.email,
+                            "roles": returnedUser.data.roles};
+
                     $location.url("/profile");
-                }
-            };
-
-            UserService.findUsersByUsernameAndPassword(username, password, callback);
+                    //}
+                }, function (returnedUser) {
+                    console.log("OMG it really did work!!!!!");
+                    console.log("Client Controller Path 2");
+                    alert("The username or password entered is not recognized.");
+                });
         }
     }
 })();

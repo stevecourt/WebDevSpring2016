@@ -4,7 +4,7 @@ module.exports = function (app) {
 
     // TODO: Check if these need to go inside the function as in Jose's example WebDev/app.js below.
 
-    var userModel = require("./models/user.model.js")(app);
+    var userModel = require("./models/user.model.js")();
     var formModel = require("./models/form.model.js")(app);
 
     var userService = require("./services/user.service.server.js");

@@ -7,22 +7,26 @@
 
     function profileController($scope, $rootScope, $location, UserService) {
 
-        $scope.update = update;
-        $scope.closeButtonAlert = closeButtonAlert;
+        $scope.update = function (user) {
+            UserService.updateUser(user._id, user)
+                .then(function (returnedUsers) {
 
-        function update(user) {
+                    for (var i = 0; i < returnedUsers.length; i++) {
 
-            // Confirmation message triggers ng-show visibility in the view.
-            var callback = function (aUser) {
-                $scope.message = "Profile updated successfully. (Click to close.)";
-                $rootScope.currentUser = aUser;
-                $location.url("/profile");
-            };
+                        console.log(returnedUsers[i]._id);
 
-            UserService.updateUser(user._id, user, callback);
+                        if (returnedUsers[i]._id == user._id) {
+                            var userFound = returnedUsers[i];
+                            console.log(userFound);
+                            $scope.message = "Profile updated successfully. (Click to close.)";
+                            $rootScope.currentUser = userFound;
+                            $location.url("/profile");
+                        }
+                    }
+            });
         }
 
-        function closeButtonAlert() {
+        $scope.closeButtonAlert = function () {
             $scope.message = null;
         }
     }

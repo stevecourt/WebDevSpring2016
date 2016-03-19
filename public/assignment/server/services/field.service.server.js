@@ -1,6 +1,7 @@
 "use strict";
 
-//var uuid = require('node-uuid');
+var uuid = require('node-uuid');
+var users = require('../models/form.model.js');
 
 module.exports = function(app, formModel) {
 
@@ -23,53 +24,35 @@ module.exports = function(app, formModel) {
     function addFormField(req, res) {
         var formId = req.params.formId;
         var fieldObj = req.body;
-
-        // Create random ID
-        fieldObj._id = uuid.v1();
-
-        formModel
-            .addFormField(formId, fieldObj)
-            .then(function (fields) {
-                res.json(fields);
-            });
+        fieldObj._id = uuid.v1(); // Create random ID
+        formModel.addFormField(formId, fieldObj);
+        res.json(fields);
     }
 
     function findAllFormFields(req, res) {
         var formId = req.params.formId;
-        formModel
-            .findAllFormFields(formId)
-            .then(function (formFields) {
-                res.json(formFields);
-            });
+        formModel.findAllFormFields(formId);
+        res.json(formFields);
     }
 
     function findFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        formModel
-            .findFormFieldById(formId, fieldId)
-            .then(function (field) {
-                res.json(field);
-            });
+        formModel.findFormFieldById(formId, fieldId);
+        res.json(field);
     }
 
     function updateFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        formModel
-            .updateFormById(formId, fieldId)
-            .then(function (forms) {
-                res.json(forms);
-            });
+        formModel.updateFormById(formId, fieldId);
+        res.json(form);
     }
 
     function deleteFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        formModel
-            .deleteFormById(formId, fieldId)
-            .then(function (fields) {
-                res.json(fields);
-            });
+        formModel.deleteFormById(formId, fieldId);
+        res.json(fields);
     }
 }
