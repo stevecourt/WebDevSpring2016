@@ -7,7 +7,9 @@
 
     function registerController($scope, $rootScope, $location, UserService) {
 
-        $scope.register = function (username, password, password2, email) {
+        $scope.register = register;
+
+        function register(username, password, password2, email) {
             // Check for password consistency before creating user.
             if (password == password2) {
                 var enteredUser = {"username": username, "password": password, "email": email};
@@ -21,23 +23,24 @@
                     .then(function (returnedUsers) {
 
                         console.log("back in reg controller");
-                        console.log(returnedUsers);
+                        console.log(returnedUsers.data);
 
-                        for (var i = 0; i < returnedUsers.length; i++) {
+                        for (var i = 0; i < returnedUsers.data.length; i++) {
 
-                            console.log(returnedUsers[i].username);
-                            console.log(returnedUsers[i].password);
+                            console.log("in for loop");
+                            console.log(returnedUsers.data[i].username);
+                            console.log(returnedUsers.data[i].password);
 
-                            if (returnedUsers[i].username == username && returnedUsers[i].username == username) {
-                                var userFound = returnedUsers[i];
+                            if (returnedUsers.data[i].username == username && returnedUsers.data[i].username == username) {
+                                var userFound = returnedUsers.data[i];
                                 console.log(userFound);
                                 $rootScope.currentUser = userFound;
                                 $location.url("/profile");
                             }
                         }
+                    }, function (returnedUsers) {
+                        console.log("Error: The user was not registered in the system.");
                     });
-
-
 
 
                    /* .then(UserService.findUserByCredentials(enteredUser.username, enteredUser.password))

@@ -7,14 +7,6 @@
 
     function formService($http, $q) {
 
-        // TODO: Delete array
-/*        var forms = [];
-        forms = [
-            {"_id": "000", "title": "Contacts", "userId": 123},
-            {"_id": "010", "title": "ToDo", "userId": 123},
-            {"_id": "020", "title": "CDs", "userId": 234}
-        ];*/
-
         var api = {
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
@@ -23,25 +15,29 @@
         };
         return api;
 
-
-
         function createFormForUser(userId, form) {
             var deferred = $q.defer();
 
             $http.post("/api/assignment/user/" + userId + "/form", form)
-                .success(function(forms){
+                .then(function(forms){
                     deferred.resolve(forms);
+                }, function (forms) {
+                    deferred.reject(forms);
                 });
-
             return deferred.promise;
         }
 
         function findAllFormsForUser(userId) {
             var deferred = $q.defer();
 
-            $http.get("/api/assignment/user/" + userId)
-                .success(function(forms){
+            $http.get("/api/assignment/user/" + userId + "/form")
+                .then(function(forms){
+
+                    console.log("client serv" + forms);
+
                     deferred.resolve(forms);
+                }, function (forms) {
+                    deferred.reject(forms);
                 });
 
             return deferred.promise;
@@ -51,8 +47,10 @@
             var deferred = $q.defer();
 
             $http.delete("/api/assignment/form/" + formId)
-                .success(function(forms){
+                .then(function(forms){
                     deferred.resolve(forms);
+                }, function (forms) {
+                    deferred.reject(forms);
                 });
 
             return deferred.promise;
@@ -61,9 +59,11 @@
         function updateFormById(formId, newForm) {
             var deferred = $q.defer();
 
-            $http.put("/api/assignment/form/" + formId, form)
-                .success(function(forms){
+            $http.put("/api/assignment/form/" + formId, newForm)
+                .then(function(forms){
                     deferred.resolve(forms);
+                }, function (forms) {
+                    deferred.reject(forms);
                 });
 
             return deferred.promise;

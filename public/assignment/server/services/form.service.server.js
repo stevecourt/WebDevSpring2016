@@ -1,7 +1,7 @@
 "use strict";
 
 var uuid = require('node-uuid');
-var users = require('../models/form.model.js');
+//var forms = require('../models/form.model.js');
 
 module.exports = function(app, formModel) {
 
@@ -16,8 +16,12 @@ module.exports = function(app, formModel) {
 
     function createForm(req, res) {
         var formObj = req.body;
-        formModel.createForm(formObj);
-        res.json(forms);
+        var updatedFormList = formModel.createForm(formObj);
+        if (updatedFormList) {
+            res.json(updatedFormList);
+        } else {
+            res.send(500);
+        }
     }
 
     function createFormByUserId(req, res) {
@@ -25,36 +29,69 @@ module.exports = function(app, formModel) {
         var formObj = req.body;
         formObj.userId = userId;
         formObj._id = uuid.v1(); // Create random ID
-        formModel.createUser(formObj);
-        res.json(forms);
+        var updatedFormList = formModel.createForm(formObj);
+        if (updatedFormList) {
+            var userForms = formModel.findFormsByUserId(userId);
+            if (userForms) {
+                res.json(userForms);
+            } else {
+                res.send(500);
+            }
+        } else {
+            res.send(500);
+        }
     }
 
     function findAllForms(req, res) {
-        formModel.findAllForms();
-        res.json(forms);
+        var formList = formModel.findAllForms();
+        if (formList) {
+            res.json(formList);
+        } else {
+            res.send(500);
+        }
     }
 
     function findFormsByUserId(req, res) {
         var userId = req.params.userId;
-        formModel.findFormsByUserId(userId);
-        res.json(userForms);
+        var userForms = formModel.findFormsByUserId(userId);
+        if (userForms) {
+
+            console.log("server serv" + userForms);
+
+            res.json(userForms);
+        } else {
+            res.send(500);
+        }
     }
 
     function findFormById(req, res) {
         var formId = req.params.formId;
-        formModel.findFormById(formId);
-        res.json(form);
+        var formFound = formModel.findFormById(formId);
+        if (formFound) {
+            res.json(formFound);
+        } else {
+            res.send(404);
+        }
     }
 
     function updateFormById(req, res) {
         var formId = req.params.formId;
-        formModel.updateFormById(formId);
-        res.json(forms);
+        var formObj = req.body;
+        var updatedFormList = formModel.updateFormById(formId, formObj);
+        if (updatedFormList) {
+            res.json(updatedFormList);
+        } else {
+            res.send(404);
+        }
     }
 
     function deleteFormById(req, res) {
         var formId = req.params.formId;
-        formModel.deleteFormById(formId);
-        res.json(forms);
+        var updatedFormList = formModel.deleteFormById(formId);
+        if (updatedFormList) {
+            res.json(updatedFormList);
+        } else {
+            res.send(404);
+        }
     }
 }

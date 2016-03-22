@@ -7,24 +7,28 @@
 
     function profileController($scope, $rootScope, $location, UserService) {
 
-        $scope.update = function (user) {
+        $scope.update = update;
+
+        function update(user) {
             UserService.updateUser(user._id, user)
                 .then(function (returnedUsers) {
 
-                    for (var i = 0; i < returnedUsers.length; i++) {
+                    for (var i = 0; i < returnedUsers.data.length; i++) {
 
-                        console.log(returnedUsers[i]._id);
+                        console.log(returnedUsers.data[i]._id);
 
-                        if (returnedUsers[i]._id == user._id) {
-                            var userFound = returnedUsers[i];
+                        if (returnedUsers.data[i]._id == user._id) {
+                            var userFound = returnedUsers.data[i];
                             console.log(userFound);
                             $scope.message = "Profile updated successfully. (Click to close.)";
                             $rootScope.currentUser = userFound;
                             $location.url("/profile");
                         }
                     }
-            });
-        }
+                }, function (returnedUsers) {
+                    console.log("Error: The user was not updated in the system.");
+                });
+        };
 
         $scope.closeButtonAlert = function () {
             $scope.message = null;

@@ -17,57 +17,64 @@
         // Get the current user's forms for rendering.
         getUserForms(user);
         function getUserForms(user) {
-            var callback = function (userForms) {
-                $scope.userForms = userForms;
-            };
+            var returnedForms = FormService.findAllFormsForUser(user._id)
+                .then (function (returnedForms) {
 
-            FormService.findAllFormsForUser(user._id, callback);
+                    console.log("forms cont" + returnedForms.data);
+
+                    $scope.userForms = returnedForms.data;
+                }, function (returnedForms) {
+                    console.log("Error: Could not retreive user's forms.");
+                });
         }
 
         function addForm(formTitle) {
             var newForm = {title: formTitle};
-
-            // Callback updates the form list after new form is added.
-            var callback = function (form) {
-                FormService.findAllFormsForUser(
-                    user._id,
-                    function (userForms) {
-                        $scope.userForms = userForms;
-                    });
-            };
-
-            FormService.createFormForUser(user._id, newForm, callback);
+            var updatedForms = FormService.createFormForUser(user._id, newForm)
+                .then (function (returnedForms) {
+                    $scope.userForms = returnedForms.data;
+                }, function (returnedForms) {
+                    console.log("Error: The form was not added to the system.");
+                });
         }
 
         function updateForm(formTitle) {
+            var formId = $scope.selectedForm._id;
+            var formUserId = $scope.selectedForm.userId;
             var newForm = {
-                _id: $scope.selectedForm._id,
+                _id: formId,
                 title: formTitle,
-                userId: $scope.selectedForm.userId};
-
-            // Callback updates the form list after new form is updated.
-            var callback = function (form) {
-                FormService.findAllFormsForUser(
-                    user._id,
-                    function (userForms) {
-                        $scope.userForms = userForms;
-                    });
-            };
-            FormService.updateFormById(newForm._id, newForm, callback);
+                userId: formUserId};
+            var returnedForms = FormService.updateFormById(newForm._id, newForm)
+                .then(function (returnedForms) {
+                    // Filter the forms for the user.
+                    var allUserForms = [];
+                    for (var i = 0; i < returnedForms.data.length; i++) {
+                        if (returnedForms.data[i].userId == formUserId) {
+                            allUserForms.push(returnedForms.data[i]);
+                        }
+                    }
+                    $scope.userForms = allUserForms;
+                }, function (returnedForms) {
+                    console.log("Error: The form was not updated in the system.");
+                });
         }
 
         function deleteForm(index) {
-
-            // Callback updates the form list after new form is deleted.
-            var callback = function (form) {
-                FormService.findAllFormsForUser(
-                    user._id,
-                    function (userForms) {
-                        $scope.userForms = userForms;
-                    });
-            };
-
-            FormService.deleteFormById($scope.userForms[index]._id, callback);
+            var returnedForms = FormService.deleteFormById($scope.userForms[index]._id)
+                .then(function (returnedForms) {
+                    // Filter the forms for the user.
+                    var formUserId = $scope.selectedForm.userId;
+                    var allUserForms = [];
+                    for (var i = 0; i < returnedForms.data.length; i++) {
+                        if (returnedForms.data[i].userId == formUserId) {
+                            allUserForms.push(returnedForms.data[i]);
+                        }
+                    }
+                    $scope.userForms = allUserForms;
+                }, function () {
+                    console.log("Error: The form was not deleted from the system.");
+                });
         }
 
         function selectForm(index) {

@@ -20,8 +20,10 @@
             var deferred = $q.defer();
 
             $http.post("/api/assignment/form/" + formId + "/field", field)
-                .success(function(fields){
+                .then(function(fields){
                     deferred.resolve(fields);
+                }, function (fields) {
+                    deferred.reject(fields);
                 });
 
             return deferred.promise;
@@ -31,8 +33,10 @@
             var deferred = $q.defer();
 
             $http.get("/api/assignment/form/" + formId + "field")
-                .success(function(fields){
+                .then(function(fields){
                     deferred.resolve(fields);
+                }, function (fields) {
+                    deferred.reject(fields);
                 });
 
             return deferred.promise;
@@ -42,8 +46,10 @@
             var deferred = $q.defer();
 
             $http.get("/api/assignment/form/" + formId + "/field/" + fieldId)
-                .success(function(field){
+                .then(function(field){
                     deferred.resolve(field);
+                }, function (field) {
+                    deferred.reject(field);
                 });
 
             return deferred.promise;
@@ -53,8 +59,10 @@
             var deferred = $q.defer();
 
             $http.delete("/api/assignment/form/" + formId + "/field/" + fieldId)
-                .success(function(fields){
+                .then(function(fields){
                     deferred.resolve(fields);
+                }, function (fields) {
+                    deferred.reject(fields);
                 });
 
             return deferred.promise;
@@ -64,8 +72,10 @@
             var deferred = $q.defer();
 
             $http.put("/api/assignment/form/" + formId + "/field/" + fieldId, field)
-                .success(function(form){
-                    deferred.resolve(form);
+                .then(function(fields){
+                    deferred.resolve(fields);
+                }, function (fields) {
+                    deferred.reject(fields);
                 });
 
             return deferred.promise;

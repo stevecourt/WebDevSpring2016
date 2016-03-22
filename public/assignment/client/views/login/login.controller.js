@@ -7,7 +7,9 @@
 
     function loginController($scope, $rootScope, $location, UserService) {
 
-        $scope.login = function(username, password) {
+        $scope.login = login;
+
+        function login(username, password) {
             var returnedUser = UserService.findUserByCredentials(username, password)
                 .then(function (returnedUser) {
                     //if (returnedUser == null) {

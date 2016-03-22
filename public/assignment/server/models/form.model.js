@@ -31,11 +31,20 @@ module.exports = function (app) {
 
     function findFormsByUserId(userId) {
         var userForms = [];
+
+        console.log("forms model" + forms);
+
         for (var i = 0; i < forms.length; i++) {
+
+            console.log("forms model" + forms[i]);
+
             if (forms[i].userId == userId) {
                 userForms.push(forms[i]);
             }
         }
+
+        console.log("model" + userForms);
+
         return userForms;
     }
 
@@ -74,20 +83,20 @@ module.exports = function (app) {
         for (var i = 0; i < forms.length; i++) {
             if (forms[i]._id == formId) {
                 forms[i] = form;
-                break;
+                return forms;
             }
         }
-        return forms;
+        return null;
     }
 
     function deleteFormById(formId) {
         for (var i = 0; i < forms.length; i++) {
             if (forms[i]._id == formId) {
                 forms.splice(i, 1);
-                break;
+                return forms;
             }
         }
-        return forms;
+        return null;
     }
 
     function addFormField(formId, field) {
@@ -97,20 +106,19 @@ module.exports = function (app) {
                 return forms[i].fields;
             }
         }
+        return null;
     }
 
     function findAllFormFields(formId) {
-        var fields = [];
         for (var i = 0; i < forms.length; i++) {
             if (forms[i]._id == formId) {
                 return forms[i].fields;
             }
         }
-        return fields;
+        return null;
     }
 
     function findFormFieldById(formId, fieldId) {
-        var field = null;
         for (var i = 0; i < forms.length; i++) {
             if (forms[i]._id == formId) {
                 var fields = forms[j].fields;
@@ -119,10 +127,10 @@ module.exports = function (app) {
                         return fields[j];
                     }
                 }
-                break;
+                return null;
             }
         }
-        return field;
+        return null;
     }
 
     function updateFormFieldById(formId, fieldId, field) {
@@ -132,12 +140,13 @@ module.exports = function (app) {
                 for (var j = 0; j < fields.length; j++) {
                     if (fields[j]._id == fieldId) {
                         forms[i].field[j] = field;
-                        return forms[i];
+                        return forms[i].fields;
                     }
                 }
-                return forms[i];
+                return null;
             }
         }
+        return null;
     }
 
     function deleteFormFieldById(formId, fieldId) {
@@ -150,8 +159,9 @@ module.exports = function (app) {
                         return forms[i].fields;
                     }
                 }
-                return forms[i].fields;
+                return null;
             }
         }
+        return null;
     }
 }

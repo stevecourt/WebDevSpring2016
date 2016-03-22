@@ -37,10 +37,11 @@
             var deferred = $q.defer();
 
             $http.get("/api/assignment/user?username=" + username)
-                .success(function(user){
+                .then(function (user) {
                     deferred.resolve(user);
-                });
-
+            }, function(user) {
+                deferred.reject(user);
+            });
             return deferred.promise;
         }
 
@@ -73,10 +74,11 @@
             var deferred = $q.defer();
 
             $http.get("/api/assignment/user")
-                .success(function(users){
+                .then(function(users){
                     deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
                 });
-
             return deferred.promise;
         }
 
@@ -87,14 +89,20 @@
             var deferred = $q.defer();
 
             $http.post("/api/assignment/user", user)
-                .success(function(users){
-
-                    console.log("client service..." + users);
-
+                .then(function(users){
                     deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
                 });
 
-            console.log("create user client service ret");
+                //.success(function(users){
+
+                    //console.log("client service..." + users);
+
+                    //deferred.resolve(users);
+                //});
+
+            //console.log("create user client service ret");
 
             return deferred.promise;
         }
@@ -103,9 +111,15 @@
             var deferred = $q.defer();
 
             $http.delete("/api/assignment/user/" + userId)
-                .success(function(users){
+                .then(function(users){
                     deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
                 });
+
+                //.success(function(users){
+                //    deferred.resolve(users);
+                //});
 
             return deferred.promise;
         }
@@ -117,9 +131,15 @@
             console.log(user);
 
             $http.put("/api/assignment/user/" + userId, user)
-                .success(function(users){
+                .then(function(users){
                     deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
                 });
+
+                //.success(function(users){
+                //    deferred.resolve(users);
+                //});
 
             return deferred.promise;
         }
