@@ -1,7 +1,6 @@
 "use strict";
 
 var uuid = require('node-uuid');
-//var users = require('../models/user.model.js');
 
 module.exports = function (app, userModel) {
 

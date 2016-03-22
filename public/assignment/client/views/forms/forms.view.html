@@ -35,7 +35,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="form in userForms">
-            <td><a href="fields.view.html">{{form.title}}</a></td>
+            <td><a href="#/forms/{{form._id}}/fields">{{form.title}}</a></td>
             <td>
                 <button type="button" class="btn btn-default" ng-click="deleteForm($index)">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

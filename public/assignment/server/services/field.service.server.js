@@ -1,7 +1,6 @@
 "use strict";
 
 var uuid = require('node-uuid');
-//var forms = require('../models/form.model.js');
 
 module.exports = function(app, formModel) {
 
@@ -26,6 +25,9 @@ module.exports = function(app, formModel) {
 
     function findAllFormFields(req, res) {
         var formId = req.params.formId;
+
+        console.log("in server field service, findAllFormFields. FormID = " + formId);
+
         var formFields = formModel.findAllFormFields(formId);
         if (formFields) {
             res.json(formFields);

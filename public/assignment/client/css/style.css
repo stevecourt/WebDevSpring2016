@@ -30,8 +30,8 @@
     padding-top: 48px;
 }
 
-/* Move down the label for a check box or radio button cluster in a form's fields */
-.checkOrRadioClusterLabel {
+/* Move down the labels in a form's fields */
+.extraTopPadding {
     padding-top: 20px;
 }
 

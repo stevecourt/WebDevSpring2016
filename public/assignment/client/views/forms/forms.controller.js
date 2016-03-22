@@ -20,11 +20,16 @@
             var returnedForms = FormService.findAllFormsForUser(user._id)
                 .then (function (returnedForms) {
 
-                    console.log("forms cont" + returnedForms.data);
+                    //console.log("forms cont" + returnedForms.data[0]._id);
+                    //console.log("forms cont" + returnedForms.data[1]._id);
 
                     $scope.userForms = returnedForms.data;
+
+                    //console.log("forms cont" + $scope.userForms[0]._id);
+                    //console.log("forms cont" + $scope.userForms[1]._id);
+
                 }, function (returnedForms) {
-                    console.log("Error: Could not retreive user's forms.");
+                    console.log("Error: Could not retrieve user's forms.");
                 });
         }
 

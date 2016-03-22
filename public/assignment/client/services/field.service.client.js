@@ -32,7 +32,9 @@
         function getFieldsForForm(formId) {
             var deferred = $q.defer();
 
-            $http.get("/api/assignment/form/" + formId + "field")
+            console.log("in client field service, getFieldsForForm. FormID = " + formId);
+
+            $http.get("/api/assignment/form/" + formId + "/field")
                 .then(function(fields){
                     deferred.resolve(fields);
                 }, function (fields) {
