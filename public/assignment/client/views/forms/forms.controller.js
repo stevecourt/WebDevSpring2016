@@ -35,7 +35,7 @@
 
         function addForm(formTitle) {
             var newForm = {title: formTitle};
-            var updatedForms = FormService.createFormForUser(user._id, newForm)
+            var returnedForms = FormService.createFormForUser(user._id, newForm)
                 .then (function (returnedForms) {
                     $scope.userForms = returnedForms.data;
                 }, function (returnedForms) {

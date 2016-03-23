@@ -28,6 +28,7 @@ module.exports = function(app, formModel) {
         var formObj = req.body;
         formObj.userId = userId;
         formObj._id = uuid.v1(); // Create random ID
+        formObj.fields = [];
         var updatedFormList = formModel.createForm(formObj);
         if (updatedFormList) {
             var userForms = formModel.findFormsByUserId(userId);

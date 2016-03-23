@@ -60,6 +60,9 @@
         function deleteFieldFromForm(formId, fieldId) {
             var deferred = $q.defer();
 
+            console.log("in client field service - form id = " + formId);
+            console.log("in client field service - field id = " + fieldId);
+
             $http.delete("/api/assignment/form/" + formId + "/field/" + fieldId)
                 .then(function(fields){
                     deferred.resolve(fields);

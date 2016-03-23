@@ -3,12 +3,12 @@
 <!-- Tabs -->
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="#/forms">Forms</a></li>
-    <li role="presentation" class="active"><a href="#/fields">Fields</a></li>
+    <li role="presentation" class="active"><a href="#/forms/{{formId}}/fields">Fields</a></li>
 </ul>
 
 <!-- Form -->
 <form role="form">
-    <div ng-repeat="field in model.fields">
+    <div ng-repeat="field in model.fields" id="sortable">
         <div ng-switch on="field.type">
             <div ng-switch-when="TEXT">
                 <div class="form-group">
@@ -29,7 +29,7 @@
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
-                            <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
+                            <button type="button" class="btn btn-default" ng-click="deleteField(field)">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
@@ -58,7 +58,7 @@
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
-                            <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
+                            <button type="button" class="btn btn-default" ng-click="deleteField(field)">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
@@ -87,7 +87,7 @@
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
-                            <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
+                            <button type="button" class="btn btn-default" ng-click="deleteField(field)">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
@@ -115,7 +115,7 @@
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
-                            <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
+                            <button type="button" class="btn btn-default" ng-click="deleteField(field)">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
@@ -143,7 +143,7 @@
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
-                            <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
+                            <button type="button" class="btn btn-default" ng-click="deleteField(field)">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
@@ -171,7 +171,7 @@
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
-                            <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">
+                            <button type="button" class="btn btn-default" ng-click="deleteField(field)">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
                             <button type="button" class="btn btn-default" ng-click="addField(model.fieldType)">

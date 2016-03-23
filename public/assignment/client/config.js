@@ -29,10 +29,6 @@
                     templateUrl: "views/admin/admin.view.html",
                     controller: "AdminController"
                 })
-                .when("/fields", {
-                    templateUrl: "views/forms/fields.view.html",
-                    controller: "FieldController"
-                })
                 .when("/forms/:formId/fields", {
                     templateUrl: "views/forms/fields.view.html",
                     controller: "FieldController"

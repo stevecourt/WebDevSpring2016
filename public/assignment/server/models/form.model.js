@@ -110,8 +110,21 @@ module.exports = function (app) {
     }
 
     function findAllFormFields(formId) {
+
+        console.log("Model - findAllFormFields - given form ID = " + formId);
+
         for (var i = 0; i < forms.length; i++) {
+
+            console.log("Model - findAllFormFields - next form ID = " + forms[i]._id);
+
             if (forms[i]._id == formId) {
+
+                console.log("Match found");
+                console.log(forms[i]._id);
+                console.log(forms[i].title);
+                console.log(forms[i].userId);
+                console.log(forms[i].fields);
+
                 return forms[i].fields;
             }
         }
@@ -150,18 +163,39 @@ module.exports = function (app) {
     }
 
     function deleteFormFieldById(formId, fieldId) {
+
+        console.log("in model - form id = " + formId);
+        console.log("in model - field id = " + fieldId);
+
         for (var i = 0; i < forms.length; i++) {
+
+            console.log("in model - given form id = " + formId);
+            console.log("in model - checking against form id = " + forms[i]._id);
+
             if (forms[i]._id == formId) {
-                var fields = forms[j].fields;
+                var fields = forms[i].fields;
                 for (var j = 0; j < fields.length; j++) {
+
+                    console.log("in model - given field id = " + fieldId);
+                    console.log("in model - checking against field id = " + fields[j]._id);
+
                     if (fields[j]._id == fieldId) {
                         forms[i].fields.splice(j, 1);
+
+                        console.log("in model - forms returned = " + forms[i].fields);
+
                         return forms[i].fields;
                     }
                 }
+
+                console.log("bypassed for inner loop");
+
                 return null;
             }
         }
+
+        console.log("bypassed for outer loop");
+
         return null;
     }
 }

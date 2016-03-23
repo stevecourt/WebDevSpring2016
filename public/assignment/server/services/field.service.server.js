@@ -61,7 +61,11 @@ module.exports = function(app, formModel) {
     function deleteFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        var updatedFields = formModel.deleteFormById(formId, fieldId);
+
+        console.log("in server field service - form id = " + formId);
+        console.log("in server field service - field id = " + fieldId);
+
+        var updatedFields = formModel.deleteFormFieldById(formId, fieldId);
         if (updatedFields) {
             res.json(updatedFields);
         } else {
