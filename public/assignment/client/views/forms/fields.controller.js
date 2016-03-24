@@ -8,6 +8,7 @@
     function fieldController($scope, $rootScope, $routeParams, FieldService) {
 
         $scope.addField = addField;
+        $scope.cloneField = cloneField;
         $scope.deleteField = deleteField;
 
         // A bit of a guess right now.  CHECK. Doesn't the userId come form the currentUser?
@@ -82,7 +83,19 @@
                 .then (function (returnedFields) {
                     $scope.model.fields = returnedFields.data;
                 }, function (returnedFields) {
-                    console.log("Error: The form was not added to the system.");
+                    console.log("Error: The field was not added to the form.");
+                });
+        }
+
+        function cloneField(field) {
+
+            console.log("in form controller: field type given = " + field.type);
+
+            var returnedFields = FieldService.createFieldForForm($scope.formId, field)
+                .then (function (returnedFields) {
+                    $scope.model.fields = returnedFields.data;
+                }, function (returnedFields) {
+                    console.log("Error: The field was not cloned in the form.");
                 });
         }
 

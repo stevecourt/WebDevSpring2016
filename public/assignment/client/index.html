@@ -14,8 +14,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css"/>
-    <link href="css/dashboard.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- CDNs -->
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -23,6 +23,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+
 
     <!-- Angular App and Routing -->
     <script src="app.js"></script>
@@ -44,13 +45,10 @@
     <script src="services/user.service.client.js"></script>
     <script src="services/forms.service.client.js"></script>
     <script src="services/field.service.client.js"></script>
-    <script src="../server/services/form.service.server.js"></script>  <!-- TODO: check if correct in assignment -->
+    <!--<script src="../../server/services/form.service.server.js"></script>-->  <!-- TODO: check if correct in assignment -->
 
-    <script>
-        $(function() {
-            $( "#sortable" ).sortable();
-        });
-    </script>
+    <!-- Directives -->
+    <script src="directives/jgaSortable.js"></script>
 
 </head>
 

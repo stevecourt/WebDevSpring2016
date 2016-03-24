@@ -19,6 +19,7 @@
     "npm": ">= 1.0.0"
   },
   "dependencies": {
+    "angular-ui-sortable": "^0.13.4",
     "body-parser": "^1.15.0",
     "express": "~3.4.4",
     "http": "^0.0.0",
