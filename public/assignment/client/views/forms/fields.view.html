@@ -10,11 +10,13 @@
 <form role="form">
     <table class="table">
         <tbody jga-sortable jga-axis="y">
+        <!--
         <tr><td>item 1</td></tr>
         <tr><td>item 2</td></tr>
         <tr><td>item 3</td></tr>
+        -->
 
-        <!--<tr ng-repeat="field in model.fields" ng-switch on="field.type" class="form-group">
+        <tr ng-repeat="field in model.fields" ng-switch on="field.type" class="form-group">
             <td>
                 <div class="row">
                     <div class="col-xs-12">
@@ -151,7 +153,7 @@
                     </div>
                 </div>
             </td>
-        </tr>-->
+        </tr>
         </tbody>
     </table>
 
@@ -180,3 +182,10 @@
         </div>
     </div>
 </form>
+
+<!--
+<div id="dialog" title="Basic dialog">
+    <p> This is the default dialog which is useful for displaying information.
+        The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+-->

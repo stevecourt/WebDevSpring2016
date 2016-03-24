@@ -24,6 +24,13 @@
         //            $("ul").sortable();
         //        });
     </script>
+
+    <script>
+        $(function() {
+            $( "#dialog" ).dialog();
+        });
+    </script>
+
 </head>
 <body>
 <form role="form">
@@ -123,5 +130,13 @@
         {{users}}
     </div>
 </form>
+
+<div id="dialog" title="Basic dialog">
+    <p> This is the default dialog which is useful for displaying information.
+        The dialog window can be moved, resized and closed with the 'x' icon.</p>
+    <input type="text">
+    <button>Press Me!</button>
+</div>
+
 </body>
 </html>

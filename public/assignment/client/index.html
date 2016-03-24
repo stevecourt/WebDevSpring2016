@@ -24,6 +24,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
 
+    <!-- Directives -->
+    <script src="directives/jgaSortable.js"></script>
 
     <!-- Angular App and Routing -->
     <script src="app.js"></script>
@@ -47,8 +49,11 @@
     <script src="services/field.service.client.js"></script>
     <!--<script src="../../server/services/form.service.server.js"></script>-->  <!-- TODO: check if correct in assignment -->
 
-    <!-- Directives -->
-    <script src="directives/jgaSortable.js"></script>
+    <script>
+        $(function() {
+            $( "#dialog" ).dialog();
+        });
+    </script>
 
 </head>
 
@@ -67,5 +72,14 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>
     </div>
 </div>
+
+<!-- TEMP FOR TESTING -->
+<!--
+<div id="dialog" title="Basic dialog">
+    <p> This is the default dialog which is useful for displaying information.
+        The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+-->
+
 </body>
 </html>

@@ -4,9 +4,6 @@
         .directive("jgaSortable", jgaSortable);
 
     function jgaSortable() {
-
-        console.log("in jgaSortable");
-
         var start = null;
         var end = null;
         function link(scope, element, attributes) {

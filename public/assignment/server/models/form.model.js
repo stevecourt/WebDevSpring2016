@@ -16,7 +16,8 @@ module.exports = function (app) {
         findAllFormFields: findAllFormFields,
         findFormFieldById: findFormFieldById,
         updateFormFieldById: updateFormFieldById,
-        deleteFormFieldById: deleteFormFieldById
+        deleteFormFieldById: deleteFormFieldById,
+        reorderFormFields: reorderFormFields
     };
     return api;
 
@@ -196,6 +197,25 @@ module.exports = function (app) {
 
         console.log("bypassed for outer loop");
 
+        return null;
+    }
+
+    function reorderFormFields(formId, fieldsArray) {
+
+        console.log("in model - form id = " + formId);
+        console.log("in model - field array = " + fieldsArray[0].type);
+        console.log("in model - field array = " + fieldsArray[1].type);
+
+        for (var i = 0; i < forms.length; i++) {
+            if (forms[i]._id == formId) {
+                forms[i].fields = fieldsArray;
+
+                console.log("in model - returning = " + forms[i].fields[0].type);
+                console.log("in model - returning = " + forms[i].fields[1].type);
+
+                return forms[i].fields;
+            }
+        }
         return null;
     }
 }

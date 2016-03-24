@@ -9,6 +9,7 @@ module.exports = function(app, formModel) {
     app.get("/api/assignment/form/:formId/field", findAllFormFields);
     app.get("/api/assignment/form/:formId/field/:fieldId", findFormFieldById);
     app.put("/api/assignment/form/:formId/field/:fieldId", updateFormFieldById);
+    app.put("/api/assignment/form/:formId/fields", reorderFormFields);
     app.delete("/api/assignment/form/:formId/field/:fieldId", deleteFormFieldById);
 
     function addFormField(req, res) {
@@ -53,6 +54,25 @@ module.exports = function(app, formModel) {
         var updatedFields = formModel.updateFormById(formId, fieldId);
         if (updatedFields) {
             res.json(updatedFields);
+        } else {
+            res.send(404);
+        }
+    }
+
+    function reorderFormFields(req, res) {
+        var formId = req.params.formId;
+        var fieldsArray = req.body;
+
+        console.log("in server field service - field array given = " + fieldsArray[0].type);
+        console.log("in server field service - field array given = " + fieldsArray[1].type);
+
+        var reorderedFields = formModel.reorderFormFields(formId, fieldsArray);
+        if (reorderedFields) {
+
+            console.log("in server field service - returning = " + reorderedFields[0].type);
+            console.log("in server field service - returning = " + reorderedFields[1].type);
+
+            res.json(reorderedFields);
         } else {
             res.send(404);
         }

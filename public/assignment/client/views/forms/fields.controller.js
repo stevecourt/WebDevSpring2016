@@ -10,6 +10,7 @@
         $scope.addField = addField;
         $scope.cloneField = cloneField;
         $scope.deleteField = deleteField;
+        $scope.reorderFields = reorderFields;
 
         // A bit of a guess right now.  CHECK. Doesn't the userId come form the currentUser?
         //var userId = $routeParams.id;
@@ -128,11 +129,29 @@
             console.log("in field controller - form id = " + $scope.formId);
             console.log("in field controller - field id = " + fieldId);
 
-            var returnedForms = FieldService.deleteFieldFromForm($scope.formId, fieldId)
+            var returnedFields = FieldService.deleteFieldFromForm($scope.formId, fieldId)
                 .then(function (returnedFields) {
                     $scope.model.fields = returnedFields.data;
                 }, function () {
                     console.log("Error: The field was not deleted from the form.");
+                });
+        }
+
+        function reorderFields(formId, fields) {
+
+            console.log("in field controller - reorderFields - form id = " + formId);
+            console.log("in field controller - reorderFields - fields = " + fields[0].type);
+            console.log("in field controller - reorderFields - fields = " + fields[1].type);
+
+            var returnedFields = FieldService.reorderFieldsForForm(formId, fields)
+                .then(function (returnedFields) {
+
+                    console.log("Back in field controller - returned fields = " + returnedFields.data[0].type);
+                    console.log("Back in field controller - returned fields = " + returnedFields.data[1].type);
+
+                    $scope.model.fields = returnedFields.data;
+                }, function (returnedFields) {
+                    console.log("Error: The fields were not reordered on the form.");
                 });
         }
 
