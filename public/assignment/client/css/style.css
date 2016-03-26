@@ -44,3 +44,10 @@
 .newFieldIconInputAlign{
     position: relative; top: 33px;
 }
+
+
+/* DIALOG BOXES */
+/* Move down labels for better spacing */
+.dialogBoxLabels{
+    margin-top: 15px;
+}

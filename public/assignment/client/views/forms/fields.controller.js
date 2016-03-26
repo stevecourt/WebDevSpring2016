@@ -5,20 +5,24 @@
         .module("FormBuilderApp")
         .controller("FieldController", fieldController);
 
-    function fieldController($scope, $rootScope, $routeParams, FieldService) {
+    function fieldController($scope, $routeParams, FieldService) {
 
+        // Main controller functions
         $scope.addField = addField;
         $scope.cloneField = cloneField;
         $scope.deleteField = deleteField;
         $scope.reorderFields = reorderFields;
 
-        $scope.openTextModDialog = openTextModDialog;
+        // Dialog boxes
+        $scope.openModDialogSingle = openModDialogSingle;
+        $scope.openModDialogMultiple = openModDialogMultiple;
+        $scope.openModDialogDate = openModDialogDate;
+        $scope.openModDialogDropdown = openModDialogDropdown;
+        $scope.openModDialogCheckbox = openModDialogCheckbox;
+        $scope.openModDialogRadio = openModDialogRadio;
 
-        // A bit of a guess right now.  CHECK. Doesn't the userId come form the currentUser?
-        //var userId = $routeParams.id;
+        // Form ID from the URL pattern
         $scope.formId = $routeParams.formId;
-
-        //var user = $rootScope.currentUser;
 
         // Get the current forms's fields for rendering.
         getFormFields($scope.formId);
@@ -82,12 +86,14 @@
 
             console.log("in form controller" + newField.type);
 
-            var returnedFields = FieldService.createFieldForForm($scope.formId, newField)
-                .then (function (returnedFields) {
-                    $scope.model.fields = returnedFields.data;
-                }, function (returnedFields) {
-                    console.log("Error: The field was not added to the form.");
-                });
+            if (fieldType != undefined) {
+                var returnedFields = FieldService.createFieldForForm($scope.formId, newField)
+                    .then (function (returnedFields) {
+                        $scope.model.fields = returnedFields.data;
+                    }, function (returnedFields) {
+                        console.log("Error: The field was not added to the form.");
+                    });
+            }
         }
 
         function cloneField(field) {
@@ -144,13 +150,11 @@
                 });
         }
 
-        //function selectForm(index) {
-        //    $scope.selectedForm = $scope.userForms[index];
-        //    // formTitle sets the displayed name in the input box of the view.
-        //    $scope.formTitle = $scope.selectedForm.title;
-        //}
 
-        var dialogDefinition = $( "#dialog-formSDC" ).dialog({
+        // Dialog Boxes ///////////////////////////////////////////////////////////////////////////////////////
+
+        // Single
+        var dialogDefinitionSingle = $( "#dialogSingle" ).dialog({
             autoOpen: false,
             height: 270,
             width: 240,
@@ -158,20 +162,21 @@
             resizable: false,
             buttons: {
                 Cancel: function () {
-                    dialogDefinition.dialog( "close" );
+                    dialogDefinitionSingle.dialog( "close" );
                 },
                 "OK": function () {
 
-                    console.log("label out = " + $scope.dialogLabel);
-                    console.log("placeholder out = " + $scope.dialogPlaceholder);
+                    console.log("label out = " + $scope.dialogLabelSingle); // wrong
+                    console.log("placeholder out = " + $scope.dialogPlaceholderSingle); // wrong
 
                     var formId = $scope.formId;
-                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id; //wrong
 
                     var modifiedField = $scope.model.fields[$scope.selectedIndex];
-                    modifiedField.label = $scope.dialogLabel;
-                    modifiedField.placeholder = $scope.dialogPlaceholder;
+                    modifiedField.label = $scope.dialogLabelSingle;
+                    modifiedField.placeholder = $scope.dialogPlaceholderSingle;
 
+                    console.log("selected index = " + $scope.selectedIndex);  // Error in results after refresh
                     console.log("form id = " + formId);
                     console.log("field id = " + fieldId);
                     console.log("field out = " + modifiedField._id);
@@ -180,32 +185,318 @@
                     console.log("field out = " + modifiedField.placeholder);
 
                     updateField(formId, fieldId, modifiedField);
-                    dialogDefinition.dialog( "close" );
+                    dialogDefinitionSingle.dialog( "close" );
                 }
-            },
-            close: function () {
-
-                console.log("trying to close");
-                //form[ 0 ].reset();
-                //allFields.removeClass( "ui-state-error" );
             }
         });
 
-        //function test2() {
-        //    console.log("create an account!!!")
-        //}
-
-        function openTextModDialog(index) {
+        function openModDialogSingle(index) {
             console.log("open text mod dialog in controller " + index);
 
             $scope.selectedIndex = index;
 
             console.log("open text mod dialog in controller " + $scope.selectedIndex);
 
-            //$scope.dialogLabel = $scope.model.fields[index].label;
-            //$scope.dialogPlaceholder = $scope.model.fields[index].placeholder;
+            $scope.dialogLabelSingle = $scope.model.fields[index].label;
+            $scope.dialogPlaceholderSingle = $scope.model.fields[index].placeholder;
 
-            $( "#dialog-formSDC" ).dialog("open");
+            console.log("dialogLabel " + $scope.dialogLabelSingle);
+            console.log("dialogPlaceholder " + $scope.dialogPlaceholderSingle);
+
+            $( "#dialogSingle" ).dialog("open");
+        }
+
+        // Multiple
+        var dialogDefinitionMultiple = $( "#dialogMultiple" ).dialog({
+            autoOpen: false,
+            height: 270,
+            width: 240,
+            modal: true,
+            resizable: false,
+            buttons: {
+                Cancel: function () {
+                    dialogDefinitionMultiple.dialog( "close" );
+                },
+                "OK": function () {
+
+                    console.log("label out = " + $scope.dialogLabelMultiple); // wrong
+                    console.log("placeholder out = " + $scope.dialogPlaceholderMultiple); // wrong
+
+                    var formId = $scope.formId;
+                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id; //wrong
+
+                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                    modifiedField.label = $scope.dialogLabelMultiple;
+                    modifiedField.placeholder = $scope.dialogPlaceholderMultiple;
+
+                    console.log("selected index = " + $scope.selectedIndex);  // Error in results after refresh
+                    console.log("form id = " + formId);
+                    console.log("field id = " + fieldId);
+                    console.log("field out = " + modifiedField._id);
+                    console.log("field out = " + modifiedField.label);
+                    console.log("field out = " + modifiedField.type);
+                    console.log("field out = " + modifiedField.placeholder);
+
+                    updateField(formId, fieldId, modifiedField);
+                    dialogDefinitionMultiple.dialog( "close" );
+                }
+            }
+        });
+
+        function openModDialogMultiple(index) {
+            console.log("open text mod dialog in controller " + index);
+
+            $scope.selectedIndex = index;
+
+            console.log("open text mod dialog in controller " + $scope.selectedIndex);
+
+            $scope.dialogLabelMultiple = $scope.model.fields[index].label;
+            $scope.dialogPlaceholderMultiple = $scope.model.fields[index].placeholder;
+
+            console.log("dialogLabel " + $scope.dialogLabelMultiple);
+            console.log("dialogPlaceholder " + $scope.dialogPlaceholderMultiple);
+
+            $( "#dialogMultiple" ).dialog("open");
+        }
+
+        // Date
+        var dialogDefinitionDate = $( "#dialogDate" ).dialog({
+            autoOpen: false,
+            height: 270,
+            width: 240,
+            modal: true,
+            resizable: false,
+            buttons: {
+                Cancel: function () {
+                    dialogDefinitionDate.dialog( "close" );
+                },
+                "OK": function () {
+
+                    console.log("label out = " + $scope.dialogLabelDate); // wrong
+
+                    var formId = $scope.formId;
+                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id; //wrong
+
+                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                    modifiedField.label = $scope.dialogLabelDate;
+
+                    console.log("selected index = " + $scope.selectedIndex);  // Error in results after refresh
+                    console.log("form id = " + formId);
+                    console.log("field id = " + fieldId);
+                    console.log("field out = " + modifiedField._id);
+                    console.log("field out = " + modifiedField.label);
+                    console.log("field out = " + modifiedField.type);
+                    console.log("field out = " + modifiedField.placeholder);
+
+                    updateField(formId, fieldId, modifiedField);
+                    dialogDefinitionDate.dialog( "close" );
+                }
+            }
+        });
+
+        function openModDialogDate(index) {
+            console.log("open text mod dialog in controller " + index);
+
+            $scope.selectedIndex = index;
+
+            console.log("open text mod dialog in controller " + $scope.selectedIndex);
+
+            $scope.dialogLabelDate = $scope.model.fields[index].label;
+            $scope.dialogPlaceholderDate = $scope.model.fields[index].placeholder;
+
+            console.log("dialogLabel " + $scope.dialogLabelDate);
+            console.log("dialogPlaceholder " + $scope.dialogPlaceholderDate);
+
+            $( "#dialogDate" ).dialog("open");
+        }
+
+        // Dropdown
+        var dialogDefinitionDropdown = $( "#dialogDropdown" ).dialog({
+            autoOpen: false,
+            height: 510,
+            width: 300,
+            modal: true,
+            resizable: false,
+            buttons: {
+                Cancel: function () {
+                    dialogDefinitionDropdown.dialog( "close" );
+                },
+                "OK": function () {
+
+                    console.log("label out = " + $scope.dialogLabelDropdown); // wrong
+                    console.log("options out = " + $scope.dialogOptionsDropdown); // wrong
+
+                    var formId = $scope.formId;
+                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id; //wrong
+
+                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                    modifiedField.label = $scope.dialogLabelDropdown;
+
+                    modifiedField.options = displayToArray($scope.dialogOptionsDropdown);
+
+                    console.log("selected index = " + $scope.selectedIndex);  // Error in results after refresh
+                    console.log("form id = " + formId);
+                    console.log("field id = " + fieldId);
+                    console.log("field out = " + modifiedField._id);
+                    console.log("field out = " + modifiedField.label);
+                    console.log("field out = " + modifiedField.type);
+                    console.log("field out = " + modifiedField.placeholder);
+
+                    updateField(formId, fieldId, modifiedField);
+                    dialogDefinitionDropdown.dialog( "close" );
+                }
+            }
+        });
+
+        function openModDialogDropdown(index) {
+            console.log("open text mod dialog in controller " + index);
+
+            $scope.selectedIndex = index;
+
+            console.log("open text mod dialog in controller " + $scope.selectedIndex);
+
+            $scope.dialogLabelDropdown = $scope.model.fields[index].label;
+
+            $scope.dialogOptionsDropdown = arrayToDisplay($scope.model.fields[index].options);
+
+            console.log("dialogLabel " + $scope.dialogLabelDropdown);
+            console.log("dialogOptions " + $scope.dialogOptionsDropdown);
+
+            $( "#dialogDropdown" ).dialog("open");
+        }
+
+        // Checkbox
+        var dialogDefinitionCheckbox = $( "#dialogCheckbox" ).dialog({
+            autoOpen: false,
+            height: 510,
+            width: 300,
+            modal: true,
+            resizable: false,
+            buttons: {
+                Cancel: function () {
+                    dialogDefinitionCheckbox.dialog( "close" );
+                },
+                "OK": function () {
+
+                    console.log("label out = " + $scope.dialogLabelCheckbox); // wrong
+                    console.log("options out = " + $scope.dialogOptionsCheckbox); // wrong
+
+                    var formId = $scope.formId;
+                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id; //wrong
+
+                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                    modifiedField.label = $scope.dialogLabelCheckbox;
+
+                    modifiedField.options = displayToArray($scope.dialogOptionsCheckbox);
+
+                    console.log("selected index = " + $scope.selectedIndex);  // Error in results after refresh
+                    console.log("form id = " + formId);
+                    console.log("field id = " + fieldId);
+                    console.log("field out = " + modifiedField._id);
+                    console.log("field out = " + modifiedField.label);
+                    console.log("field out = " + modifiedField.type);
+                    console.log("field out = " + modifiedField.placeholder);
+
+                    updateField(formId, fieldId, modifiedField);
+                    dialogDefinitionCheckbox.dialog( "close" );
+                }
+            }
+        });
+
+        function openModDialogCheckbox(index) {
+            console.log("open text mod dialog in controller " + index);
+
+            $scope.selectedIndex = index;
+
+            console.log("open text mod dialog in controller " + $scope.selectedIndex);
+
+            $scope.dialogLabelCheckbox = $scope.model.fields[index].label;
+
+            $scope.dialogOptionsCheckbox = arrayToDisplay($scope.model.fields[index].options);
+
+            console.log("dialogLabel " + $scope.dialogLabelCheckbox);
+            console.log("dialogOptions " + $scope.dialogOptionsCheckbox);
+
+            $( "#dialogCheckbox" ).dialog("open");
+        }
+
+        // Radio
+        var dialogDefinitionRadio = $( "#dialogRadio" ).dialog({
+            autoOpen: false,
+            height: 510,
+            width: 300,
+            modal: true,
+            resizable: false,
+            buttons: {
+                Cancel: function () {
+                    dialogDefinitionRadio.dialog( "close" );
+                },
+                "OK": function () {
+
+                    console.log("label out = " + $scope.dialogLabelRadio); // wrong
+                    console.log("options out = " + $scope.dialogOptionsRadio); // wrong
+
+                    var formId = $scope.formId;
+                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id; //wrong
+
+                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                    modifiedField.label = $scope.dialogLabelRadio;
+
+                    modifiedField.options = displayToArray($scope.dialogOptionsRadio);
+
+                    console.log("selected index = " + $scope.selectedIndex);  // Error in results after refresh
+                    console.log("form id = " + formId);
+                    console.log("field id = " + fieldId);
+                    console.log("field out = " + modifiedField._id);
+                    console.log("field out = " + modifiedField.label);
+                    console.log("field out = " + modifiedField.type);
+                    console.log("field out = " + modifiedField.placeholder);
+
+                    updateField(formId, fieldId, modifiedField);
+                    dialogDefinitionRadio.dialog( "close" );
+                }
+            }
+        });
+
+        function openModDialogRadio(index) {
+            console.log("open text mod dialog in controller " + index);
+
+            $scope.selectedIndex = index;
+
+            console.log("open text mod dialog in controller " + $scope.selectedIndex);
+
+            $scope.dialogLabelRadio = $scope.model.fields[index].label;
+
+            $scope.dialogOptionsRadio = arrayToDisplay($scope.model.fields[index].options);
+
+            console.log("dialogLabel " + $scope.dialogLabelRadio);
+            console.log("dialogOptions " + $scope.dialogOptionsRadio);
+
+            $( "#dialogRadio" ).dialog("open");
+        }
+
+        function arrayToDisplay(optionsArray) {
+            var line = "";
+            for (var i = 0; i < optionsArray.length; i++) {
+                var label = optionsArray[i].label;
+                var value = optionsArray[i].value;
+                line = line + label + ":" + value;
+                if (i < optionsArray.length - 1) {
+                    line = line + "\n";
+                }
+            }
+            return line;
+        }
+
+        function displayToArray(displayString) {
+            var optionsArray = [];
+            var objectStringArray = displayString.split("\n");
+            for (var i = 0; i < objectStringArray.length; i++) {
+                var labelValuePair = objectStringArray[i].split(":");
+                var optionObject = {label:labelValuePair[0], value:labelValuePair[1]};
+                optionsArray.push(optionObject);
+            }
+            return optionsArray;
         }
     }
 })();
