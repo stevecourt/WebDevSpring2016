@@ -51,7 +51,16 @@ module.exports = function(app, formModel) {
     function updateFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        var updatedFields = formModel.updateFormById(formId, fieldId);
+        var fieldObj = req.body;
+
+        console.log("req form id = " + formId);
+        console.log("req field id = " + fieldId);
+        console.log("req field in = " + fieldObj._id);
+        console.log("req field in = " + fieldObj.label);
+        console.log("req field in = " + fieldObj.type);
+        console.log("req field in = " + fieldObj.placeholder);
+
+        var updatedFields = formModel.updateFormFieldById(formId, fieldId, fieldObj);
         if (updatedFields) {
             res.json(updatedFields);
         } else {

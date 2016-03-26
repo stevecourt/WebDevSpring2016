@@ -12,6 +12,8 @@
         $scope.deleteField = deleteField;
         $scope.reorderFields = reorderFields;
 
+        $scope.openTextModDialog = openTextModDialog;
+
         // A bit of a guess right now.  CHECK. Doesn't the userId come form the currentUser?
         //var userId = $routeParams.id;
         $scope.formId = $routeParams.formId;
@@ -100,25 +102,12 @@
                 });
         }
 
-        function updateForm(formTitle) {
-            var formId = $scope.selectedForm._id;
-            var formUserId = $scope.selectedForm.userId;
-            var newForm = {
-                _id: formId,
-                title: formTitle,
-                userId: formUserId};
-            var returnedForms = FormService.updateFormById(newForm._id, newForm)
-                .then(function (returnedForms) {
-                    // Filter the forms for the user.
-                    var allUserForms = [];
-                    for (var i = 0; i < returnedForms.data.length; i++) {
-                        if (returnedForms.data[i].userId == formUserId) {
-                            allUserForms.push(returnedForms.data[i]);
-                        }
-                    }
-                    $scope.userForms = allUserForms;
+        function updateField(formId, fieldId, field) {
+            var returnedFields = FieldService.updateField(formId, fieldId, field)
+                .then(function (returnedFields) {
+                    $scope.model.fields = returnedFields.data;
                 }, function (returnedForms) {
-                    console.log("Error: The form was not updated in the system.");
+                    console.log("Error: The field was not updated in the system.");
                 });
         }
 
@@ -155,10 +144,68 @@
                 });
         }
 
-        function selectForm(index) {
-            $scope.selectedForm = $scope.userForms[index];
-            // formTitle sets the displayed name in the input box of the view.
-            $scope.formTitle = $scope.selectedForm.title;
+        //function selectForm(index) {
+        //    $scope.selectedForm = $scope.userForms[index];
+        //    // formTitle sets the displayed name in the input box of the view.
+        //    $scope.formTitle = $scope.selectedForm.title;
+        //}
+
+        var dialogDefinition = $( "#dialog-formSDC" ).dialog({
+            autoOpen: false,
+            height: 270,
+            width: 240,
+            modal: true,
+            resizable: false,
+            buttons: {
+                Cancel: function () {
+                    dialogDefinition.dialog( "close" );
+                },
+                "OK": function () {
+
+                    console.log("label out = " + $scope.dialogLabel);
+                    console.log("placeholder out = " + $scope.dialogPlaceholder);
+
+                    var formId = $scope.formId;
+                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+
+                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                    modifiedField.label = $scope.dialogLabel;
+                    modifiedField.placeholder = $scope.dialogPlaceholder;
+
+                    console.log("form id = " + formId);
+                    console.log("field id = " + fieldId);
+                    console.log("field out = " + modifiedField._id);
+                    console.log("field out = " + modifiedField.label);
+                    console.log("field out = " + modifiedField.type);
+                    console.log("field out = " + modifiedField.placeholder);
+
+                    updateField(formId, fieldId, modifiedField);
+                    dialogDefinition.dialog( "close" );
+                }
+            },
+            close: function () {
+
+                console.log("trying to close");
+                //form[ 0 ].reset();
+                //allFields.removeClass( "ui-state-error" );
+            }
+        });
+
+        //function test2() {
+        //    console.log("create an account!!!")
+        //}
+
+        function openTextModDialog(index) {
+            console.log("open text mod dialog in controller " + index);
+
+            $scope.selectedIndex = index;
+
+            console.log("open text mod dialog in controller " + $scope.selectedIndex);
+
+            //$scope.dialogLabel = $scope.model.fields[index].label;
+            //$scope.dialogPlaceholder = $scope.model.fields[index].placeholder;
+
+            $( "#dialog-formSDC" ).dialog("open");
         }
     }
 })();

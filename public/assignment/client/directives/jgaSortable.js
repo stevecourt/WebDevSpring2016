@@ -11,6 +11,8 @@
         function link(scope, element, attributes) {
             var jgaAxis = attributes.jgaAxis;
             $(element).sortable({
+                cancel: "",
+                handle: "#reorderButton",
                 axis: jgaAxis,
                 start: function(event, ui) {
                     start = ui.item.index();
@@ -22,8 +24,6 @@
                     end = ui.item.index();
 
                     console.log("end = " + end);
-
-
 
                     var temp = scope.model.fields[start];
                     scope.model.fields[start] = scope.model.fields[end];

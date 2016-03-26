@@ -148,12 +148,22 @@ module.exports = function (app) {
     }
 
     function updateFormFieldById(formId, fieldId, field) {
-        for (var i = 0; forms.length; i++) {
+        for (var i = 0; i < forms.length; i++) {
+
+            console.log("given form id = " + formId);
+            console.log("this form id = " + forms[i]._id);
+
             if (forms[i]._id == formId) {
-                var fields = forms[j].fields;
+
+                console.log("found form");
+
+                var fields = forms[i].fields;
                 for (var j = 0; j < fields.length; j++) {
                     if (fields[j]._id == fieldId) {
-                        forms[i].field[j] = field;
+
+                        console.log("found field");
+
+                        forms[i].fields[j] = field;
                         return forms[i].fields;
                     }
                 }
