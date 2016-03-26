@@ -32,31 +32,13 @@ module.exports = function (app) {
 
     function findFormsByUserId(userId) {
         var userForms = [];
-
-        console.log("forms model" + forms);
-
         for (var i = 0; i < forms.length; i++) {
-
-            console.log("forms model" + forms[i]);
-
             if (forms[i].userId == userId) {
                 userForms.push(forms[i]);
             }
         }
-
-        console.log("model" + userForms);
-
         return userForms;
     }
-
-    /* TODO Try the filter form. Consider changing other functions.
-    function findFormsByUserId(userId) {
-        var userForms = forms.filter(function (userId) {
-            return forms.userId === userId;
-        });
-        return userForms.length === 0 userForms : null;
-    }
-    */
 
     function findFormById(formId) {
         var formFound = null;
@@ -111,21 +93,8 @@ module.exports = function (app) {
     }
 
     function findAllFormFields(formId) {
-
-        console.log("Model - findAllFormFields - given form ID = " + formId);
-
         for (var i = 0; i < forms.length; i++) {
-
-            console.log("Model - findAllFormFields - next form ID = " + forms[i]._id);
-
             if (forms[i]._id == formId) {
-
-                console.log("Match found");
-                console.log(forms[i]._id);
-                console.log(forms[i].title);
-                console.log(forms[i].userId);
-                console.log(forms[i].fields);
-
                 return forms[i].fields;
             }
         }
@@ -149,20 +118,10 @@ module.exports = function (app) {
 
     function updateFormFieldById(formId, fieldId, field) {
         for (var i = 0; i < forms.length; i++) {
-
-            console.log("given form id = " + formId);
-            console.log("this form id = " + forms[i]._id);
-
             if (forms[i]._id == formId) {
-
-                console.log("found form");
-
                 var fields = forms[i].fields;
                 for (var j = 0; j < fields.length; j++) {
                     if (fields[j]._id == fieldId) {
-
-                        console.log("found field");
-
                         forms[i].fields[j] = field;
                         return forms[i].fields;
                     }
@@ -174,55 +133,25 @@ module.exports = function (app) {
     }
 
     function deleteFormFieldById(formId, fieldId) {
-
-        console.log("in model - form id = " + formId);
-        console.log("in model - field id = " + fieldId);
-
         for (var i = 0; i < forms.length; i++) {
-
-            console.log("in model - given form id = " + formId);
-            console.log("in model - checking against form id = " + forms[i]._id);
-
             if (forms[i]._id == formId) {
                 var fields = forms[i].fields;
                 for (var j = 0; j < fields.length; j++) {
-
-                    console.log("in model - given field id = " + fieldId);
-                    console.log("in model - checking against field id = " + fields[j]._id);
-
                     if (fields[j]._id == fieldId) {
                         forms[i].fields.splice(j, 1);
-
-                        console.log("in model - forms returned = " + forms[i].fields);
-
                         return forms[i].fields;
                     }
                 }
-
-                console.log("bypassed for inner loop");
-
                 return null;
             }
         }
-
-        console.log("bypassed for outer loop");
-
         return null;
     }
 
     function reorderFormFields(formId, fieldsArray) {
-
-        console.log("in model - form id = " + formId);
-        console.log("in model - field array = " + fieldsArray[0].type);
-        console.log("in model - field array = " + fieldsArray[1].type);
-
         for (var i = 0; i < forms.length; i++) {
             if (forms[i]._id == formId) {
                 forms[i].fields = fieldsArray;
-
-                console.log("in model - returning = " + forms[i].fields[0].type);
-                console.log("in model - returning = " + forms[i].fields[1].type);
-
                 return forms[i].fields;
             }
         }

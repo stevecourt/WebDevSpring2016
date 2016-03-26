@@ -5,9 +5,9 @@ var uuid = require('node-uuid');
 module.exports = function(app, formModel) {
 
     // Form Service Endpoints
-    app.post("/api/assignment/form", createForm);                       // May delete depending on Piazza answer.
+    app.post("/api/assignment/form", createForm);
     app.post("/api/assignment/user/:userId/form", createFormByUserId);
-    app.get("/api/assignment/form", findAllForms);                      // May delete depending on Piazza answer.
+    app.get("/api/assignment/form", findAllForms);
     app.get("/api/assignment/user/:userId/form", findFormsByUserId);
     app.get("/api/assignment/form/:formId", findFormById);
     app.put("/api/assignment/form/:formId", updateFormById);
@@ -55,9 +55,6 @@ module.exports = function(app, formModel) {
         var userId = req.params.userId;
         var userForms = formModel.findFormsByUserId(userId);
         if (userForms) {
-
-            console.log("server serv" + userForms);
-
             res.json(userForms);
         } else {
             res.send(500);

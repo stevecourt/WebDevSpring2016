@@ -16,18 +16,7 @@ module.exports = function (app) {
     return api;
 
     function createUser(user) {
-
-        console.log("create user model");
-
         users.push(user);
-
-        console.log(users[0]);
-        console.log(users[1]);
-        console.log(users[2]);
-        console.log(users[3]);
-        console.log(users[4]);
-        console.log(users[5]);
-
         return users;
     }
 
@@ -67,24 +56,12 @@ module.exports = function (app) {
                 break;
             }
         }
-
-        //console.log("model" + userFound.username + userFound.password + userFound.email);
-
         return userFound;
     }
 
     function updateUserById(userId, user) {
-
-        console.log("model: search for: " + userId);
-
         for (var i = 0; i < users.length; i++) {
-
-            console.log("model: next ID: " + users[i]._id);
-
             if (users[i]._id == userId) {
-
-                console.log("model match found");
-
                 users[i] = user;
                 return users;
             }

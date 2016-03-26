@@ -12,16 +12,9 @@ module.exports = function (app, userModel) {
     app.delete("/api/assignment/user/:id", deleteUserById);
 
     function createUser(req, res) {
-
-        console.log("create user server service");
-
         var userObj = req.body;
         userObj._id = uuid.v1(); // Create random ID
         var updatedUserList = userModel.createUser(userObj);
-
-        console.log("create user server service ret");
-        console.log(updatedUserList[5]);
-
         if (updatedUserList) {
             res.json(updatedUserList);
         } else {
@@ -42,16 +35,9 @@ module.exports = function (app, userModel) {
     function findUsers(req, res) {
         var username = req.query.username;
         var password = req.query.password;
-
-        console.log(username);
-        console.log(password);
-
         if (username && password) {
             var userCredentials = {"username": username, "password": password};
             var userFound = userModel.findUserByCredentials(userCredentials);
-
-            //console.log("servlet" + userFound._id + userFound.username + userFound.password + userFound.email);
-
             if (userFound) {
                 res.json(userFound);
             } else {
@@ -77,19 +63,7 @@ module.exports = function (app, userModel) {
     function updateUserById(req, res) {
         var userId = req.params.id;
         var userObj = req.body;
-
-        console.log("server service updateUserById");
-        console.log(userId);
-        console.log(userObj.lastName);
-
         var updatedUserList = userModel.updateUserById(userId, userObj);
-
-        console.log(updatedUserList[0]);
-        console.log(updatedUserList[1]);
-        console.log(updatedUserList[2]);
-        console.log(updatedUserList[3]);
-        console.log(updatedUserList[4]);
-
         if (updatedUserList) {
             res.json(updatedUserList);
         } else {

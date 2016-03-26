@@ -32,9 +32,6 @@
 
         function getFieldsForForm(formId) {
             var deferred = $q.defer();
-
-            console.log("in client field service, getFieldsForForm. FormID = " + formId);
-
             $http.get("/api/assignment/form/" + formId + "/field")
                 .then(function(fields){
                     deferred.resolve(fields);
@@ -60,9 +57,6 @@
 
         function deleteFieldFromForm(formId, fieldId) {
             var deferred = $q.defer();
-
-            console.log("in client field service - form id = " + formId);
-            console.log("in client field service - field id = " + fieldId);
 
             $http.delete("/api/assignment/form/" + formId + "/field/" + fieldId)
                 .then(function(fields){

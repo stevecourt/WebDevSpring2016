@@ -12,14 +12,9 @@
         function update(user) {
             UserService.updateUser(user._id, user)
                 .then(function (returnedUsers) {
-
                     for (var i = 0; i < returnedUsers.data.length; i++) {
-
-                        console.log(returnedUsers.data[i]._id);
-
                         if (returnedUsers.data[i]._id == user._id) {
                             var userFound = returnedUsers.data[i];
-                            console.log(userFound);
                             $scope.message = "Profile updated successfully. (Click to close.)";
                             $rootScope.currentUser = userFound;
                             $location.url("/profile");
@@ -28,7 +23,7 @@
                 }, function (returnedUsers) {
                     console.log("Error: The user was not updated in the system.");
                 });
-        };
+        }
 
         $scope.closeButtonAlert = function () {
             $scope.message = null;

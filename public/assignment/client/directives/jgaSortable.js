@@ -16,15 +16,9 @@
                 axis: jgaAxis,
                 start: function(event, ui) {
                     start = ui.item.index();
-
-                    console.log("start = " + start);
-
                 },
                 stop: function(event, ui) {
                     end = ui.item.index();
-
-                    console.log("end = " + end);
-
                     var temp = scope.model.fields[start];
                     scope.model.fields[start] = scope.model.fields[end];
                     scope.model.fields[end] = temp;

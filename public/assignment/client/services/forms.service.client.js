@@ -32,9 +32,6 @@
 
             $http.get("/api/assignment/user/" + userId + "/form")
                 .then(function(forms){
-
-                    console.log("client serv" + forms);
-
                     deferred.resolve(forms);
                 }, function (forms) {
                     deferred.reject(forms);
