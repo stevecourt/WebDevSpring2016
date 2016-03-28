@@ -31,6 +31,13 @@
                 .then (function (returnedFields) {
                     $scope.model = {};
                     $scope.model.fields = returnedFields.data;
+
+                    // Temporary debugging code
+                    console.log("Stage 1 - Field page entry $scope.selectedIndex = " + $scope.selectedIndex);
+                    console.log("Stage 1 - Field page entry $scope.dialogLabelSingle = " + $scope.dialogLabelSingle);
+                    console.log("Stage 1 - Field page entry $scope.dialogPlaceholderSingle = " + $scope.dialogPlaceholderSingle);
+                    // Temporary debugging code
+
                 }, function (returnedFields) {
                     console.log("Error: Could not retrieve form's fields.");
                 });
@@ -121,193 +128,229 @@
         // Dialog Boxes ///////////////////////////////////////////////////////////////////////////////////////
 
         // Single
-        var dialogDefinitionSingle = $( "#dialogSingle" ).dialog({
-            autoOpen: false,
-            height: 270,
-            width: 240,
-            modal: true,
-            resizable: false,
-            buttons: {
-                Cancel: function () {
-                    dialogDefinitionSingle.dialog( "close" );
-                },
-                "OK": function () {
-                    var formId = $scope.formId;
-                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
-                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
-                    modifiedField.label = $scope.dialogLabelSingle;
-                    modifiedField.placeholder = $scope.dialogPlaceholderSingle;
+        function defineDialogSingle() {
+            var dialogDefinitionSingle = $("#dialogSingle").dialog({
+                autoOpen: false,
+                height: 270,
+                width: 240,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    Cancel: function () {
+                        dialogDefinitionSingle.dialog("destroy");
+                    },
+                    "OK": function () {
+                        var formId = $scope.formId;
+                        var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+                        var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                        modifiedField.label = $scope.dialogLabelSingle;
+                        modifiedField.placeholder = $scope.dialogPlaceholderSingle;
 
-                    updateField(formId, fieldId, modifiedField);
-                    dialogDefinitionSingle.dialog( "close" );
+                        updateField(formId, fieldId, modifiedField);
+                        dialogDefinitionSingle.dialog("destroy");
+                    }
+                },
+                close: function() {
+                    dialogDefinitionSingle.dialog("destroy");
                 }
-            }
-        });
+            });
+        }
 
         function openModDialogSingle(index) {
             $scope.selectedIndex = index;
             $scope.dialogLabelSingle = $scope.model.fields[index].label;
             $scope.dialogPlaceholderSingle = $scope.model.fields[index].placeholder;
 
+            defineDialogSingle();
             $( "#dialogSingle" ).dialog("open");
         }
 
         // Multiple
-        var dialogDefinitionMultiple = $( "#dialogMultiple" ).dialog({
-            autoOpen: false,
-            height: 270,
-            width: 240,
-            modal: true,
-            resizable: false,
-            buttons: {
-                Cancel: function () {
-                    dialogDefinitionMultiple.dialog( "close" );
-                },
-                "OK": function () {
-                    var formId = $scope.formId;
-                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
-                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
-                    modifiedField.label = $scope.dialogLabelMultiple;
-                    modifiedField.placeholder = $scope.dialogPlaceholderMultiple;
+        function defineDialogMultiple() {
+            var dialogDefinitionMultiple = $("#dialogMultiple").dialog({
+                autoOpen: false,
+                height: 270,
+                width: 240,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    Cancel: function () {
+                        dialogDefinitionMultiple.dialog("destroy");
+                    },
+                    "OK": function () {
+                        var formId = $scope.formId;
+                        var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+                        var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                        modifiedField.label = $scope.dialogLabelMultiple;
+                        modifiedField.placeholder = $scope.dialogPlaceholderMultiple;
 
-                    updateField(formId, fieldId, modifiedField);
-                    dialogDefinitionMultiple.dialog( "close" );
+                        updateField(formId, fieldId, modifiedField);
+                        dialogDefinitionMultiple.dialog("destroy");
+                    }
+                },
+                close: function () {
+                    dialogDefinitionMultiple.dialog("destroy");
                 }
-            }
-        });
+            });
+        }
 
         function openModDialogMultiple(index) {
             $scope.selectedIndex = index;
             $scope.dialogLabelMultiple = $scope.model.fields[index].label;
             $scope.dialogPlaceholderMultiple = $scope.model.fields[index].placeholder;
 
+            defineDialogMultiple();
             $( "#dialogMultiple" ).dialog("open");
         }
 
         // Date
-        var dialogDefinitionDate = $( "#dialogDate" ).dialog({
-            autoOpen: false,
-            height: 270,
-            width: 240,
-            modal: true,
-            resizable: false,
-            buttons: {
-                Cancel: function () {
-                    dialogDefinitionDate.dialog( "close" );
-                },
-                "OK": function () {
-                    var formId = $scope.formId;
-                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
-                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
-                    modifiedField.label = $scope.dialogLabelDate;
+        function defineDialogDate() {
+            var dialogDefinitionDate = $("#dialogDate").dialog({
+                autoOpen: false,
+                height: 270,
+                width: 240,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    Cancel: function () {
+                        dialogDefinitionDate.dialog("destroy");
+                    },
+                    "OK": function () {
+                        var formId = $scope.formId;
+                        var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+                        var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                        modifiedField.label = $scope.dialogLabelDate;
 
-                    updateField(formId, fieldId, modifiedField);
-                    dialogDefinitionDate.dialog( "close" );
+                        updateField(formId, fieldId, modifiedField);
+                        dialogDefinitionDate.dialog("destroy");
+                    }
+                },
+                close: function () {
+                    dialogDefinitionDate.dialog("destroy");
                 }
-            }
-        });
+            });
+        }
 
         function openModDialogDate(index) {
             $scope.selectedIndex = index;
             $scope.dialogLabelDate = $scope.model.fields[index].label;
             $scope.dialogPlaceholderDate = $scope.model.fields[index].placeholder;
 
+            defineDialogDate();
             $( "#dialogDate" ).dialog("open");
         }
 
         // Dropdown
-        var dialogDefinitionDropdown = $( "#dialogDropdown" ).dialog({
-            autoOpen: false,
-            height: 510,
-            width: 300,
-            modal: true,
-            resizable: false,
-            buttons: {
-                Cancel: function () {
-                    dialogDefinitionDropdown.dialog( "close" );
-                },
-                "OK": function () {
-                    var formId = $scope.formId;
-                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
-                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
-                    modifiedField.label = $scope.dialogLabelDropdown;
-                    modifiedField.options = displayToArray($scope.dialogOptionsDropdown);
+        function defineDialogDropdown() {
+            var dialogDefinitionDropdown = $("#dialogDropdown").dialog({
+                autoOpen: false,
+                height: 510,
+                width: 300,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    Cancel: function () {
+                        dialogDefinitionDropdown.dialog("destroy");
+                    },
+                    "OK": function () {
+                        var formId = $scope.formId;
+                        var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+                        var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                        modifiedField.label = $scope.dialogLabelDropdown;
+                        modifiedField.options = displayToArray($scope.dialogOptionsDropdown);
 
-                    updateField(formId, fieldId, modifiedField);
-                    dialogDefinitionDropdown.dialog( "close" );
+                        updateField(formId, fieldId, modifiedField);
+                        dialogDefinitionDropdown.dialog("destroy");
+                    }
+                },
+                close: function () {
+                    dialogDefinitionDropdown.dialog("destroy");
                 }
-            }
-        });
+            });
+        }
 
         function openModDialogDropdown(index) {
             $scope.selectedIndex = index;
             $scope.dialogLabelDropdown = $scope.model.fields[index].label;
             $scope.dialogOptionsDropdown = arrayToDisplay($scope.model.fields[index].options);
 
+            defineDialogDropdown();
             $( "#dialogDropdown" ).dialog("open");
         }
 
         // Checkbox
-        var dialogDefinitionCheckbox = $( "#dialogCheckbox" ).dialog({
-            autoOpen: false,
-            height: 510,
-            width: 300,
-            modal: true,
-            resizable: false,
-            buttons: {
-                Cancel: function () {
-                    dialogDefinitionCheckbox.dialog( "close" );
-                },
-                "OK": function () {
-                    var formId = $scope.formId;
-                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
-                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
-                    modifiedField.label = $scope.dialogLabelCheckbox;
-                    modifiedField.options = displayToArray($scope.dialogOptionsCheckbox);
+        function defineDialogCheckbox() {
+            var dialogDefinitionCheckbox = $("#dialogCheckbox").dialog({
+                autoOpen: false,
+                height: 510,
+                width: 300,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    Cancel: function () {
+                        dialogDefinitionCheckbox.dialog("destroy");
+                    },
+                    "OK": function () {
+                        var formId = $scope.formId;
+                        var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+                        var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                        modifiedField.label = $scope.dialogLabelCheckbox;
+                        modifiedField.options = displayToArray($scope.dialogOptionsCheckbox);
 
-                    updateField(formId, fieldId, modifiedField);
-                    dialogDefinitionCheckbox.dialog( "close" );
+                        updateField(formId, fieldId, modifiedField);
+                        dialogDefinitionCheckbox.dialog("destroy");
+                    }
+                },
+                close: function () {
+                    dialogDefinitionCheckbox.dialog("destroy");
                 }
-            }
-        });
+            });
+        }
 
         function openModDialogCheckbox(index) {
             $scope.selectedIndex = index;
             $scope.dialogLabelCheckbox = $scope.model.fields[index].label;
             $scope.dialogOptionsCheckbox = arrayToDisplay($scope.model.fields[index].options);
 
+            defineDialogCheckbox();
             $( "#dialogCheckbox" ).dialog("open");
         }
 
         // Radio
-        var dialogDefinitionRadio = $( "#dialogRadio" ).dialog({
-            autoOpen: false,
-            height: 510,
-            width: 300,
-            modal: true,
-            resizable: false,
-            buttons: {
-                Cancel: function () {
-                    dialogDefinitionRadio.dialog( "close" );
-                },
-                "OK": function () {
-                    var formId = $scope.formId;
-                    var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
-                    var modifiedField = $scope.model.fields[$scope.selectedIndex];
-                    modifiedField.label = $scope.dialogLabelRadio;
-                    modifiedField.options = displayToArray($scope.dialogOptionsRadio);
+        function defineDialogRadio() {
+            var dialogDefinitionRadio = $("#dialogRadio").dialog({
+                autoOpen: false,
+                height: 510,
+                width: 300,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    Cancel: function () {
+                        dialogDefinitionRadio.dialog("destroy");
+                    },
+                    "OK": function () {
+                        var formId = $scope.formId;
+                        var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+                        var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                        modifiedField.label = $scope.dialogLabelRadio;
+                        modifiedField.options = displayToArray($scope.dialogOptionsRadio);
 
-                    updateField(formId, fieldId, modifiedField);
-                    dialogDefinitionRadio.dialog( "close" );
+                        updateField(formId, fieldId, modifiedField);
+                        dialogDefinitionRadio.dialog("destroy");
+                    }
+                },
+                close: function () {
+                    dialogDefinitionRadio.dialog("destroy");
                 }
-            }
-        });
+            });
+        }
 
         function openModDialogRadio(index) {
             $scope.selectedIndex = index;
             $scope.dialogLabelRadio = $scope.model.fields[index].label;
             $scope.dialogOptionsRadio = arrayToDisplay($scope.model.fields[index].options);
 
+            defineDialogRadio();
             $( "#dialogRadio" ).dialog("open");
         }
 

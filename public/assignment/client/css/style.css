@@ -51,3 +51,6 @@
 .dialogBoxLabels{
     margin-top: 15px;
 }
+.displayInDialog {
+    display: none;
+}
