@@ -128,6 +128,15 @@
         // Dialog Boxes ///////////////////////////////////////////////////////////////////////////////////////
 
         // Single
+        function openModDialogSingle(index) {
+            $scope.selectedIndex = index;
+            $scope.dialogLabelSingle = $scope.model.fields[index].label;
+            $scope.dialogPlaceholderSingle = $scope.model.fields[index].placeholder;
+
+            defineDialogSingle();
+            $( "#dialogSingle" ).dialog("open");
+        }
+
         function defineDialogSingle() {
             var dialogDefinitionSingle = $("#dialogSingle").dialog({
                 autoOpen: false,
@@ -156,16 +165,16 @@
             });
         }
 
-        function openModDialogSingle(index) {
+        // Multiple
+        function openModDialogMultiple(index) {
             $scope.selectedIndex = index;
-            $scope.dialogLabelSingle = $scope.model.fields[index].label;
-            $scope.dialogPlaceholderSingle = $scope.model.fields[index].placeholder;
+            $scope.dialogLabelMultiple = $scope.model.fields[index].label;
+            $scope.dialogPlaceholderMultiple = $scope.model.fields[index].placeholder;
 
-            defineDialogSingle();
-            $( "#dialogSingle" ).dialog("open");
+            defineDialogMultiple();
+            $( "#dialogMultiple" ).dialog("open");
         }
 
-        // Multiple
         function defineDialogMultiple() {
             var dialogDefinitionMultiple = $("#dialogMultiple").dialog({
                 autoOpen: false,
@@ -194,16 +203,15 @@
             });
         }
 
-        function openModDialogMultiple(index) {
+        // Date
+        function openModDialogDate(index) {
             $scope.selectedIndex = index;
-            $scope.dialogLabelMultiple = $scope.model.fields[index].label;
-            $scope.dialogPlaceholderMultiple = $scope.model.fields[index].placeholder;
+            $scope.dialogLabelDate = $scope.model.fields[index].label;
 
-            defineDialogMultiple();
-            $( "#dialogMultiple" ).dialog("open");
+            defineDialogDate();
+            $( "#dialogDate" ).dialog("open");
         }
 
-        // Date
         function defineDialogDate() {
             var dialogDefinitionDate = $("#dialogDate").dialog({
                 autoOpen: false,
@@ -231,16 +239,16 @@
             });
         }
 
-        function openModDialogDate(index) {
+        // Dropdown
+        function openModDialogDropdown(index) {
             $scope.selectedIndex = index;
-            $scope.dialogLabelDate = $scope.model.fields[index].label;
-            $scope.dialogPlaceholderDate = $scope.model.fields[index].placeholder;
+            $scope.dialogLabelDropdown = $scope.model.fields[index].label;
+            $scope.dialogOptionsDropdown = arrayToDisplay($scope.model.fields[index].options);
 
-            defineDialogDate();
-            $( "#dialogDate" ).dialog("open");
+            defineDialogDropdown();
+            $( "#dialogDropdown" ).dialog("open");
         }
 
-        // Dropdown
         function defineDialogDropdown() {
             var dialogDefinitionDropdown = $("#dialogDropdown").dialog({
                 autoOpen: false,
@@ -269,16 +277,16 @@
             });
         }
 
-        function openModDialogDropdown(index) {
+        // Checkbox
+        function openModDialogCheckbox(index) {
             $scope.selectedIndex = index;
-            $scope.dialogLabelDropdown = $scope.model.fields[index].label;
-            $scope.dialogOptionsDropdown = arrayToDisplay($scope.model.fields[index].options);
+            $scope.dialogLabelCheckbox = $scope.model.fields[index].label;
+            $scope.dialogOptionsCheckbox = arrayToDisplay($scope.model.fields[index].options);
 
-            defineDialogDropdown();
-            $( "#dialogDropdown" ).dialog("open");
+            defineDialogCheckbox();
+            $( "#dialogCheckbox" ).dialog("open");
         }
 
-        // Checkbox
         function defineDialogCheckbox() {
             var dialogDefinitionCheckbox = $("#dialogCheckbox").dialog({
                 autoOpen: false,
@@ -307,16 +315,16 @@
             });
         }
 
-        function openModDialogCheckbox(index) {
+        // Radio
+        function openModDialogRadio(index) {
             $scope.selectedIndex = index;
-            $scope.dialogLabelCheckbox = $scope.model.fields[index].label;
-            $scope.dialogOptionsCheckbox = arrayToDisplay($scope.model.fields[index].options);
+            $scope.dialogLabelRadio = $scope.model.fields[index].label;
+            $scope.dialogOptionsRadio = arrayToDisplay($scope.model.fields[index].options);
 
-            defineDialogCheckbox();
-            $( "#dialogCheckbox" ).dialog("open");
+            defineDialogRadio();
+            $( "#dialogRadio" ).dialog("open");
         }
 
-        // Radio
         function defineDialogRadio() {
             var dialogDefinitionRadio = $("#dialogRadio").dialog({
                 autoOpen: false,
@@ -343,15 +351,6 @@
                     dialogDefinitionRadio.dialog("destroy");
                 }
             });
-        }
-
-        function openModDialogRadio(index) {
-            $scope.selectedIndex = index;
-            $scope.dialogLabelRadio = $scope.model.fields[index].label;
-            $scope.dialogOptionsRadio = arrayToDisplay($scope.model.fields[index].options);
-
-            defineDialogRadio();
-            $( "#dialogRadio" ).dialog("open");
         }
 
         // Conversion of options for dialog box display

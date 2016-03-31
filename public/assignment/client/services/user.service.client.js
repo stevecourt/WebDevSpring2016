@@ -35,8 +35,14 @@
 
             $http.get("/api/assignment/user?username=" + username + "&password=" + password)
                 .then(function(user){
+
+                    console.log("user.service.client - login - username = " + user.data.username);
+
                     deferred.resolve(user);
                 }, function (user) {
+
+                    console.log("user.service.client - login - null");
+
                     deferred.reject(user);
                 });
 

@@ -1,7 +1,5 @@
 "use strict";
 
-var uuid = require('node-uuid');
-
 module.exports = function (app, userModel) {
 
     // User Service Endpoints
@@ -13,23 +11,26 @@ module.exports = function (app, userModel) {
 
     function createUser(req, res) {
         var userObj = req.body;
-        userObj._id = uuid.v1(); // Create random ID
-        var updatedUserList = userModel.createUser(userObj);
-        if (updatedUserList) {
-            res.json(updatedUserList);
-        } else {
-            res.send(500);
-        }
+        userModel.createUser(userObj)
+            .then(function (updatedUserList) {
+                if (updatedUserList) {
+                    res.json(updatedUserList);
+                } else {
+                    res.send(500);
+                }
+            });
     }
 
     function findUserById(req, res) {
         var userId = req.params.id;
-        var userFound = userModel.findUserById(userId);
-        if (userFound) {
-            res.json(userFound);
-        } else {
-            res.send(404);
-        }
+        userModel.findUserById(userId)
+            .then(function (userFound) {
+                if (userFound) {
+                    res.json(userFound);
+                } else {
+                    res.send(404);
+                }
+            });
     }
 
     function findUsers(req, res) {
@@ -37,47 +38,65 @@ module.exports = function (app, userModel) {
         var password = req.query.password;
         if (username && password) {
             var userCredentials = {"username": username, "password": password};
-            var userFound = userModel.findUserByCredentials(userCredentials);
-            if (userFound) {
-                res.json(userFound);
-            } else {
-                res.send(404);
-            }
+            userModel.findUserByCredentials(userCredentials)
+                .then(function (userFound) {
+                    if (userFound) {
+
+                        console.log("");
+                        console.log("user.server.service - userFound = " + userFound);
+
+                        res.json(userFound);
+                    } else {
+
+                        console.log("");
+                        console.log("user.server.service - user not found (i.e. null)");
+
+                        res.send(404);
+                    }
+                });
         } else if (username) {
-            var userFound = userModel.findUserByUsername(username);
-            if (userFound) {
-                res.json(userFound);
-            } else {
-                res.send(404);
-            }
+            userModel.findUserByUsername(username)
+                .then(function (userFound) {
+                    if (userFound) {
+                        res.json(userFound);
+                    } else {
+                        res.send(404);
+                    }
+                });
         } else {
-            var usersFound = userModel.findAllUsers();
-            if (usersFound) {
-                res.json(usersFound);
-            } else {
-                res.send(500);
-            }
+            userModel.findAllUsers()
+                .then(function (usersFound) {
+                    if (usersFound) {
+                        res.json(usersFound);
+                    } else {
+                        res.send(500);
+                    }
+                });
         }
     }
 
     function updateUserById(req, res) {
         var userId = req.params.id;
         var userObj = req.body;
-        var updatedUserList = userModel.updateUserById(userId, userObj);
-        if (updatedUserList) {
-            res.json(updatedUserList);
-        } else {
-            res.send(404);
-        }
+        userModel.updateUserById(userId, userObj)
+            .then (function (updatedUserList) {
+                if (updatedUserList) {
+                    res.json(updatedUserList);
+                } else {
+                    res.send(404);
+                }
+            });
     }
 
     function deleteUserById(req, res) {
         var userId = req.params.id;
-        var updatedUserList = userModel.deleteUserById(userId);
-        if (updatedUserList) {
-            res.json(updatedUserList);
-        } else {
-            res.send(404);
-        }
+        userModel.deleteUserById(userId)
+            .then (function (updatedUserList) {
+                if (updatedUserList) {
+                    res.json(updatedUserList);
+                } else {
+                    res.send(404);
+                }
+            });
     }
-}
+};

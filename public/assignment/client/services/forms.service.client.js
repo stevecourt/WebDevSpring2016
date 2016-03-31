@@ -58,6 +58,10 @@
 
             $http.put("/api/assignment/form/" + formId, newForm)
                 .then(function(forms){
+
+                    console.log("forms.service.client - forms returned");
+                    console.log(forms);
+
                     deferred.resolve(forms);
                 }, function (forms) {
                     deferred.reject(forms);

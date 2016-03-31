@@ -12,15 +12,19 @@
         function login(username, password) {
             var returnedUser = UserService.findUserByCredentials(username, password)
                 .then(function (returnedUser) {
-                        // TODO: Can revert back to pass by reference when database is in use.
-                        $rootScope.currentUser = {
-                            "_id":returnedUser.data._id,
-                            "firstName": returnedUser.data.firstName,
-                            "lastName": returnedUser.data.lastName,
-                            "username": returnedUser.data.username,
-                            "password": returnedUser.data.password,
-                            "email": returnedUser.data.email,
-                            "roles": returnedUser.data.roles};
+                    // TODO: Can revert back to pass by reference when database is in use.
+
+                    console.log("login.controller - returnedUser = ...");
+                    console.log(returnedUser.data);
+
+                    $rootScope.currentUser = {
+                        "_id":returnedUser.data._id,
+                        "firstName": returnedUser.data.firstName,
+                        "lastName": returnedUser.data.lastName,
+                        "username": returnedUser.data.username,
+                        "password": returnedUser.data.password,
+                        "email": returnedUser.data.email,
+                        "roles": returnedUser.data.roles};
 
                     $location.url("/profile");
                 }, function (returnedUser) {

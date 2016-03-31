@@ -45,8 +45,14 @@
             var returnedForms = FormService.updateFormById(newForm._id, newForm)
                 .then(function (returnedForms) {
                     // Filter the forms for the user.
+
+                    console.log(returnedForms.data);
+
                     var allUserForms = [];
                     for (var i = 0; i < returnedForms.data.length; i++) {
+
+                        console.log(returnedForms.data[i].userId);
+
                         if (returnedForms.data[i].userId == formUserId) {
                             allUserForms.push(returnedForms.data[i]);
                         }
@@ -61,8 +67,12 @@
             var returnedForms = FormService.deleteFormById($scope.userForms[index]._id)
                 .then(function (returnedForms) {
                     // Filter the forms for the user.
-                    var formUserId = $scope.selectedForm.userId;
+
+                    //var formUserId = $scope.selectedForm.userId;
+                    var formUserId = $scope.userForms[index].userId;
+
                     var allUserForms = [];
+
                     for (var i = 0; i < returnedForms.data.length; i++) {
                         if (returnedForms.data[i].userId == formUserId) {
                             allUserForms.push(returnedForms.data[i]);

@@ -1,7 +1,5 @@
 "use strict";
 
-var uuid = require('node-uuid');
-
 module.exports = function(app, formModel) {
 
     // Form Service Endpoints
@@ -15,80 +13,106 @@ module.exports = function(app, formModel) {
 
     function createForm(req, res) {
         var formObj = req.body;
-        var updatedFormList = formModel.createForm(formObj);
-        if (updatedFormList) {
-            res.json(updatedFormList);
-        } else {
-            res.send(500);
-        }
+        formModel.createForm(formObj)
+            .then(function (updatedFormList) {
+                if (updatedFormList) {
+                    formModel.findFormsByUserId(userId)
+                        .then(function (userForms) {
+                            if (userForms) {
+                                res.json(userForms);
+                            } else {
+                                res.send(500);
+                            }
+                        });
+                } else {
+                    res.send(500);
+                }
+            });
     }
 
     function createFormByUserId(req, res) {
         var userId = req.params.userId;
         var formObj = req.body;
         formObj.userId = userId;
-        formObj._id = uuid.v1(); // Create random ID
         formObj.fields = [];
-        var updatedFormList = formModel.createForm(formObj);
-        if (updatedFormList) {
-            var userForms = formModel.findFormsByUserId(userId);
-            if (userForms) {
-                res.json(userForms);
-            } else {
-                res.send(500);
-            }
-        } else {
-            res.send(500);
-        }
+        formModel.createForm(formObj)
+            .then(function (updatedFormList) {
+                if (updatedFormList) {
+                    formModel.findFormsByUserId(userId)
+                        .then(function (userForms) {
+                            if (userForms) {
+                                res.json(userForms);
+                            } else {
+                                res.send(500);
+                            }
+                        });
+                } else {
+                    res.send(500);
+                }
+            });
     }
 
     function findAllForms(req, res) {
-        var formList = formModel.findAllForms();
-        if (formList) {
-            res.json(formList);
-        } else {
-            res.send(500);
-        }
+        formModel.findAllForms()
+            .then(function (formList) {
+                if (formList) {
+                    res.json(formList);
+                } else {
+                    res.send(500);
+                }
+            });
     }
 
     function findFormsByUserId(req, res) {
         var userId = req.params.userId;
-        var userForms = formModel.findFormsByUserId(userId);
-        if (userForms) {
-            res.json(userForms);
-        } else {
-            res.send(500);
-        }
+        formModel.findFormsByUserId(userId)
+            .then(function (userForms) {
+                if (userForms) {
+                    res.json(userForms);
+                } else {
+                    res.send(500);
+                }
+            });
     }
 
     function findFormById(req, res) {
         var formId = req.params.formId;
-        var formFound = formModel.findFormById(formId);
-        if (formFound) {
-            res.json(formFound);
-        } else {
-            res.send(404);
-        }
+        formModel.findFormById(formId)
+            .then(function (formFound) {
+                if (formFound) {
+                    res.json(formFound);
+                } else {
+                    res.send(404);
+                }
+            });
     }
 
     function updateFormById(req, res) {
         var formId = req.params.formId;
         var formObj = req.body;
-        var updatedFormList = formModel.updateFormById(formId, formObj);
-        if (updatedFormList) {
-            res.json(updatedFormList);
-        } else {
-            res.send(404);
-        }
+        formModel.updateFormById(formId, formObj)
+            .then(function (updatedFormList) {
+                if (updatedFormList) {
+
+                    console.log("");
+                    console.log("form.service.server - update - forms found = " + updatedFormList);
+
+                    res.json(updatedFormList);
+                } else {
+                    res.send(404);
+                }
+            });
     }
 
     function deleteFormById(req, res) {
         var formId = req.params.formId;
-        var updatedFormList = formModel.deleteFormById(formId);
-        if (updatedFormList) {
-            res.json(updatedFormList);
-        } else {
-            res.send(404);
-        }
+        formModel.deleteFormById(formId)
+            .then(function (updatedFormList) {
+                if (updatedFormList) {
+                    res.json(updatedFormList);
+                } else {
+                    res.send(404);
+                }
+            });
     }
-}
+};
