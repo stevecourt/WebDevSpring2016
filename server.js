@@ -21,6 +21,8 @@ var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring2016';
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
     connection_string =
         process.env.OPENSHIFT_MONGODB_DB_URL;
+} else {
+    console.log("openshift process env not found");
 }
 
 /*
