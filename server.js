@@ -33,8 +33,8 @@ app.listen(port, ipaddress);
 
 // For assignments only
 //console.log(mongoose);
-//require('./public/assignment/server/app.js')(app, mongoose);
-require('./public/assignment/server/app.js')(app, mongoose, db);
+require('./public/assignment/server/app.js')(app, mongoose);
+//require('./public/assignment/server/app.js')(app, mongoose, db);
 
 
 // Section below under development for project ////////////////////////////
