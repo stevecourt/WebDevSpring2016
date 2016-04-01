@@ -24,7 +24,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
         process.env.OPENSHIFT_APP_NAME;
 }
 */
-var db = mongoose.connect(connectionString);
+//var db = mongoose.connect(connectionString);
 
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
@@ -34,8 +34,8 @@ app.listen(port, ipaddress);
 
 // For assignments only
 //console.log(mongoose);
-//require('./public/assignment/server/app.js')(app, mongoose);
-require('./public/assignment/server/app.js')(app, mongoose, db);
+require('./public/assignment/server/app.js')(app, mongoose);
+//require('./public/assignment/server/app.js')(app, mongoose, db);
 
 
 // Section below under development for project ////////////////////////////
