@@ -15,9 +15,12 @@ module.exports = function (mongoose, db) { //TODO Check is db and app are needed
         findFormById: findFormById,
         findFormByTitle: findFormByTitle,
         updateFormById: updateFormById,
-        deleteFormById: deleteFormById
+        deleteFormById: deleteFormById,
+        getDbModel : getDbModel
     };
     return api;
+
+    function getDbModel(){return formModel;}
 
     function createForm(newForm) {
         var deferred = q.defer();

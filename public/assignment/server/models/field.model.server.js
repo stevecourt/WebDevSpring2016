@@ -2,7 +2,7 @@
 
 var q = require("q");
 
-module.exports = function (mongoose, db) { //TODO Check is db and app are needed here
+module.exports = function (mongoose, db, formModel) { //TODO Check is db and app are needed here
 
     //var formModel = require('./form.model.server.js') (mongoose); //TODO Add (mongoose) ???
     var fieldSchema = require('./field.schema.server.js') (mongoose); //TODO find out whether forms, fields or bot are needed
@@ -17,6 +17,8 @@ module.exports = function (mongoose, db) { //TODO Check is db and app are needed
         reorderFormFields: reorderFormFields
     };
     return api;
+
+    //var db_form_model = formModel.getDbModel();
 
     function addFormField(formId, field) {
         var deferred = q.defer();
