@@ -25,6 +25,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
 }
 */
 var db = mongoose.connect(connectionString);
+mongoose.connect(connectionString);
 
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
