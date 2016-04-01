@@ -1,6 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var http = require('http'); // TODO: Resolve http config issue for project.
+//var http = require('http'); // TODO: Resolve http config issue for project.
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
@@ -25,10 +25,13 @@ var db = mongoose.connect(connectionString);
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || '3000';
-app.listen(port, ipaddress);
+
+app.listen(port, ipaddress, function() {
+    console.log('listening');
+});
 
 // For assignments only
-console.log(mongoose);
+//console.log(mongoose);
 //require('./public/assignment/server/app.js')(app, mongoose);
 require('./public/assignment/server/app.js')(app, mongoose, db);
 
