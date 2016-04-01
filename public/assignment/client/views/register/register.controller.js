@@ -12,7 +12,7 @@
         function register(username, password, password2, email) {
             // Check for password consistency before creating user.
             if (password == password2) {
-                var enteredUser = {"username": username, "password": password, "email": email};
+                var enteredUser = {"username": username, "password": password, "emails": email};
                 UserService.createUser(enteredUser)
                     .then(function (returnedUsers) {
 
@@ -29,7 +29,11 @@
 
                             if (returnedUsers.data[i].username == username) {
                                 var userFound = returnedUsers.data[i];
-                                $rootScope.currentUser = userFound;
+
+                                // Converts emails and phones from arrays to comma separated strings.
+                                var clientUser = emailAndPhoneToCsv(userFound);
+
+                                $rootScope.currentUser = clientUser;
                                 $location.url("/profile");
                             }
                         }
@@ -39,6 +43,27 @@
             } else {
                 alert("Password and password verification do not match. Please re-enter details.");
             }
+        }
+
+        function emailAndPhoneToCsv(userFound) {
+            var clientUser = userFound;
+            var userEmails = arrayToCsv(userFound.emails);
+            var userPhones = arrayToCsv(userFound.phones);
+            clientUser.emails = userEmails;
+            clientUser.phones = userPhones;
+            return clientUser;
+        }
+
+        function arrayToCsv(array) {
+            var commaSeparatedString = "";
+            for (var i = 0; i < array.length; i++) {
+                if (i < array.length - 1) {
+                    commaSeparatedString = commaSeparatedString + array[i] + ",";
+                } else {
+                    commaSeparatedString = commaSeparatedString + array[i];
+                }
+            }
+            return commaSeparatedString;
         }
     }
 })();

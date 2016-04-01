@@ -3,53 +3,63 @@
 <!-- Profile Fields -->
 <form class="form-horizontal">
     <div class="form-group">
-        <label for="inputText1" class="col-sm-2 control-label">Username:</label>
+        <label for="usernameInput" class="col-sm-2 control-label">Username:</label>
         <div class="col-sm-10">
             <input ng-model="currentUser.username"
                    type="text"
                    class="form-control"
-                   id="inputText1"
+                   id="usernameInput"
                    placeholder="Username">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword1" class="col-sm-2 control-label">Password:</label>
+        <label for="passwordInput" class="col-sm-2 control-label">Password:</label>
         <div class="col-sm-10">
             <input ng-model="currentUser.password"
                    type="password"
                    class="form-control"
-                   id="inputPassword1"
+                   id="passwordInput"
                    placeholder="Password">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputText2" class="col-sm-2 control-label">First Name:</label>
+        <label for="firstNameInput" class="col-sm-2 control-label">First Name:</label>
         <div class="col-sm-10">
             <input ng-model="currentUser.firstName"
                    type="text"
                    class="form-control"
-                   id="inputText2"
+                   id="firstNameInput"
                    placeholder="First Name">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputText3" class="col-sm-2 control-label">Last Name:</label>
+        <label for="lastNameInput" class="col-sm-2 control-label">Last Name:</label>
         <div class="col-sm-10">
             <input ng-model="currentUser.lastName"
                    type="text"
                    class="form-control"
-                   id="inputText3"
+                   id="lastNameInput"
                    placeholder="Last Name">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputEmail1" class="col-sm-2 control-label">Email:</label>
+        <label for="emailInput" class="col-sm-2 control-label">Emails:</label>
         <div class="col-sm-10">
-            <input ng-model="currentUser.email"
-                   type="email"
+            <input ng-model="currentUser.emails"
+                   type="text"
                    class="form-control"
-                   id="inputEmail1"
+                   id="emailInput"
                    placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="phoneInput" class="col-sm-2 control-label">Phones:</label>
+        <div class="col-sm-10">
+            <input ng-model="currentUser.phones"
+                   type="text"
+                   class="form-control"
+                   id="phoneInput"
+                   placeholder="Phones">
         </div>
     </div>
     <div class="form-group">

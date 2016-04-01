@@ -34,7 +34,6 @@ module.exports = function(app, formModel) {
         var userId = req.params.userId;
         var formObj = req.body;
         formObj.userId = userId;
-        formObj.fields = [];
         formModel.createForm(formObj)
             .then(function (updatedFormList) {
                 if (updatedFormList) {

@@ -64,7 +64,20 @@
         function createUser(user) {
             var deferred = $q.defer();
 
-            $http.post("/api/assignment/user", user)
+            console.log("user.service.client - user.emails BEFORE conversion");
+            console.log(user.emails);
+            console.log("user.service.client - user.phones BEFORE conversion");
+            console.log(user.phones);
+
+            // Converts emails and phones from comma separated strings to arrays.
+            var serverUser = emailAndPhoneToArray(user);
+
+            console.log("user.service.client - user.email AFTER conversion");
+            console.log(user.emails);
+            console.log("user.service.client - user.phone AFTER conversion");
+            console.log(user.phones);
+
+            $http.post("/api/assignment/user", serverUser)
                 .then(function(users){
                     deferred.resolve(users);
                 }, function (users) {
@@ -90,7 +103,20 @@
         function updateUser(userId, user) {
             var deferred = $q.defer();
 
-            $http.put("/api/assignment/user/" + userId, user)
+            console.log("user.service.client - user.email BEFORE conversion");
+            console.log(user.emails);
+            console.log("user.service.client - user.phone BEFORE conversion");
+            console.log(user.phones);
+
+            // Converts emails and phones from comma separated strings to arrays.
+            var serverUser = emailAndPhoneToArray(user);
+
+            console.log("user.service.client - user.email AFTER conversion");
+            console.log(user.emails);
+            console.log("user.service.client - user.phone AFTER conversion");
+            console.log(user.phones);
+
+            $http.put("/api/assignment/user/" + userId, serverUser)
                 .then(function(users){
                     deferred.resolve(users);
                 }, function (users) {
@@ -98,6 +124,28 @@
                 });
 
             return deferred.promise;
+        }
+
+        function emailAndPhoneToArray(user) {
+            var serverUser = user;
+            if (user.emails) {
+                var userEmails = csvToArray(user.emails);
+                serverUser.emails = userEmails;
+            }
+            if (user.phones) {
+                var userPhones = csvToArray(user.phones);
+                serverUser.phones = userPhones;
+            }
+
+            console.log("user.service.client serverUser");
+            console.log(serverUser);
+
+            return serverUser;
+        }
+
+        function csvToArray(commaSeparatedString) {
+            var array = commaSeparatedString.split(",");
+            return array;
         }
     }
 })();

@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(app, formModel) {
+module.exports = function(app, fieldModel) {
 
     // Form Service Endpoints
     app.post("/api/assignment/form/:formId/field", addFormField);
@@ -13,7 +13,7 @@ module.exports = function(app, formModel) {
     function addFormField(req, res) {
         var formId = req.params.formId;
         var fieldObj = req.body;
-        formModel.addFormField(formId, fieldObj)
+        fieldModel.addFormField(formId, fieldObj)
             .then(function (updatedFields) {
                 if (updatedFields) {
                     res.json(updatedFields);
@@ -25,7 +25,7 @@ module.exports = function(app, formModel) {
 
     function findAllFormFields(req, res) {
         var formId = req.params.formId;
-        formModel.findAllFormFields(formId)
+        fieldModel.findAllFormFields(formId)
             .then(function (formFields) {
                 if (formFields) {
                     res.json(formFields);
@@ -38,7 +38,7 @@ module.exports = function(app, formModel) {
     function findFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        formModel.findFormFieldById(formId, fieldId)
+        fieldModel.findFormFieldById(formId, fieldId)
             .then(function (fieldFound) {
                 if (fieldFound) {
                     res.json(fieldFound);
@@ -52,7 +52,7 @@ module.exports = function(app, formModel) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var fieldObj = req.body;
-        formModel.updateFormFieldById(formId, fieldId, fieldObj)
+        fieldModel.updateFormFieldById(formId, fieldId, fieldObj)
             .then(function (updatedFields) {
                 if (updatedFields) {
                     res.json(updatedFields);
@@ -65,7 +65,7 @@ module.exports = function(app, formModel) {
     function reorderFormFields(req, res) {
         var formId = req.params.formId;
         var fieldsArray = req.body;
-        formModel.reorderFormFields(formId, fieldsArray)
+        fieldModel.reorderFormFields(formId, fieldsArray)
             .then(function (reorderedFields) {
                 if (reorderedFields) {
                     res.json(reorderedFields);
@@ -78,7 +78,7 @@ module.exports = function(app, formModel) {
     function deleteFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        formModel.deleteFormFieldById(formId, fieldId)
+        fieldModel.deleteFormFieldById(formId, fieldId)
             .then(function (updatedFields) {
                 if (updatedFields) {
                     res.json(updatedFields);
