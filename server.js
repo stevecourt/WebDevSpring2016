@@ -11,9 +11,10 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 
-/*
+
 // MongoDB localhost (baseline) or OpenShift configuration, if OPENSHIFT env variables are present
 var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring2016'; // Should ??? be 'localhost' or 127.0.0.1:27017 ?
+/*
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
     connection_string =
         process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -33,7 +34,7 @@ app.listen(port, ipaddress);
 // For assignments only
 //console.log(mongoose);
 //require('./public/assignment/server/app.js')(app, mongoose);
-require('./public/assignment/server/app.js')(app, mongoose);//, db);
+require('./public/assignment/server/app.js')(app, mongoose, db);
 
 
 // Section below under development for project ////////////////////////////
