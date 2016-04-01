@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-var port = process.env.OPENSHIFT_NODEJS_PORT || '3000';
+var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || '3000';
 
 // MongoDB localhost (baseline) or OpenShift configuration, if OPENSHIFT env variables are present
 var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring2016'; // Should ??? be 'localhost' or 127.0.0.1:27017 ?
