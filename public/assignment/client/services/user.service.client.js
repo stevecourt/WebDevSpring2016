@@ -103,6 +103,9 @@
         function updateUser(userId, user) {
             var deferred = $q.defer();
 
+            console.log("user.service.client - userId recived");
+            console.log(userId);
+
             console.log("user.service.client - user.email BEFORE conversion");
             console.log(user.emails);
             console.log("user.service.client - user.phone BEFORE conversion");

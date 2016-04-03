@@ -21,7 +21,7 @@ module.exports = function (mongoose, db) {
 
     function createUser(newUser) {
         var deferred = q.defer();
-        userModel.create(newUser, function (err, users){
+        userModel.create(newUser, function (err, user){
             if (err) {
                 deferred.reject(err);
             } else {
@@ -51,7 +51,7 @@ module.exports = function (mongoose, db) {
 
     function findUserById(userId) {
         var deferred = q.defer();
-        userModel.findById({_id: userId}, function (err, userFound){
+        userModel.findById(userId, function (err, userFound){
             if(err){
                 deferred.reject(err);
             }else{

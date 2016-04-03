@@ -60,10 +60,21 @@ module.exports = function (mongoose, db) { //TODO Check is db and app are needed
 
     function findFormById(formId) {
         var deferred = q.defer();
-        formModel.findById({_Id: formId}, function (err, formFound) {
+
+        console.log("formId received by form model");
+        console.log(formId);
+
+        formModel.findById(formId, function (err, formFound) {
             if (err) {
+
+                console.log("form not found");
+
                 deferred.reject(err);
             } else {
+
+                console.log("form found");
+                console.log(formFound);
+
                 deferred.resolve(formFound);
             }
         });
@@ -84,7 +95,7 @@ module.exports = function (mongoose, db) { //TODO Check is db and app are needed
 
     function updateFormById(formId, formGiven) {
         var deferred = q.defer();
-        formModel.update({_id: formId}, {$set: formGiven}, function (err, user) {
+        formModel.update({_id: formId}, {$set: formGiven}, function (err, form) {
             if (err) {
                 deferred.reject(err);
             } else {

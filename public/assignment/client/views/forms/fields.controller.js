@@ -10,12 +10,15 @@
         // Main controller functions
         $scope.addField = addField;
         $scope.cloneField = cloneField;
+        $scope.updateField = updateField;
         $scope.deleteField = deleteField;
         $scope.reorderFields = reorderFields;
 
         // Dialog boxes
         $scope.openModDialogSingle = openModDialogSingle;
         $scope.openModDialogMultiple = openModDialogMultiple;
+        $scope.openModDialogEmail = openModDialogEmail;
+        $scope.openModDialogPassword = openModDialogPassword;
         $scope.openModDialogDate = openModDialogDate;
         $scope.openModDialogDropdown = openModDialogDropdown;
         $scope.openModDialogCheckbox = openModDialogCheckbox;
@@ -43,20 +46,37 @@
                 });
         }
 
+        // Get for current form's title for rendering
+        getCurrentForm($scope.formId);
+        function getCurrentForm(formId) {
+            FormService.findFormById(formId)
+                .then (function (returnedForm) {
+                    $scope.form = returnedForm.data;
+                }, function (returnedForm) {
+                    console.log("Error: Could not retrieve current form.");
+                });
+        }
+
         function addField(fieldType) {
             var newField = {};
             switch(fieldType) { // Create appropriate field
                 case "Single Line Text Field":
-                    newField = {"_id": null, "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
+                    newField = {"label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
                     break;
                 case "Multi Line Text Field":
-                    newField = {"_id": null, "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
+                    newField = {"label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
+                    break;
+                case "Email Field":
+                    newField = {"label": "New Email", "type": "EMAIL", "placeholder": "New Email"};
+                    break;
+                case "Password Field":
+                    newField = {"label": "New Password", "type": "PASSWORD", "placeholder": "New Password"};
                     break;
                 case "Date Field":
-                    newField = {"_id": null, "label": "New Date Field", "type": "DATE"};
+                    newField = {"label": "New Date Field", "type": "DATE"};
                     break;
                 case "Dropdown Field":
-                    newField = {"_id": null, "label": "New Dropdown", "type": "OPTIONS", "options":
+                    newField = {"label": "New Dropdown", "type": "OPTIONS", "options":
                         [
                         {"label": "Option 1", "value": "OPTION_1"},
                         {"label": "Option 2", "value": "OPTION_2"},
@@ -64,14 +84,14 @@
                     ]};
                     break;
                 case "Checkboxes Field":
-                    newField = {"_id": null, "label": "New Checkboxes", "type": "CHECKBOXES", "options": [
+                    newField = {"label": "New Checkboxes", "type": "CHECKBOXES", "options": [
                         {"label": "Option A", "value": "OPTION_A"},
                         {"label": "Option B", "value": "OPTION_B"},
                         {"label": "Option C", "value": "OPTION_C"}
                     ]};
                     break;
                 case "Radio Buttons Field":
-                    newField = {"_id": null, "label": "New Radio Buttons", "type": "RADIOS", "options": [
+                    newField = {"label": "New Radio Buttons", "type": "RADIOS", "options": [
                         {"label": "Option X", "value": "OPTION_X"},
                         {"label": "Option Y", "value": "OPTION_Y"},
                         {"label": "Option Z", "value": "OPTION_Z"}
@@ -89,7 +109,20 @@
         }
 
         function cloneField(field) {
-            var returnedFields = FieldService.createFieldForForm($scope.formId, field)
+
+            var optionArray = [];
+            if (field.options) {
+                optionArray = field.options;
+            }
+
+            var newField = {
+                "label": field.label,
+                "placeholder": field.placeholder,
+                "options": optionArray,
+                "type": field.type
+            };
+
+            var returnedFields = FieldService.createFieldForForm($scope.formId, newField)
                 .then (function (returnedFields) {
                     $scope.model.fields = returnedFields.data;
                 }, function (returnedFields) {
@@ -110,6 +143,10 @@
             var fieldId = field._id;
             var returnedFields = FieldService.deleteFieldFromForm($scope.formId, fieldId)
                 .then(function (returnedFields) {
+
+                    console.log("returned fields");
+                    console.log(returnedFields.data);
+
                     $scope.model.fields = returnedFields.data;
                 }, function () {
                     console.log("Error: The field was not deleted from the form.");
@@ -199,6 +236,82 @@
                 },
                 close: function () {
                     dialogDefinitionMultiple.dialog("destroy");
+                }
+            });
+        }
+
+        // Email
+        function openModDialogEmail(index) {
+            $scope.selectedIndex = index;
+            $scope.dialogLabelEmail = $scope.model.fields[index].label;
+            $scope.dialogPlaceholderEmail = $scope.model.fields[index].placeholder;
+
+            defineDialogEmail();
+            $( "#dialogEmail" ).dialog("open");
+        }
+
+        function defineDialogEmail() {
+            var dialogDefinitionEmail = $("#dialogEmail").dialog({
+                autoOpen: false,
+                height: 270,
+                width: 240,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    Cancel: function () {
+                        dialogDefinitionEmail.dialog("destroy");
+                    },
+                    "OK": function () {
+                        var formId = $scope.formId;
+                        var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+                        var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                        modifiedField.label = $scope.dialogLabelEmail;
+                        modifiedField.placeholder = $scope.dialogPlaceholderEmail;
+
+                        updateField(formId, fieldId, modifiedField);
+                        dialogDefinitionEmail.dialog("destroy");
+                    }
+                },
+                close: function() {
+                    dialogDefinitionEmail.dialog("destroy");
+                }
+            });
+        }
+
+        // Password
+        function openModDialogPassword(index) {
+            $scope.selectedIndex = index;
+            $scope.dialogLabelPassword = $scope.model.fields[index].label;
+            $scope.dialogPlaceholderPassword = $scope.model.fields[index].placeholder;
+
+            defineDialogPassword();
+            $( "#dialogPassword" ).dialog("open");
+        }
+
+        function defineDialogPassword() {
+            var dialogDefinitionPassword = $("#dialogPassword").dialog({
+                autoOpen: false,
+                height: 270,
+                width: 240,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    Cancel: function () {
+                        dialogDefinitionPassword.dialog("destroy");
+                    },
+                    "OK": function () {
+                        var formId = $scope.formId;
+                        var fieldId = $scope.model.fields[$scope.selectedIndex]._id;
+                        var modifiedField = $scope.model.fields[$scope.selectedIndex];
+                        modifiedField.label = $scope.dialogLabelPassword;
+                        modifiedField.placeholder = $scope.dialogPlaceholderPassword;
+
+                        updateField(formId, fieldId, modifiedField);
+                        dialogDefinitionPassword.dialog("destroy");
+                    }
+                },
+                close: function() {
+                    dialogDefinitionPassword.dialog("destroy");
                 }
             });
         }

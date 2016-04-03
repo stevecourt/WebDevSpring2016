@@ -20,6 +20,9 @@
         function createFieldForForm(formId, field) {
             var deferred = $q.defer();
 
+            console.log("field sent = ");
+            console.log(field);
+
             $http.post("/api/assignment/form/" + formId + "/field", field)
                 .then(function(fields){
                     deferred.resolve(fields);

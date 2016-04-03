@@ -1,4 +1,4 @@
-<h1 class="page-header">Forms: Registration</h1>
+<h1 class="page-header">Forms: Registration {{form.title}}</h1>
 
 <!-- Tabs -->
 <ul class="nav nav-tabs">
@@ -52,6 +52,56 @@
                         </div>
                         <div class="col-xs-8 col-sm-4 col-md-3">
                             <button type="button" class="btn btn-default" ng-click="openModDialogMultiple($index)">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="cloneField(field)">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="deleteField(field)">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                            <button id="reorderButton"
+                                    type="button"
+                                    class="btn btn-default"
+                                    ng-click="addField(model.fieldType)">
+                                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div ng-switch-when="EMAIL" class="text-nowrap">
+                        <div class="col-xs-4 col-sm-8 col-md-9">
+                            <input type="email"
+                                   class="form-control"
+                                   id="{{field._id}}"
+                                   placeholder="{{field.placeholder}}">
+                        </div>
+                        <div class="col-xs-8 col-sm-4 col-md-3">
+                            <button type="button" class="btn btn-default" ng-click="openModDialogEmail($index)">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="cloneField(field)">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="deleteField(field)">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                            <button id="reorderButton"
+                                    type="button"
+                                    class="btn btn-default"
+                                    ng-click="addField(model.fieldType)">
+                                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div ng-switch-when="PASSWORD" class="text-nowrap">
+                        <div class="col-xs-4 col-sm-8 col-md-9">
+                            <input type="password"
+                                   class="form-control"
+                                   id="{{field._id}}"
+                                   placeholder="{{field.placeholder}}">
+                        </div>
+                        <div class="col-xs-8 col-sm-4 col-md-3">
+                            <button type="button" class="btn btn-default" ng-click="openModDialogPassword($index)">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             </button>
                             <button type="button" class="btn btn-default" ng-click="cloneField(field)">
@@ -184,8 +234,8 @@
             <select ng-model="model.fieldType" class="form-control" id="newFieldInput">
                 <option>Single Line Text Field</option>
                 <option>Multi Line Text Field</option>
-                <option>Email</option>
-                <option>Password</option>
+                <option>Email Field</option>
+                <option>Password Field</option>
                 <option>Date Field</option>
                 <option>Dropdown Field</option>
                 <option>Checkboxes Field</option>
@@ -247,6 +297,54 @@
                    placeholder="Placeholder"
                    class="text ui-widget-content ui-corner-all"
                    ng-model="dialogPlaceholderMultiple">
+        </fieldset>
+    </form>
+</div>
+
+<!-- Email Dialog -->
+<div class=displayInDialog id="dialogEmail" title="Email Field">
+    <form>
+        <fieldset>
+            <div>
+                <label for="labelEmail" class="dialogBoxLabels">Label</label>
+            </div>
+            <input type="text"
+                   id="labelEmail"
+                   placeholder="Label"
+                   class="text ui-widget-content ui-corner-all"
+                   ng-model="dialogLabelEmail">
+            <div>
+                <label for="placeholderEmail" class="dialogBoxLabels">Placeholder</label>
+            </div>
+            <input type="text"
+                   id="placeholderEmail"
+                   placeholder="Placeholder"
+                   class="text ui-widget-content ui-corner-all"
+                   ng-model="dialogPlaceholderEmail">
+        </fieldset>
+    </form>
+</div>
+
+<!-- Password Dialog -->
+<div class=displayInDialog id="dialogPassword" title="Password Field">
+    <form>
+        <fieldset>
+            <div>
+                <label for="labelPassword" class="dialogBoxLabels">Label</label>
+            </div>
+            <input type="text"
+                   id="labelPassword"
+                   placeholder="Label"
+                   class="text ui-widget-content ui-corner-all"
+                   ng-model="dialogLabelPassword">
+            <div>
+                <label for="placeholderPassword" class="dialogBoxLabels">Placeholder</label>
+            </div>
+            <input type="text"
+                   id="placeholderPassword"
+                   placeholder="Placeholder"
+                   class="text ui-widget-content ui-corner-all"
+                   ng-model="dialogPlaceholderPassword">
         </fieldset>
     </form>
 </div>

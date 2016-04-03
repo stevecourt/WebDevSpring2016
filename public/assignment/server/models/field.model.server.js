@@ -2,11 +2,13 @@
 
 var q = require("q");
 
-module.exports = function (mongoose, db, formModel) { //TODO Check is db and app are needed here
+module.exports = function (mongoose, formModel) { //TODO Check is db and app are needed here
 
     //var formModel = require('./form.model.server.js') (mongoose); //TODO Add (mongoose) ???
     var fieldSchema = require('./field.schema.server.js') (mongoose); //TODO find out whether forms, fields or bot are needed
     var fieldModel = mongoose.model("field", fieldSchema);
+    var db_form_model = formModel.getDbModel();
+
 
     var api = {
         addFormField: addFormField,
@@ -18,17 +20,38 @@ module.exports = function (mongoose, db, formModel) { //TODO Check is db and app
     };
     return api;
 
-    //var db_form_model = formModel.getDbModel();
-
     function addFormField(formId, field) {
         var deferred = q.defer();
-        formModel.findById({_Id: formId}, function (err, formFound) {
+        console.log("");
+        console.log("field received by field model");
+        console.log(field);
+        console.log("");
+        console.log("formId received by field model");
+        console.log(formId);
+        fieldModel.create(field, function (err, createdField) {
             if (err) {
                 deferred.reject(err);
             } else {
-                formFound.fields.push(field);
-                formFound.save(function (err, formSaved) {
-                    deferred.resolve(formSaved.fields);
+                console.log("");
+                console.log("created field from db");
+                console.log(createdField);
+                db_form_model.findById(formId, function (err, formFound) {
+                    if (err) {
+                        console.log("");
+                        console.log("form not found");
+                        deferred.reject(err);
+                    } else {
+                        console.log("");
+                        console.log("field.model.server - addFormField BEFORE adding");
+                        console.log(formFound);
+                        formFound.fields.push(createdField);
+                        console.log("");
+                        console.log("field.model.server - addFormField AFTER adding");
+                        console.log(formFound);
+                        formFound.save(function (err, formSaved) {
+                            deferred.resolve(formSaved.fields);
+                        });
+                    }
                 });
             }
         });
@@ -37,7 +60,7 @@ module.exports = function (mongoose, db, formModel) { //TODO Check is db and app
 
     function findAllFormFields(formId) {
         var deferred = q.defer();
-        formModel.findById({_Id: formId}, function (err, formFound) {
+        db_form_model.findById(formId, function (err, formFound) {
             if (err) {
                 deferred.reject(err);
             } else {
@@ -49,41 +72,70 @@ module.exports = function (mongoose, db, formModel) { //TODO Check is db and app
 
     function findFormFieldById(formId, fieldId) {
         var deferred = q.defer();
-        formModel.findById({_Id: formId}, function (err, formFound) {
+        db_form_model.findById(formId, function (err, formFound) {
             if (err) {
                 deferred.reject(err);
             } else {
-                //formFound.findById({_Id: fieldId}, function (err, fieldFound) {
-                //    deferred.resolve(fieldFound);
-                //});
                 var fields = formFound.fields;
                 for (var i = 0; i < fields.length; i++) {
                     if (fields[i]._id == fieldId) {
                         deferred.resolve(fields[i]);
                     }
                 }
-                deferred.reject(err);
             }
         });
         return deferred.promise;
     }
 
-    function updateFormFieldById(formId, fieldId, field) {
+    function updateFormFieldById(formId, fieldId, fieldGiven) {
         var deferred = q.defer();
-        formModel.findById({_Id: formId}, function (err, formFound) {
+
+        console.log("in update");
+        console.log("form id");
+        console.log(formId);
+        console.log("field id");
+        console.log(fieldId);
+        console.log("field given");
+        console.log(fieldGiven);
+
+        db_form_model.findById(formId, function (err, formFound) {
             if (err) {
+
+                console.log("form not found");
+
                 deferred.reject(err);
             } else {
+
+                console.log("form found");
+                console.log(formFound);
+
                 var fields = formFound.fields;
                 for (var i = 0; i < fields.length; i++) {
                     if (fields[i]._id == fieldId) {
-                        formFound.fields[i] = field;
-                        formFound.save(function (err, form) {
-                            deferred.resolve(form.fields);
+
+                        console.log("field match found");
+                        console.log("field given");
+                        console.log(fieldGiven);
+                        console.log("field in form");
+                        console.log(formFound.fields[i]);
+
+                        // Update the field in the field collection
+                        fieldModel.update({_id: fieldId}, {$set: fieldGiven}, function (err, fieldReturned) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                        });
+
+                        // Update the field in the form
+                        formFound.fields[i].label = fieldGiven.label;
+                        formFound.fields[i].placeholder = fieldGiven.placeholder;
+                        formFound.fields[i].options = fieldGiven.options;
+
+                        formFound.save(function (err, formSaved) {
+                            deferred.resolve(formSaved.fields);
                         });
                     }
                 }
-                deferred.reject(err);
             }
         });
         return deferred.promise;
@@ -91,20 +143,49 @@ module.exports = function (mongoose, db, formModel) { //TODO Check is db and app
 
     function deleteFormFieldById(formId, fieldId) {
         var deferred = q.defer();
-        formModel.findById({_Id: formId}, function (err, formFound) {
+        db_form_model.findById(formId, function (err, formFound) {
             if (err) {
                 deferred.reject(err);
             } else {
                 var fields = formFound.fields;
                 for (var i = 0; i < fields.length; i++) {
                     if (fields[i]._id == fieldId) {
+
+                        // Remove field from field collection
+                        fieldModel.remove({_id: fieldId}, function (err, allFields) {
+                            if (err) {
+                                deferred.reject(err);
+                            } else {
+                                console.log("Fields id");
+                                console.log(fieldId);
+                                console.log("Fields after removal");
+                                console.log(allFields);
+                            }
+                        });
+                        console.log("fields BEFORE");
+                        console.log(formFound.fields);
+                        console.log("i =");
+                        console.log(i);
+
+                        // Remove field from form
                         formFound.fields.splice(i, 1);
-                        formFound.save(function (err, form) {
-                            deferred.resolve(form.fields);
+
+                        console.log("fields AFTER");
+                        console.log(formFound.fields);
+
+
+                        formFound.save(function (err, formSaved) {
+                            if (err) {
+                                deferred.reject(err);
+                            } else {
+                                console.log("fields returned");
+                                console.log(formSaved.fields);
+
+                                deferred.resolve(formSaved.fields);
+                            }
                         });
                     }
                 }
-                deferred.reject(err);
             }
         });
         return deferred.promise;
@@ -112,7 +193,7 @@ module.exports = function (mongoose, db, formModel) { //TODO Check is db and app
 
     function reorderFormFields(formId, fieldsArray) {
         var deferred = q.defer();
-        formModel.findById({_Id: formId}, function (err, formFound) {
+        db_form_model.findById(formId, function (err, formFound) {
             if (err) {
                 deferred.reject(err);
             } else {
