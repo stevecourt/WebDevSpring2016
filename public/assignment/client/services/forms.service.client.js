@@ -10,7 +10,6 @@
         var api = {
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
-            findFormById: findFormById,
             deleteFormById: deleteFormById,
             updateFormById: updateFormById
         };
@@ -41,19 +40,6 @@
             return deferred.promise;
         }
 
-        function findFormById(formId) {
-            var deferred = $q.defer();
-
-            $http.get("/api/assignment/form/" + formId + "/form")
-                .then(function(form){
-                    deferred.resolve(form);
-                }, function (form) {
-                    deferred.reject(form);
-                });
-
-            return deferred.promise;
-        }
-
         function deleteFormById(formId) {
             var deferred = $q.defer();
 
@@ -72,10 +58,6 @@
 
             $http.put("/api/assignment/form/" + formId, newForm)
                 .then(function(forms){
-
-                    console.log("forms.service.client - forms returned");
-                    console.log(forms);
-
                     deferred.resolve(forms);
                 }, function (forms) {
                     deferred.reject(forms);

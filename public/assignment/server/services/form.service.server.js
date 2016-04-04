@@ -92,10 +92,6 @@ module.exports = function(app, formModel) {
         formModel.updateFormById(formId, formObj)
             .then(function (updatedFormList) {
                 if (updatedFormList) {
-
-                    console.log("");
-                    console.log("form.service.server - update - forms found = " + updatedFormList);
-
                     res.json(updatedFormList);
                 } else {
                     res.send(404);

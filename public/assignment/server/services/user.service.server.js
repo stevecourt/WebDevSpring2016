@@ -41,16 +41,8 @@ module.exports = function (app, userModel) {
             userModel.findUserByCredentials(userCredentials)
                 .then(function (userFound) {
                     if (userFound) {
-
-                        console.log("");
-                        console.log("user.server.service - userFound = " + userFound);
-
                         res.json(userFound);
                     } else {
-
-                        console.log("");
-                        console.log("user.server.service - user not found (i.e. null)");
-
                         res.send(404);
                     }
                 });

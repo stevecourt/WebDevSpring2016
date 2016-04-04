@@ -15,24 +15,11 @@
                 var enteredUser = {"username": username, "password": password, "emails": email};
                 UserService.createUser(enteredUser)
                     .then(function (returnedUsers) {
-
-                        console.log("register.controller - returnedUsers = ...");
-                        console.log(returnedUsers.data);
-
                         for (var i = 0; i < returnedUsers.data.length; i++) {
-
-                            console.log("returnedUser =");
-                            console.log(returnedUsers.data[i].username);
-
-                            console.log("usernameGiven =");
-                            console.log(username);
-
                             if (returnedUsers.data[i].username == username) {
                                 var userFound = returnedUsers.data[i];
-
                                 // Converts emails and phones from arrays to comma separated strings.
                                 var clientUser = emailAndPhoneToCsv(userFound);
-
                                 $rootScope.currentUser = clientUser;
                                 $location.url("/profile");
                             }

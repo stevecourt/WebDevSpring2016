@@ -1,9 +1,8 @@
 "use strict";
 
 var q = require("q");
-//var forms = require('./form.mock.json');
 
-module.exports = function (mongoose, db) { //TODO Check is db and app are needed here
+module.exports = function (mongoose) {
 
     var formSchema = require('./form.schema.server.js')(mongoose);
     var formModel = mongoose.model("form", formSchema);
@@ -60,21 +59,10 @@ module.exports = function (mongoose, db) { //TODO Check is db and app are needed
 
     function findFormById(formId) {
         var deferred = q.defer();
-
-        console.log("formId received by form model");
-        console.log(formId);
-
         formModel.findById(formId, function (err, formFound) {
             if (err) {
-
-                console.log("form not found");
-
                 deferred.reject(err);
             } else {
-
-                console.log("form found");
-                console.log(formFound);
-
                 deferred.resolve(formFound);
             }
         });
@@ -103,10 +91,6 @@ module.exports = function (mongoose, db) { //TODO Check is db and app are needed
                     if (err) {
                         deferred.reject(err);
                     } else {
-
-                        console.log("");
-                        console.log("form.model - update - forms found = " + forms[0]);
-
                         deferred.resolve(forms);
                     }
                 });

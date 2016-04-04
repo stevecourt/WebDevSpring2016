@@ -13,15 +13,13 @@
             getFieldForForm: getFieldForForm,
             deleteFieldFromForm: deleteFieldFromForm,
             updateField: updateField,
-            reorderFieldsForForm: reorderFieldsForForm
+            reorderFieldsForForm: reorderFieldsForForm,
+            findFormById: findFormById
         };
         return api;
 
         function createFieldForForm(formId, field) {
             var deferred = $q.defer();
-
-            console.log("field sent = ");
-            console.log(field);
 
             $http.post("/api/assignment/form/" + formId + "/field", field)
                 .then(function(fields){
@@ -92,6 +90,21 @@
                     deferred.resolve(fields);
                 }, function (fields) {
                     deferred.reject(fields);
+                });
+
+            return deferred.promise;
+        }
+
+        // Talks to the server side forms service.  Form title is needed for
+        // rendering, but only the form id is available from route params.
+        function findFormById(formId) {
+            var deferred = $q.defer();
+
+            $http.get("/api/assignment/form/" + formId)
+                .then(function(form){
+                    deferred.resolve(form);
+                }, function (form) {
+                    deferred.reject(form);
                 });
 
             return deferred.promise;

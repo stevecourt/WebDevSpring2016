@@ -30,17 +30,10 @@
         // Get the current forms's fields for rendering.
         getFormFields($scope.formId);
         function getFormFields(formId) {
-            var returnedFields = FieldService.getFieldsForForm(formId)
+            FieldService.getFieldsForForm(formId)
                 .then (function (returnedFields) {
                     $scope.model = {};
                     $scope.model.fields = returnedFields.data;
-
-                    // Temporary debugging code
-                    console.log("Stage 1 - Field page entry $scope.selectedIndex = " + $scope.selectedIndex);
-                    console.log("Stage 1 - Field page entry $scope.dialogLabelSingle = " + $scope.dialogLabelSingle);
-                    console.log("Stage 1 - Field page entry $scope.dialogPlaceholderSingle = " + $scope.dialogPlaceholderSingle);
-                    // Temporary debugging code
-
                 }, function (returnedFields) {
                     console.log("Error: Could not retrieve form's fields.");
                 });
@@ -49,7 +42,7 @@
         // Get for current form's title for rendering
         getCurrentForm($scope.formId);
         function getCurrentForm(formId) {
-            FormService.findFormById(formId)
+            FieldService.findFormById(formId)
                 .then (function (returnedForm) {
                     $scope.form = returnedForm.data;
                 }, function (returnedForm) {
@@ -99,7 +92,7 @@
                     break;
             }
             if (fieldType != undefined) {
-                var returnedFields = FieldService.createFieldForForm($scope.formId, newField)
+                FieldService.createFieldForForm($scope.formId, newField)
                     .then (function (returnedFields) {
                         $scope.model.fields = returnedFields.data;
                     }, function (returnedFields) {
@@ -122,7 +115,7 @@
                 "type": field.type
             };
 
-            var returnedFields = FieldService.createFieldForForm($scope.formId, newField)
+            FieldService.createFieldForForm($scope.formId, newField)
                 .then (function (returnedFields) {
                     $scope.model.fields = returnedFields.data;
                 }, function (returnedFields) {
@@ -131,7 +124,7 @@
         }
 
         function updateField(formId, fieldId, field) {
-            var returnedFields = FieldService.updateField(formId, fieldId, field)
+            FieldService.updateField(formId, fieldId, field)
                 .then(function (returnedFields) {
                     $scope.model.fields = returnedFields.data;
                 }, function (returnedForms) {
@@ -141,12 +134,8 @@
 
         function deleteField(field) {
             var fieldId = field._id;
-            var returnedFields = FieldService.deleteFieldFromForm($scope.formId, fieldId)
+            FieldService.deleteFieldFromForm($scope.formId, fieldId)
                 .then(function (returnedFields) {
-
-                    console.log("returned fields");
-                    console.log(returnedFields.data);
-
                     $scope.model.fields = returnedFields.data;
                 }, function () {
                     console.log("Error: The field was not deleted from the form.");
@@ -154,7 +143,7 @@
         }
 
         function reorderFields(formId, fields) {
-            var returnedFields = FieldService.reorderFieldsForForm(formId, fields)
+            FieldService.reorderFieldsForForm(formId, fields)
                 .then(function (returnedFields) {
                     $scope.model.fields = returnedFields.data;
                 }, function (returnedFields) {

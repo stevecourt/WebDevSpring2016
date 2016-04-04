@@ -35,14 +35,8 @@
 
             $http.get("/api/assignment/user?username=" + username + "&password=" + password)
                 .then(function(user){
-
-                    console.log("user.service.client - login - username = " + user.data.username);
-
                     deferred.resolve(user);
                 }, function (user) {
-
-                    console.log("user.service.client - login - null");
-
                     deferred.reject(user);
                 });
 
@@ -64,19 +58,8 @@
         function createUser(user) {
             var deferred = $q.defer();
 
-            console.log("user.service.client - user.emails BEFORE conversion");
-            console.log(user.emails);
-            console.log("user.service.client - user.phones BEFORE conversion");
-            console.log(user.phones);
-
             // Converts emails and phones from comma separated strings to arrays.
             var serverUser = emailAndPhoneToArray(user);
-
-            console.log("user.service.client - user.email AFTER conversion");
-            console.log(user.emails);
-            console.log("user.service.client - user.phone AFTER conversion");
-            console.log(user.phones);
-
             $http.post("/api/assignment/user", serverUser)
                 .then(function(users){
                     deferred.resolve(users);
@@ -103,22 +86,8 @@
         function updateUser(userId, user) {
             var deferred = $q.defer();
 
-            console.log("user.service.client - userId recived");
-            console.log(userId);
-
-            console.log("user.service.client - user.email BEFORE conversion");
-            console.log(user.emails);
-            console.log("user.service.client - user.phone BEFORE conversion");
-            console.log(user.phones);
-
             // Converts emails and phones from comma separated strings to arrays.
             var serverUser = emailAndPhoneToArray(user);
-
-            console.log("user.service.client - user.email AFTER conversion");
-            console.log(user.emails);
-            console.log("user.service.client - user.phone AFTER conversion");
-            console.log(user.phones);
-
             $http.put("/api/assignment/user/" + userId, serverUser)
                 .then(function(users){
                     deferred.resolve(users);
@@ -139,10 +108,6 @@
                 var userPhones = csvToArray(user.phones);
                 serverUser.phones = userPhones;
             }
-
-            console.log("user.service.client serverUser");
-            console.log(serverUser);
-
             return serverUser;
         }
 

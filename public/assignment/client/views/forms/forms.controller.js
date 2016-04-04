@@ -17,7 +17,7 @@
         // Get the current user's forms for rendering.
         getUserForms(user);
         function getUserForms(user) {
-            var returnedForms = FormService.findAllFormsForUser(user._id)
+            FormService.findAllFormsForUser(user._id)
                 .then (function (returnedForms) {
                     $scope.userForms = returnedForms.data;
                 }, function (returnedForms) {
@@ -27,7 +27,7 @@
 
         function addForm(formTitle) {
             var newForm = {title: formTitle};
-            var returnedForms = FormService.createFormForUser(user._id, newForm)
+            FormService.createFormForUser(user._id, newForm)
                 .then (function (returnedForms) {
                     $scope.userForms = returnedForms.data;
                 }, function (returnedForms) {
@@ -42,17 +42,11 @@
                 _id: formId,
                 title: formTitle,
                 userId: formUserId};
-            var returnedForms = FormService.updateFormById(newForm._id, newForm)
+            FormService.updateFormById(newForm._id, newForm)
                 .then(function (returnedForms) {
                     // Filter the forms for the user.
-
-                    console.log(returnedForms.data);
-
                     var allUserForms = [];
                     for (var i = 0; i < returnedForms.data.length; i++) {
-
-                        console.log(returnedForms.data[i].userId);
-
                         if (returnedForms.data[i].userId == formUserId) {
                             allUserForms.push(returnedForms.data[i]);
                         }
@@ -64,15 +58,13 @@
         }
 
         function deleteForm(index) {
-            var returnedForms = FormService.deleteFormById($scope.userForms[index]._id)
+            FormService.deleteFormById($scope.userForms[index]._id)
                 .then(function (returnedForms) {
-                    // Filter the forms for the user.
 
-                    //var formUserId = $scope.selectedForm.userId;
                     var formUserId = $scope.userForms[index].userId;
-
                     var allUserForms = [];
 
+                    // Filter the forms for the user.
                     for (var i = 0; i < returnedForms.data.length; i++) {
                         if (returnedForms.data[i].userId == formUserId) {
                             allUserForms.push(returnedForms.data[i]);

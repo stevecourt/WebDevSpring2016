@@ -84,21 +84,9 @@ module.exports = function(app, fieldModel) {
         var fieldId = req.params.fieldId;
         fieldModel.deleteFormFieldById(formId, fieldId)
             .then(function (updatedFields) {
-
-                console.log("fields returned from field service");
-                console.log(updatedFields);
-
                 if (updatedFields) {
-
-                    console.log("fields returned from field service");
-                    console.log(updatedFields);
-
                     res.json(updatedFields);
                 } else {
-
-                    console.log("error returned from field service");
-                    console.log(updatedFields);
-
                     res.send(404);
                 }
             });
