@@ -4,6 +4,10 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
+//var passport = require('passport');
+//var cookieParser = require('cookie-parser');
+//var session = require('express-session');
+
 var app = express();
 app.use(express.static(__dirname + '/public')); // Location of assignment and project
 
@@ -11,16 +15,28 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 
+/*
+app.use(session({
+    secret: 'this is the secret',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+*/
+
 // MongoDB localhost (baseline) or OpenShift configuration, if OPENSHIFT env variables are present
 var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring2016';
+/*
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
     connection_string =
         process.env.OPENSHIFT_MONGODB_DB_URL;
 } else {
     console.log("openshift process env not found");
 }
+*/
 
-/*
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
     connection_string =
         process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -29,7 +45,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
         process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
         process.env.OPENSHIFT_APP_NAME;
 }
-*/
+
 
 mongoose.connect(connectionString);
 
