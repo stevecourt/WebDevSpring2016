@@ -19,16 +19,12 @@
                 },
                 stop: function(event, ui) {
                     end = ui.item.index();
-                    var temp = scope.model.fields[start];
-                    scope.model.fields[start] = scope.model.fields[end];
-                    scope.model.fields[end] = temp;
-                    scope.$apply();
-                    scope.reorderFields(scope.formId, scope.model.fields);
+                    scope.moveField(start, end);
                 }
             });
         }
         return {
             link: link
-        }
+        };
     }
 })();

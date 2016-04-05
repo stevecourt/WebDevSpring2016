@@ -7,16 +7,12 @@ module.exports = function(app, fieldModel) {
     app.get("/api/assignment/form/:formId/field", findAllFormFields);
     app.get("/api/assignment/form/:formId/field/:fieldId", findFormFieldById);
     app.put("/api/assignment/form/:formId/field/:fieldId", updateFormFieldById);
-    app.put("/api/assignment/form/:formId/fields", reorderFormFields);
+    app.put("/api/assignment/form/:formId/field", reorderFields);
     app.delete("/api/assignment/form/:formId/field/:fieldId", deleteFormFieldById);
 
     function addFormField(req, res) {
         var formId = req.params.formId;
         var fieldObj = req.body;
-
-        console.log("field received");
-        console.log(fieldObj);
-
         fieldModel.addFormField(formId, fieldObj)
             .then(function (updatedFields) {
                 if (updatedFields) {
@@ -66,17 +62,20 @@ module.exports = function(app, fieldModel) {
             });
     }
 
-    function reorderFormFields(req, res) {
+    function reorderFields(req, res) {
         var formId = req.params.formId;
-        var fieldsArray = req.body;
-        fieldModel.reorderFormFields(formId, fieldsArray)
-            .then(function (reorderedFields) {
-                if (reorderedFields) {
-                    res.json(reorderedFields);
-                } else {
-                    res.send(404);
-                }
-            });
+        var startIndex = req.query.startIndex;
+        var endIndex = req.query.endIndex;
+        if (startIndex && endIndex) {
+            fieldModel.reorderFields(formId, startIndex, endIndex)
+                .then(function (reorderedFields) {
+                    if (reorderedFields) {
+                        return res.send(200);
+                    } else {
+                        return res.send(400);
+                    }
+                });
+        }
     }
 
     function deleteFormFieldById(req, res) {

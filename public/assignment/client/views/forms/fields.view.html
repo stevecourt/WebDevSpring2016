@@ -12,6 +12,7 @@
     <!-- Fields -->
     <table class="table">
         <tbody reorder jga-axis="y">
+        <!--<tbody reorder jga-axis="y" reorder-callback="model.sortField(start, end)">-->
         <tr ng-repeat="field in model.fields" ng-switch on="field.type" class="form-group">
             <td>
                 <div class="row">
@@ -37,8 +38,7 @@
                             </button>
                             <button id="reorderButton"
                                     type="button"
-                                    class="btn btn-default"
-                                    ng-click="addField(model.fieldType)">
+                                    class="btn btn-default">
                                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -62,8 +62,7 @@
                             </button>
                             <button id="reorderButton"
                                     type="button"
-                                    class="btn btn-default"
-                                    ng-click="addField(model.fieldType)">
+                                    class="btn btn-default">
                                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -87,8 +86,7 @@
                             </button>
                             <button id="reorderButton"
                                     type="button"
-                                    class="btn btn-default"
-                                    ng-click="addField(model.fieldType)">
+                                    class="btn btn-default">
                                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -112,8 +110,7 @@
                             </button>
                             <button id="reorderButton"
                                     type="button"
-                                    class="btn btn-default"
-                                    ng-click="addField(model.fieldType)">
+                                    class="btn btn-default">
                                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -137,8 +134,7 @@
                             </button>
                             <button id="reorderButton"
                                     type="button"
-                                    class="btn btn-default"
-                                    ng-click="addField(model.fieldType)">
+                                    class="btn btn-default">
                                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -161,8 +157,7 @@
                             </button>
                             <button id="reorderButton"
                                     type="button"
-                                    class="btn btn-default"
-                                    ng-click="addField(model.fieldType)">
+                                    class="btn btn-default">
                                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -185,8 +180,7 @@
                             </button>
                             <button id="reorderButton"
                                     type="button"
-                                    class="btn btn-default"
-                                    ng-click="addField(model.fieldType)">
+                                    class="btn btn-default">
                                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -209,8 +203,7 @@
                             </button>
                             <button id="reorderButton"
                                     type="button"
-                                    class="btn btn-default"
-                                    ng-click="addField(model.fieldType)">
+                                    class="btn btn-default">
                                 <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                             </button>
                         </div>

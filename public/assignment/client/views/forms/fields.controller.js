@@ -12,7 +12,7 @@
         $scope.cloneField = cloneField;
         $scope.updateField = updateField;
         $scope.deleteField = deleteField;
-        $scope.reorderFields = reorderFields;
+        $scope.moveField = moveField;
 
         // Dialog boxes
         $scope.openModDialogSingle = openModDialogSingle;
@@ -142,13 +142,17 @@
                 });
         }
 
-        function reorderFields(formId, fields) {
-            FieldService.reorderFieldsForForm(formId, fields)
-                .then(function (returnedFields) {
-                    $scope.model.fields = returnedFields.data;
-                }, function (returnedFields) {
-                    console.log("Error: The fields were not reordered on the form.");
-                });
+        function moveField(start, end) {
+            FieldService
+                .moveField($scope.formId, start, end)
+                .then(
+                    function (response) {
+                        // No need to update the $scope as jQueryUI does that.
+                    },
+                    function (err) {
+                        console.log("Error: The fields were not reordered on the form.");
+                    }
+                );
         }
 
         // Dialog Boxes ///////////////////////////////////////////////////////////////////////////////////////

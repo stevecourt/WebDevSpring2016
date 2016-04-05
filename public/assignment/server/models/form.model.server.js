@@ -15,11 +15,13 @@ module.exports = function (mongoose) {
         findFormByTitle: findFormByTitle,
         updateFormById: updateFormById,
         deleteFormById: deleteFormById,
-        getDbModel : getDbModel
+        getDbFormModel : getDbFormModel
     };
     return api;
 
-    function getDbModel(){return formModel;}
+    function getDbFormModel(){
+        return formModel;
+    }
 
     function createForm(newForm) {
         var deferred = q.defer();
@@ -101,7 +103,7 @@ module.exports = function (mongoose) {
 
     function deleteFormById(formId) {
         var deferred = q.defer();
-        formModel.remove({_id: formId},function (err, users) {
+        formModel.remove({_id: formId},function (err, forms) {
             if (err) {
                 deferred.reject(err);
             } else {

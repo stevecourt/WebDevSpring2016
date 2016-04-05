@@ -6,7 +6,7 @@ module.exports = function (mongoose, formModel) {
 
     var fieldSchema = require('./field.schema.server.js') (mongoose);
     var fieldModel = mongoose.model("field", fieldSchema);
-    var db_form_model = formModel.getDbModel();
+    var db_form_model = formModel.getDbFormModel();
 
 
     var api = {
@@ -15,7 +15,7 @@ module.exports = function (mongoose, formModel) {
         findFormFieldById: findFormFieldById,
         updateFormFieldById: updateFormFieldById,
         deleteFormFieldById: deleteFormFieldById,
-        reorderFormFields: reorderFormFields
+        reorderFields : reorderFields
     };
     return api;
 
@@ -30,6 +30,7 @@ module.exports = function (mongoose, formModel) {
                         deferred.reject(err);
                     } else {
                         formFound.fields.push(createdField);
+                        formFound.updated = new Date();
                         formFound.save(function (err, formSaved) {
                             deferred.resolve(formSaved.fields);
                         });
@@ -89,6 +90,7 @@ module.exports = function (mongoose, formModel) {
                         formFound.fields[i].label = fieldGiven.label;
                         formFound.fields[i].placeholder = fieldGiven.placeholder;
                         formFound.fields[i].options = fieldGiven.options;
+                        formFound.updated = new Date();
 
                         formFound.save(function (err, formSaved) {
                             deferred.resolve(formSaved.fields);
@@ -119,6 +121,7 @@ module.exports = function (mongoose, formModel) {
                         // Remove field from form
                         formFound.fields.splice(i, 1);
 
+                        formFound.updated = new Date();
                         formFound.save(function (err, formSaved) {
                             if (err) {
                                 deferred.reject(err);
@@ -133,13 +136,15 @@ module.exports = function (mongoose, formModel) {
         return deferred.promise;
     }
 
-    function reorderFormFields(formId, fieldsArray) {
+    function reorderFields(formId, startIndex, endIndex) {
         var deferred = q.defer();
         db_form_model.findById(formId, function (err, formFound) {
             if (err) {
                 deferred.reject(err);
             } else {
-                formFound.fields = fieldsArray;
+                var movingField = formFound.fields.splice(startIndex, 1);
+                formFound.fields.splice(endIndex, 0, movingField[0]);
+                formFound.updated = new Date();
                 formFound.save(function (err, form) {
                     deferred.resolve(form.fields);
                 });

@@ -13,7 +13,7 @@
             getFieldForForm: getFieldForForm,
             deleteFieldFromForm: deleteFieldFromForm,
             updateField: updateField,
-            reorderFieldsForForm: reorderFieldsForForm,
+            moveField: moveField,
             findFormById: findFormById
         };
         return api;
@@ -82,14 +82,14 @@
             return deferred.promise;
         }
 
-        function reorderFieldsForForm(formId, fields) {
+        function moveField(formId, startIndex, endIndex) {
             var deferred = $q.defer();
 
-            $http.put("/api/assignment/form/" + formId + "/fields", fields)
-                .then(function(fields){
-                    deferred.resolve(fields);
-                }, function (fields) {
-                    deferred.reject(fields);
+            $http.put("/api/assignment/form/" + formId + "/field?startIndex=" + startIndex + "&endIndex=" + endIndex)
+                .then(function (response) {
+                    deferred.resolve(response);
+                }, function (form) {
+                    deferred.reject(response);
                 });
 
             return deferred.promise;
@@ -101,7 +101,7 @@
             var deferred = $q.defer();
 
             $http.get("/api/assignment/form/" + formId)
-                .then(function(form){
+                .then(function (form) {
                     deferred.resolve(form);
                 }, function (form) {
                     deferred.reject(form);
