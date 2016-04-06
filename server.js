@@ -28,7 +28,7 @@ app.use(passport.session());
 
 // MongoDB localhost (baseline) or OpenShift configuration, if OPENSHIFT env variables are present
 var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring2016';
-/*
+
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
     connection_string =
         process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -37,8 +37,8 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
         process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
         process.env.OPENSHIFT_APP_NAME;
 }
-*/
-//mongoose.connect(connectionString);
+
+mongoose.connect(connectionString);
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || '3000';
