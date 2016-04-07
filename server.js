@@ -11,7 +11,7 @@ var multer = require('multer');
 var app = express();
 app.use(express.static(__dirname + '/public')); // Location of assignment and project
 
-app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 
