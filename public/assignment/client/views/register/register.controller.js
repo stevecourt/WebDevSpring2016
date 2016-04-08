@@ -8,7 +8,7 @@
     function registerController($scope, $rootScope, $location, UserService) {
 
         $scope.register = register;
-
+/*
         function register(username, password, password2, email) {
             // Check for password consistency before creating user.
             if (password == password2) {
@@ -29,6 +29,31 @@
                     });
             } else {
                 alert("Password and password verification do not match. Please re-enter details.");
+            }
+        }
+*/
+        function register(user)
+        {
+            if(user.password != user.password2 || !user.password || !user.password2)
+            {
+                $scope.error = "Your passwords don't match";
+            }
+            else
+            {
+                UserService
+                    .register(user)
+                    .then(
+                        function(response) {
+                            var user = response.data;
+                            if(user != null) {
+                                $rootScope.currentUser = user;
+                                $location.url("/profile");
+                            }
+                        },
+                        function(err) {
+                            $scope.error = err;
+                        }
+                    );
             }
         }
 

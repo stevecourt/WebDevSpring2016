@@ -5,13 +5,28 @@
         .module("FormBuilderApp")
         .controller("HeaderController", headerController);
 
-    function headerController($scope, $location, $rootScope) {
+    function headerController($scope, $location, $rootScope, UserService) {
 
         $scope.logout = logout;
 
-        function logout() {
-            $rootScope.currentUser = null;
-            $location.url("/home");
+        //function logout() {
+        //    $rootScope.currentUser = null;
+        //    $location.url("/home");
+        //}
+
+        function logout()
+        {
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $rootScope.currentUser = null;
+                        $location.url("/home");
+                    },
+                    function(err) {
+                        $scope.error = err;
+                    }
+                );
         }
     }
 })();

@@ -8,7 +8,7 @@
     function loginController($scope, $rootScope, $location, UserService) {
 
         $scope.login = login;
-
+/*
         function login(username, password) {
             UserService.findUserByCredentials(username, password)
                 .then(function (returnedUser) {
@@ -20,6 +20,29 @@
                 }, function (returnedUser) {
                     alert("The username or password entered is not recognized.");
                 });
+        }
+*/
+        function login(user)
+        {
+            if(user)
+                UserService
+                    .login(user)
+                    .then(
+                        function(response)
+                        {
+
+                            console.log("returned to controller");
+                            console.log("response.data = ");
+                            console.log(response.data);
+
+                            $rootScope.currentUser = response.data;
+                            $location.url("/profile");
+                        },
+                        function(err) {
+                            alert("The username or password entered is not recognized.");
+                            $scope.error = err;
+                        }
+                    );
         }
 
         function emailAndPhoneToCsv(userFound) {

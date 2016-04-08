@@ -24,6 +24,11 @@ module.exports = function (mongoose) {
             if (err) {
                 deferred.reject(err);
             } else {
+                deferred.resolve(user);
+            }
+
+            /*
+            else {
                 userModel.find(function (err, users) {
                     if (err) {
                         deferred.reject(err);
@@ -32,6 +37,8 @@ module.exports = function (mongoose) {
                     }
                 });
             }
+            */
+
         });
         return deferred.promise;
     }
@@ -73,6 +80,12 @@ module.exports = function (mongoose) {
 
     function findUserByCredentials(credentials) {
         var deferred = q.defer();
+
+        console.log("entered model");
+        console.log("credentials = ");
+        console.log(credentials.username);
+        console.log(credentials.password);
+
         var usernameGiven = credentials.username;
         var passwordGiven = credentials.password;
         userModel.findOne(
@@ -86,6 +99,10 @@ module.exports = function (mongoose) {
                 if (err) {
                     deferred.reject(err);
                 } else {
+
+                    console.log("user found =");
+                    console.log(user);
+
                     deferred.resolve(user);
                 }
             });

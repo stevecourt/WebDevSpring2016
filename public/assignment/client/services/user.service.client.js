@@ -8,6 +8,9 @@
     function userService($http, $q) {
 
         var api = {
+            login: login,
+            logout: logout,
+            register: register,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             findAllUsers: findAllUsers,
@@ -16,6 +19,27 @@
             updateUser: updateUser
         };
         return api;
+
+        function login(user) { //TODO: Change to .then style?
+
+            console.log("entered client service");
+
+            return $http.post("/api/assignment/login", user);
+        }
+
+        function logout() { //TODO: Change to .then style?
+
+            console.log("entered client service");
+
+            return $http.post("/api/assignment/logout");
+        }
+
+        function register(user) {  //TODO: Change to .then style?
+
+            console.log("entered client service");
+
+            return $http.post("/api/assignment/register", user);
+        }
 
         function findUserByUsername(username) {
             var deferred = $q.defer();
@@ -46,12 +70,13 @@
         function findAllUsers() {
             var deferred = $q.defer();
 
-            $http.get("/api/assignment/user")
+            $http.get("/api/assignment/admin/user")
                 .then(function(users){
                     deferred.resolve(users);
                 }, function (users) {
                     deferred.reject(users);
                 });
+
             return deferred.promise;
         }
 
