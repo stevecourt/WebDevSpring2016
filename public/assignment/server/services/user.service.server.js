@@ -19,7 +19,7 @@ module.exports = function (app, userModel) {
 
     // User authentification endpoints
     app.post ("/api/assignment/login", passport.authenticate("local"), login);
-    app.get ("/api/loggedin", loggedin); // TODO: Should be /api/assignment/loggedin.  Find call and change.
+    app.get ("/api/assignment/loggedin", loggedin);
     app.post ("/api/assignment/logout", logout);
     app.post ("/api/assignment/register", register);
 
@@ -112,7 +112,7 @@ module.exports = function (app, userModel) {
     function register(req, res) {
         var newUser = req.body;
         newUser.emails = newUser.emails.split(",");
-        newUser.roles = ['student'];
+        newUser.roles = ["student"];
 
         userModel
             .findUserByUsername(newUser.username)
@@ -285,14 +285,17 @@ module.exports = function (app, userModel) {
         console.log("In isAdmin function");
         console.log(req);
         console.log(req.roles.indexOf("admin") > 0);
-        console.log(req.isAuthenticated());
+        //console.log(req.isAuthenticated());
 
-
+        // Temporary line
+        return true;
+/*
         if(!req.roles.indexOf("admin") > 0 && !req.isAuthenticated()) { //TODO Check on Admin conditional and loggedIn.
             res.send(403);
         } else {
             next(); // TODO Check on this. How is is passed in?
         }
+        */
     }
 
 /*

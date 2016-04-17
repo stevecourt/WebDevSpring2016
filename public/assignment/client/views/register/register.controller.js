@@ -40,13 +40,24 @@
             }
             else
             {
+
+                console.log("register controller");
+                console.log("sent user");
+                console.log(user);
+
                 UserService
                     .register(user)
                     .then(
                         function(response) {
                             var user = response.data;
+
+                            console.log("register controller");
+                            console.log("returned user");
+                            console.log(user);
+                            user.emails = ["hello","goodbye"]
+
                             if(user != null) {
-                                $rootScope.currentUser = user;
+                                //$rootScope.currentUser = user; //TODO Check is this is needed now.
                                 $location.url("/profile");
                             }
                         },

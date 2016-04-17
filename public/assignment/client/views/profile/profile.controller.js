@@ -10,6 +10,9 @@
         $scope.update = update;
 
         function update(user) {
+
+            console.log("in profile controller");
+
             UserService.updateUser(user._id, user)
                 .then(function (returnedUsers) {
                     // Filter for the updated current user
@@ -18,10 +21,10 @@
                             var userFound = returnedUsers.data[i];
 
                             // Converts emails and phones from arrays to comma separated strings.
-                            var clientUser = emailAndPhoneToCsv(userFound);
+                            //var clientUser = emailAndPhoneToCsv(userFound);
 
                             $scope.message = "Profile updated successfully. (Click to close.)";
-                            $rootScope.currentUser = clientUser;
+                            //$rootScope.currentUser = clientUser; //TODO Check is this is needed now.
                             $location.url("/profile");
                         }
                     }

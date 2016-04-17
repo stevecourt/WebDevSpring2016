@@ -80,12 +80,12 @@
             return deferred.promise;
         }
 
-        function createUser(user) {
+        function createUser(newUser) {
             var deferred = $q.defer();
 
             // Converts emails and phones from comma separated strings to arrays.
-            var serverUser = emailAndPhoneToArray(user);
-            $http.post("/api/assignment/user", serverUser)
+            //var serverUser = emailAndPhoneToArray(user);
+            $http.post("/api/assignment/admin/user", newUser)
                 .then(function(users){
                     deferred.resolve(users);
                 }, function (users) {
