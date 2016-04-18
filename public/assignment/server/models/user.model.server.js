@@ -1,6 +1,7 @@
 "use strict";
 
 var q = require("q");
+var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function (mongoose) {
 
@@ -88,12 +89,13 @@ module.exports = function (mongoose) {
 
         var usernameGiven = credentials.username;
         var passwordGiven = credentials.password;
-        userModel.findOne(
-            {
-                $and: [
-                    {username: usernameGiven},
-                    {password: passwordGiven}
-                ]
+
+        userModel.findOne({username: usernameGiven
+            //{
+              //  $and: [
+                //    {username: usernameGiven},
+                  //  {password: passwordGiven}
+                //]
             },
             function (err, user){
                 if (err) {
@@ -103,7 +105,11 @@ module.exports = function (mongoose) {
                     console.log("user found =");
                     console.log(user);
 
-                    deferred.resolve(user);
+                    if (bcrypt.compareSync(passwordGiven, user.password)) {
+                        deferred.resolve(user);
+                    } else {
+                        deferred.reject(err);
+                    }
                 }
             });
         return deferred.promise;

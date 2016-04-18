@@ -2,6 +2,7 @@
 
 var passport = require('passport');
 var LocalStrategy    = require('passport-local').Strategy;
+var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function (app, userModel) {
 
@@ -114,6 +115,7 @@ module.exports = function (app, userModel) {
         var newUser = req.body;
         newUser.emails = newUser.emails.split(",");
         newUser.roles = ["student"];
+        newUser.password = bcrypt.hashSync(newUser.password);
 
         userModel
             .findUserByUsername(newUser.username)
@@ -159,6 +161,7 @@ module.exports = function (app, userModel) {
         } else {
             newUser.roles = ["student"];
         }
+        newUser.password = bcrypt.hashSync(newUser.password);
 
         // first check if a user already exists with the username
         userModel
@@ -274,36 +277,48 @@ module.exports = function (app, userModel) {
         if(typeof newUser.roles == "string") {
             newUser.phones = newUser.phones.split(",");
         }
+        userModel.findUserById(newUser._id)
+            .then(function (user) {
 
-        console.log("server service update");
-        console.log(req.params.userId);
-        console.log(newUser);
+                console.log("bcrypt.compareSync");
+                console.log(newUser.password);
+                console.log(user.password);
+                //console.log(bcrypt.compareSync(newUser.password, user.password));
 
-        userModel
-            .updateUserById(req.params.userId, newUser)
-            .then(
-                function(user){
-                    return userModel.findAllUsers();
-                },
-                function(err){
-                    res.status(400).send(err);
+                if (newUser.password != user.password) {
+
+                    console.log("encrypting password");
+
+                    newUser.password = bcrypt.hashSync(newUser.password);
                 }
-            )
-            .then(
-                function(users){
-                    res.json(users);
-                },
-                function(err){
-                    res.status(400).send(err);
-                }
-            );
+
+                console.log(newUser.password);
+
+                userModel
+                    .updateUserById(req.params.userId, newUser)
+                    .then(
+                        function(user){
+                            return userModel.findAllUsers();
+                        },
+                        function(err){
+                            res.status(400).send(err);
+                        }
+                    )
+                    .then(
+                        function(users){
+                            res.json(users);
+                        },
+                        function(err){
+                            res.status(400).send(err);
+                        }
+                    );
+            }, function (err) {
+                res.status(400).send(err);
+            });
     }
 
     function updateUserProfile(req, res) {
         var newUser = req.body;
-        //if(!isAdmin(req.user)) {
-        //    delete newUser.roles;
-        //}
         if(typeof newUser.roles == "string") {
             newUser.roles = newUser.roles.split(",");
         }
@@ -313,29 +328,44 @@ module.exports = function (app, userModel) {
         if(typeof newUser.roles == "string") {
             newUser.phones = newUser.phones.split(",");
         }
+        userModel.findUserById(newUser._id)
+            .then(function (user) {
 
-        console.log("server service update");
-        console.log(req.params.userId);
-        console.log(newUser);
+                console.log("bcrypt.compareSync");
+                console.log(newUser.password);
+                console.log(user.password);
+                //console.log(bcrypt.compareSync(newUser.password, user.password));
 
-        userModel
-            .updateUserById(req.params.userId, newUser)
-            .then(
-                function(user){
-                    return userModel.findAllUsers();
-                },
-                function(err){
-                    res.status(400).send(err);
+                if (newUser.password != user.password) {
+
+                    console.log("encrypting password");
+
+                    newUser.password = bcrypt.hashSync(newUser.password);
                 }
-            )
-            .then(
-                function(users){
-                    res.json(users);
-                },
-                function(err){
-                    res.status(400).send(err);
-                }
-            );
+
+                console.log(newUser.password);
+
+                userModel
+                    .updateUserById(req.params.userId, newUser)
+                    .then(
+                        function(user){
+                            return userModel.findAllUsers();
+                        },
+                        function(err){
+                            res.status(400).send(err);
+                        }
+                    )
+                    .then(
+                        function(users){
+                            res.json(users);
+                        },
+                        function(err){
+                            res.status(400).send(err);
+                        }
+                    );
+            }, function (err) {
+                res.status(400).send(err);
+            });
     }
 
     function isAdmin(req, res, next) {
