@@ -22,13 +22,14 @@ module.exports = function (app, userModel) {
     app.get ("/api/assignment/loggedin", loggedin);
     app.post ("/api/assignment/logout", logout);
     app.post ("/api/assignment/register", register);
+    app.put("/api/assignment/user/:userId", updateUserProfile);
 
     // Admin user endpoints
     app.post ("/api/assignment/admin/user", auth, createUser);
     app.get ("/api/assignment/admin/user", auth, findAllUsers);
     app.get ("/api/assignment/admin/user/:userId", auth, findUserById);
     app.delete("/api/assignment/admin/user/:userId", auth, deleteUser);
-    app.put ("/api/assignment/admin/user/:id", auth, updateUser);
+    app.put ("/api/assignment/admin/user/:userId", auth, updateUser);
 
     // TODO: Check if this communicates with the model/db.  Is ".then" format required?
     function authorized (req, res, next) {
@@ -214,8 +215,9 @@ module.exports = function (app, userModel) {
     }
 
     function findUserById(req, res) {
-        var userId = req.params.id;
-        userModel.findUserById(userId)
+        if(isAdmin(req.user)) {
+
+        userModel.findUserById(req.params.userId)
             .then(function (userFound) {
                 if (userFound) {
                     res.json(userFound);
@@ -223,13 +225,20 @@ module.exports = function (app, userModel) {
                     res.send(404);
                 }
             });
+
+        } else {
+            res.status(403);
+        }
     }
 
     function deleteUser(req, res) {
         if(isAdmin(req.user)) {
 
+            console.log("server user service");
+            console.log(req.params.userId);
+
             userModel
-                .removeUser(req.params.id)
+                .deleteUserById(req.params.userId)
                 .then(
                     function(user){
                         return userModel.findAllUsers();
@@ -259,9 +268,58 @@ module.exports = function (app, userModel) {
         if(typeof newUser.roles == "string") {
             newUser.roles = newUser.roles.split(",");
         }
+        if(typeof newUser.emails == "string") {
+            newUser.emails = newUser.emails.split(",");
+        }
+        if(typeof newUser.roles == "string") {
+            newUser.phones = newUser.phones.split(",");
+        }
+
+        console.log("server service update");
+        console.log(req.params.userId);
+        console.log(newUser);
 
         userModel
-            .updateUser(req.params.id, newUser)
+            .updateUserById(req.params.userId, newUser)
+            .then(
+                function(user){
+                    return userModel.findAllUsers();
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function(users){
+                    res.json(users);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function updateUserProfile(req, res) {
+        var newUser = req.body;
+        //if(!isAdmin(req.user)) {
+        //    delete newUser.roles;
+        //}
+        if(typeof newUser.roles == "string") {
+            newUser.roles = newUser.roles.split(",");
+        }
+        if(typeof newUser.emails == "string") {
+            newUser.emails = newUser.emails.split(",");
+        }
+        if(typeof newUser.roles == "string") {
+            newUser.phones = newUser.phones.split(",");
+        }
+
+        console.log("server service update");
+        console.log(req.params.userId);
+        console.log(newUser);
+
+        userModel
+            .updateUserById(req.params.userId, newUser)
             .then(
                 function(user){
                     return userModel.findAllUsers();

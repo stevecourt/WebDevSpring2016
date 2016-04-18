@@ -11,12 +11,14 @@
             login: login,
             logout: logout,
             register: register,
+            updateUserProfile: updateUserProfile,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
+            findUserById: findUserById,
             findAllUsers: findAllUsers,
             createUser: createUser,
             deleteUserById: deleteUserById,
-            updateUser: updateUser
+            updateUserById: updateUserById
         };
         return api;
 
@@ -67,6 +69,19 @@
             return deferred.promise;
         }
 
+        function findUserById(userId) {
+            var deferred = $q.defer();
+
+            $http.get("/api/assignment/admin/user/" + userId)
+                .then(function(user){
+                    deferred.resolve(user);
+                }, function (user) {
+                    deferred.reject(user);
+                });
+
+            return deferred.promise;
+        }
+
         function findAllUsers() {
             var deferred = $q.defer();
 
@@ -98,7 +113,10 @@
         function deleteUserById(userId) {
             var deferred = $q.defer();
 
-            $http.delete("/api/assignment/user/" + userId)
+            console.log("user client service");
+            console.log(userId);
+
+            $http.delete("/api/assignment/admin/user/" + userId)
                 .then(function(users){
                     deferred.resolve(users);
                 }, function (users) {
@@ -108,12 +126,31 @@
             return deferred.promise;
         }
 
-        function updateUser(userId, user) {
+        function updateUserById(userId, updatedUser) {
             var deferred = $q.defer();
 
             // Converts emails and phones from comma separated strings to arrays.
-            var serverUser = emailAndPhoneToArray(user);
-            $http.put("/api/assignment/user/" + userId, serverUser)
+            //var serverUser = emailAndPhoneToArray(user);
+            $http.put("/api/assignment/admin/user/" + userId, updatedUser)
+                .then(function(users){
+                    deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
+                });
+
+            return deferred.promise;
+        }
+
+        function updateUserProfile(userId, updatedUser) {
+            var deferred = $q.defer();
+
+            console.log("user service client update profile");
+            console.log(userId);
+            console.log(updatedUser);
+
+            // Converts emails and phones from comma separated strings to arrays.
+            //var serverUser = emailAndPhoneToArray(updatedUser);
+            $http.put("/api/assignment/user/" + userId, updatedUser)
                 .then(function(users){
                     deferred.resolve(users);
                 }, function (users) {

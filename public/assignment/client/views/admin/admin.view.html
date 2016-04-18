@@ -5,11 +5,17 @@
 <div class="table-responsive">
     <table class="table table-striped">
 
-        <thead>
+        <thead class="text-nowrap">
         <tr>
             <th>
-                <label for="usernameInput">
-                    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Username
+                <label for="usernameInput" ng-click="sortUsers('userName')">
+                    <span class="glyphicon glyphicon-triangle-top"
+                          aria-hidden="true"
+                          ng-show="lastUserSort == 'userNameAsc'"></span>
+                    <span class="glyphicon glyphicon-triangle-bottom"
+                          aria-hidden="true"
+                          ng-show="lastUserSort == 'userNameDesc'"></span>
+                    Username
                 </label>
                 <input ng-model="user.username" type="text" class="form-control" id="usernameInput" placeholder="Username">
             </th>
@@ -18,14 +24,26 @@
                 <input ng-model="user.password" type="password" class="form-control" id="passwordInput" placeholder="Password">
             </th>
             <th>
-                <label for="firstNameInput">
-                    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> First Name
+                <label for="firstNameInput" ng-click="sortUsers('firstName')">
+                    <span class="glyphicon glyphicon-triangle-top"
+                          aria-hidden="true"
+                          ng-show="lastUserSort == 'firstNameAsc'"></span>
+                    <span class="glyphicon glyphicon-triangle-bottom"
+                          aria-hidden="true"
+                          ng-show="lastUserSort == 'firstNameDesc'"></span>
+                    First Name
                 </label>
                 <input ng-model="user.firstName" type="text" class="form-control" id="firstNameInput" placeholder="First Name">
             </th>
             <th>
-                <label for="lastNameInput">
-                    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Last Name
+                <label for="lastNameInput" ng-click="sortUsers('lastName')">
+                    <span class="glyphicon glyphicon-triangle-top"
+                          aria-hidden="true"
+                          ng-show="lastUserSort == 'lastNameAsc'"></span>
+                    <span class="glyphicon glyphicon-triangle-bottom"
+                          aria-hidden="true"
+                          ng-show="lastUserSort == 'lastNameDesc'"></span>
+                    Last Name
                 </label>
                 <input ng-model="user.lastName" type="text" class="form-control" id="lastNameInput" placeholder="Last Name">
             </th>
@@ -42,7 +60,7 @@
                     <button type="button" class="btn btn-default" ng-click="createUser(user)">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
-                    <button type="button" class="btn btn-default" ng-click="updateForm(formTitle)">
+                    <button type="button" class="btn btn-default" ng-click="updateUserById(user)">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     </button>
                 </p>
@@ -58,10 +76,10 @@
             <td>{{user.lastName}}</td>
             <td>{{user.roles}}</td>
             <td>
-                <button type="button" class="btn btn-default" ng-click="deleteForm($index)">
+                <button type="button" class="btn btn-default" ng-click="deleteUserById($index)">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
-                <button type="button" class="btn btn-default" ng-click="selectForm($index)">
+                <button type="button" class="btn btn-default" ng-click="findUserById($index)">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 </button>
             </td>

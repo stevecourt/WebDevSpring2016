@@ -115,13 +115,16 @@ module.exports = function (mongoose) {
             if (err) {
                 deferred.reject(err);
             } else {
-                userModel.find(function(err, users){
-                    if (err) {
-                        deferred.reject(err);
-                    } else {
-                        deferred.resolve(users);
-                    }
-                });
+
+                deferred.resolve(user);
+
+                //userModel.find(function(err, users){
+                //    if (err) {
+                //        deferred.reject(err);
+                //    } else {
+                //        deferred.resolve(users);
+                //    }
+                //});
             }
         });
         return deferred.promise;
@@ -129,17 +132,24 @@ module.exports = function (mongoose) {
 
     function deleteUserById(userId) {
         var deferred = q.defer();
+
+        console.log("user model delete");
+        console.log(userId);
+
         userModel.remove({_id: userId},function (err, users) {
             if(err){
                 deferred.reject(err);
             } else {
-                userModel.find(function (err, users) {
-                    if (err) {
-                        deferred.reject(err);
-                    } else {
-                        deferred.resolve(users);
-                    }
-                });
+
+                deferred.resolve(users);
+
+                //userModel.find(function (err, users) {
+                //    if (err) {
+                //        deferred.reject(err);
+                //    } else {
+                //        deferred.resolve(users);
+                //    }
+                //});
             }
         });
         return deferred.promise;
