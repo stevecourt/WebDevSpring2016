@@ -8,20 +8,7 @@
     function loginController($scope, $rootScope, $location, UserService) {
 
         $scope.login = login;
-/*
-        function login(username, password) {
-            UserService.findUserByCredentials(username, password)
-                .then(function (returnedUser) {
-                    var returnedUserObject = returnedUser.data;
-                    // Converts emails and phones from arrays to comma separated strings.
-                    var clientUser = emailAndPhoneToCsv(returnedUserObject);
-                    $rootScope.currentUser = clientUser;
-                    $location.url("/profile");
-                }, function (returnedUser) {
-                    alert("The username or password entered is not recognized.");
-                });
-        }
-*/
+
         function login(user)
         {
             if(user)
@@ -30,11 +17,6 @@
                     .then(
                         function(response)
                         {
-
-                            console.log("returned to controller");
-                            console.log("response.data = ");
-                            console.log(response.data);
-
                             $rootScope.currentUser = response.data;
                             $location.url("/profile");
                         },

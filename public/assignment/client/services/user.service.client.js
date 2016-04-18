@@ -22,24 +22,15 @@
         };
         return api;
 
-        function login(user) { //TODO: Change to .then style?
-
-            console.log("entered client service");
-
+        function login(user) {
             return $http.post("/api/assignment/login", user);
         }
 
-        function logout() { //TODO: Change to .then style?
-
-            console.log("entered client service");
-
+        function logout() {
             return $http.post("/api/assignment/logout");
         }
 
-        function register(user) {  //TODO: Change to .then style?
-
-            console.log("entered client service");
-
+        function register(user) {
             return $http.post("/api/assignment/register", user);
         }
 
@@ -98,8 +89,6 @@
         function createUser(newUser) {
             var deferred = $q.defer();
 
-            // Converts emails and phones from comma separated strings to arrays.
-            //var serverUser = emailAndPhoneToArray(user);
             $http.post("/api/assignment/admin/user", newUser)
                 .then(function(users){
                     deferred.resolve(users);
@@ -112,9 +101,6 @@
 
         function deleteUserById(userId) {
             var deferred = $q.defer();
-
-            console.log("user client service");
-            console.log(userId);
 
             $http.delete("/api/assignment/admin/user/" + userId)
                 .then(function(users){
@@ -129,8 +115,6 @@
         function updateUserById(userId, updatedUser) {
             var deferred = $q.defer();
 
-            // Converts emails and phones from comma separated strings to arrays.
-            //var serverUser = emailAndPhoneToArray(user);
             $http.put("/api/assignment/admin/user/" + userId, updatedUser)
                 .then(function(users){
                     deferred.resolve(users);
@@ -144,12 +128,6 @@
         function updateUserProfile(userId, updatedUser) {
             var deferred = $q.defer();
 
-            console.log("user service client update profile");
-            console.log(userId);
-            console.log(updatedUser);
-
-            // Converts emails and phones from comma separated strings to arrays.
-            //var serverUser = emailAndPhoneToArray(updatedUser);
             $http.put("/api/assignment/user/" + userId, updatedUser)
                 .then(function(users){
                     deferred.resolve(users);

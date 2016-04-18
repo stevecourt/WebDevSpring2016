@@ -19,13 +19,7 @@
         function findAllUsers() {
             UserService.findAllUsers()
                 .then (function (returnedUsers) {
-
-                    console.log(returnedUsers.data);
-
                     var convertedUsers = convertRoles(returnedUsers.data);
-
-                    console.log(convertedUsers);
-
                     $scope.users = convertedUsers;
                 }, function (returnedUsers) {
                     console.log("Error: Could not retrieve users.");
@@ -35,11 +29,7 @@
         function createUser(newUser) {
             UserService.createUser(newUser)
                 .then (function (returnedUsers) {
-
-                    console.log(returnedUsers.data);
-
                     var convertedUsers = convertRoles(returnedUsers.data);
-
                     $scope.users = convertedUsers;
                 }, function (returnedUsers) {
                     console.log("Error: Could not add user.");
@@ -49,13 +39,9 @@
         function findUserById(index) {
             UserService.findUserById($scope.users[index]._id)
                 .then (function (returnedUser) {
-
-                    console.log(returnedUser.data);
-
                     $scope.selectedUser = returnedUser.data;
                     $scope.selectedUser.roles = arrayToCsv($scope.selectedUser.roles);
-                    $scope.user = $scope.selectedUser; //TODO: Check for simplification.
-
+                    $scope.user = $scope.selectedUser;
                 }, function (returnedUser) {
                     console.log("Error: Could not select user.");
                 });
@@ -64,11 +50,7 @@
         function deleteUserById(index) {
             UserService.deleteUserById($scope.users[index]._id)
                 .then (function (returnedUsers) {
-
-                    console.log(returnedUsers.data);
-
                     var convertedUsers = convertRoles(returnedUsers.data);
-
                     $scope.users = convertedUsers;
                 }, function (returnedUsers) {
                     console.log("Error: Could not delete user.");
@@ -76,18 +58,9 @@
         }
 
         function updateUserById(updatedUser) {
-
-            console.log("admin controller update");
-            console.log(updatedUser._id);
-            console.log(updatedUser);
-
             UserService.updateUserById(updatedUser._id, updatedUser)
                 .then (function (returnedUsers) {
-
-                    console.log(returnedUsers.data);
-
                     var convertedUsers = convertRoles(returnedUsers.data);
-
                     $scope.users = convertedUsers;
                 }, function (returnedUsers) {
                     console.log("Error: Could not update user.");
@@ -156,30 +129,51 @@
         }
 
         function compareUserName(a,b) {
-            if (a.username.toLowerCase() < b.username.toLowerCase())
-                return -1;
-            else if (a.username.toLowerCase() > b.username.toLowerCase())
-                return 1;
-            else
+            if (!a.username && !b.username) {
                 return 0;
+            } else if (!a.username) {
+                return -1;
+            } else if (!b.username) {
+                return 1;
+            } else if (a.username.toLowerCase() < b.username.toLowerCase()) {
+                return -1;
+            } else if (a.username.toLowerCase() > b.username.toLowerCase()) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
 
         function compareFirstName(a,b) {
-            if (a.firstName.toLowerCase() < b.firstName.toLowerCase())
-                return -1;
-            else if (a.firstName.toLowerCase() > b.firstName.toLowerCase())
-                return 1;
-            else
+            if (!a.firstName && !b.firstName) {
                 return 0;
+            } else if (!a.firstName) {
+                return -1;
+            } else if (!b.firstName) {
+                return 1;
+            } else if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+                return -1;
+            } else if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
 
         function compareLastName(a,b) {
-            if (a.lastName.toLowerCase() < b.lastName.toLowerCase())
-                return -1;
-            else if (a.lastName.toLowerCase() > b.lastName.toLowerCase())
-                return 1;
-            else
+            if (!a.lastName && !b.lastName) {
                 return 0;
+            } else if (!a.lastName) {
+                return -1;
+            } else if (!b.lastName) {
+                return 1;
+            } else if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) {
+                return -1;
+            } else if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
 
         function convertRoles(userArray) {
@@ -198,9 +192,6 @@
                     commaSeparatedString = commaSeparatedString + array[i];
                 }
             }
-
-            console.log(commaSeparatedString);
-
             return commaSeparatedString;
         }
     }
