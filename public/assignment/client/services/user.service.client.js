@@ -23,10 +23,6 @@
         return api;
 
         function login(user) {
-
-            console.log("login user service");
-            console.log(user);
-
             return $http.post("/api/assignment/login", user);
         }
 

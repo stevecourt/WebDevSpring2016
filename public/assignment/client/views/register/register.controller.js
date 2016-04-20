@@ -23,9 +23,6 @@
                         function(response) {
                             var registeredUser = response.data;
 
-                            console.log("register controller returned user");
-                            console.log(registeredUser);
-
                             // Converts emails, phones and roles from arrays to comma separated strings.
                             var clientUser = arraysToCsv(registeredUser);
 

@@ -10,9 +10,6 @@
         $scope.update = update;
 
         function update(user) {
-
-            console.log("in profile controller");
-
             UserService.updateUserProfile(user._id, user)
                 .then(function (returnedUsers) {
                     // Filter for the updated current user

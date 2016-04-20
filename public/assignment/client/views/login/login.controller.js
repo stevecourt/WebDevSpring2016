@@ -12,10 +12,6 @@
         function login(user)
         {
             if(user) {
-
-                console.log("login controller");
-                console.log(user);
-
                 UserService
                     .login(user)
                     .then(
