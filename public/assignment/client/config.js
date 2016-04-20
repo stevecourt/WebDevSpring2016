@@ -7,11 +7,17 @@
             $routeProvider
                 .when("/home", {
                     templateUrl: "views/home/home.view.html",
-                    controller: "HomeController"
+                    controller: "HomeController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
                 })
                 .when("/forms", {
                     templateUrl: "views/forms/forms.view.html",
-                    controller: "FormController"
+                    controller: "FormController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
                 })
                 .when("/register", {
                     templateUrl: "views/register/register.view.html",
@@ -37,7 +43,10 @@
                 })
                 .when("/forms/:formId/fields", {
                     templateUrl: "views/forms/fields.view.html",
-                    controller: "FieldController"
+                    controller: "FieldController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
                 })
                 .otherwise({
                     redirectTo: "/home"
