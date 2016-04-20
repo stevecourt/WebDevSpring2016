@@ -6,7 +6,7 @@
         .config(function ($routeProvider) {
             $routeProvider
                 .when("/home", {
-                    templateUrl: "views/home/home.view.html", //TODO: Check if checkCurrentUser function is needed.
+                    templateUrl: "views/home/home.view.html",
                     controller: "HomeController"
                 })
                 .when("/forms", {

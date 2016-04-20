@@ -11,13 +11,22 @@
 
         function login(user)
         {
-            if(user)
+            if(user) {
+
+                console.log("login controller");
+                console.log(user);
+
                 UserService
                     .login(user)
                     .then(
                         function(response)
                         {
-                            $rootScope.currentUser = response.data;
+                            var loggedInUser = response.data;
+
+                            // Converts emails, phones and roles from arrays to comma separated strings.
+                            var clientUser = arraysToCsv(loggedInUser);
+
+                            $rootScope.currentUser = clientUser;
                             $location.url("/profile");
                         },
                         function(err) {
@@ -25,14 +34,17 @@
                             $scope.error = err;
                         }
                     );
+            }
         }
 
-        function emailAndPhoneToCsv(userFound) {
+        function arraysToCsv(userFound) {
             var clientUser = userFound;
             var userEmails = arrayToCsv(userFound.emails);
             var userPhones = arrayToCsv(userFound.phones);
+            var userRoles = arrayToCsv(userFound.roles);
             clientUser.emails = userEmails;
             clientUser.phones = userPhones;
+            clientUser.roles = userRoles;
             return clientUser;
         }
 

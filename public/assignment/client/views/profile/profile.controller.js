@@ -20,11 +20,11 @@
                         if (returnedUsers.data[i]._id == user._id) {
                             var userFound = returnedUsers.data[i];
 
-                            // Converts emails and phones from arrays to comma separated strings.
-                            var clientUser = emailAndPhoneToCsv(userFound);
+                            // Converts emails, phones and roles from arrays to comma separated strings.
+                            var clientUser = arraysToCsv(userFound);
 
                             $scope.message = "Profile updated successfully. (Click to close.)";
-                            $rootScope.currentUser = clientUser; //TODO Check is this is needed now.
+                            $rootScope.currentUser = clientUser;
                             $location.url("/profile");
                         }
                     }
@@ -33,12 +33,14 @@
                 });
         }
 
-        function emailAndPhoneToCsv(userFound) {
+        function arraysToCsv(userFound) {
             var clientUser = userFound;
             var userEmails = arrayToCsv(userFound.emails);
             var userPhones = arrayToCsv(userFound.phones);
+            var userRoles = arrayToCsv(userFound.roles);
             clientUser.emails = userEmails;
             clientUser.phones = userPhones;
+            clientUser.roles = userRoles;
             return clientUser;
         }
 

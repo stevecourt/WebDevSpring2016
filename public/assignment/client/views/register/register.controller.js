@@ -21,7 +21,12 @@
                     .register(user)
                     .then(
                         function(response) {
-                            var user = response.data;
+                            var registeredUser = response.data;
+
+                            // Converts emails, phones and roles from arrays to comma separated strings.
+                            var clientUser = arraysToCsv(registeredUser);
+
+                            $rootScope.currentUser = clientUser;
                             if(user != null) {
                                 $location.url("/profile");
                             }
@@ -33,12 +38,14 @@
             }
         }
 
-        function emailAndPhoneToCsv(userFound) {
+        function arraysToCsv(userFound) {
             var clientUser = userFound;
             var userEmails = arrayToCsv(userFound.emails);
             var userPhones = arrayToCsv(userFound.phones);
+            var userRoles = arrayToCsv(userFound.roles);
             clientUser.emails = userEmails;
             clientUser.phones = userPhones;
+            clientUser.roles = userRoles;
             return clientUser;
         }
 
