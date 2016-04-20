@@ -191,7 +191,7 @@ module.exports = function (app, userModel) {
 
         var newUser = req.body;
         newUser.emails = newUser.emails.split(",");
-        newUser.roles = ["student"];
+        newUser.roles = ["admin"];
         newUser.password = bcrypt.hashSync(newUser.password);
 
         userModel
