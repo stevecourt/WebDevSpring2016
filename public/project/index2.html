@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BookExchangeApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Book Exchanger">
+    <meta name="author" content="Stephen Court">
+
+    <title>Book Exchanger</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- CDNs -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+
+    <!-- Angular App and Routing -->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!-- Controllers -->
+    <script src="views/book/book.controller.js"></script>
+    <script src="views/details/details.controller.js"></script>
+    <script src="views/editions/editions.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/home/home.controller.js"></script>
+    <script src="views/location/location.controller.js"></script>
+    <script src="views/main/main.controller.js"></script>
+    <script src="views/maker/maker.controller.js"></script>
+    <script src="views/search/search.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
+    <script src="views/user/user.controller.js"></script>
+    <script src="views/wishlist/wishlist.controller.js"></script>
+
+    <!-- Services -->
+    <script src="services/book.service.client.js"></script>
+    <script src="services/home.service.client.js"></script>
+    <script src="services/location.service.client.js"></script>
+    <script src="services/maker.service.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/wishlist.service.client.js"></script>
+
+</head>
+
+<body ng-controller="MainController">
+
+<!-- Header / Nav-bar -->
+<div ng-include="'views/header/header.view.html'"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+
+        <!-- Main body: injected content -->
+        <div ng-show=
+                     "$location.url().indexOf('search') === 1 ||
+                     $location.url().indexOf('details') === 1 ||
+                     $location.url().indexOf('editions') === 1"
+             class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"
+             ng-include="'views/tab/tab.view.html'">
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>
+    </div>
+</div>
+</body>
+</html>

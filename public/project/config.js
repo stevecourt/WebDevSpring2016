@@ -51,7 +51,7 @@
                     controller: "WishlistController"
                 })
                 .otherwise({
-                    redirectTo: "/"
+                    redirectTo: "/home"
                 });
         });
 })();
