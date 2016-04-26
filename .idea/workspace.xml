@@ -2,231 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="805d8b5b-4e01-4e00-be93-a2aa81c75e12" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Security/security.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/js/angular-animate.1.5.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/js/angular-touch.1.5.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/views/authenticate/authenticate.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/views/authenticate/authenticate.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.view.js.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/user.model.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/user.schema.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/services/user.service.server.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/app.js" afterPath="$PROJECT_DIR$/public/project/client/app.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/config.js" afterPath="$PROJECT_DIR$/public/project/client/config.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/animate.min.css" afterPath="$PROJECT_DIR$/public/project/client/css/animate.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/public/project/client/css/bootstrap.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/dashboard.css" afterPath="$PROJECT_DIR$/public/project/client/css/dashboard.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/font-awesome.css" afterPath="$PROJECT_DIR$/public/project/client/css/font-awesome.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/public/project/client/css/font-awesome.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/main.css" afterPath="$PROJECT_DIR$/public/project/client/css/main.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/prettyPhoto.css" afterPath="$PROJECT_DIR$/public/project/client/css/prettyPhoto.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/responsive.css" afterPath="$PROJECT_DIR$/public/project/client/css/responsive.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/style.css" afterPath="$PROJECT_DIR$/public/project/client/css/style.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/fonts/FontAwesome.otf" afterPath="$PROJECT_DIR$/public/project/client/fonts/FontAwesome.otf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/public/project/client/fonts/fontawesome-webfont.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/public/project/client/fonts/fontawesome-webfont.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/public/project/client/fonts/fontawesome-webfont.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/public/project/client/fonts/fontawesome-webfont.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/public/project/client/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/public/project/client/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/public/project/client/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/public/project/client/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/404.xcf" afterPath="$PROJECT_DIR$/public/project/client/images/404.xcf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/accordion1.png" afterPath="$PROJECT_DIR$/public/project/client/images/accordion1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ads/ad1.png" afterPath="$PROJECT_DIR$/public/project/client/images/ads/ad1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ads/ad2.png" afterPath="$PROJECT_DIR$/public/project/client/images/ads/ad2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ads/ad3.png" afterPath="$PROJECT_DIR$/public/project/client/images/ads/ad3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ads/ad4.png" afterPath="$PROJECT_DIR$/public/project/client/images/ads/ad4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/avatar.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/blog/avatar.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/avatar1.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/avatar1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/avatar2.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/avatar2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/avatar3.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/avatar3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/blog1.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/blog/blog1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/blog2.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/blog/blog2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/boy.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/boy.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/boy2.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/boy2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/boy3.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/boy3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/comments_bg.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/comments_bg.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/gallery1.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/gallery1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/gallery2.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/gallery2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/gallery3.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/gallery3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/gallery4.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/gallery4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/gallery5.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/gallery5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/gallery6.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/gallery6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/girl.png" afterPath="$PROJECT_DIR$/public/project/client/images/blog/girl.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/thumb1.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/blog/thumb1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/thumb2.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/blog/thumb2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/blog/thumb3.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/blog/thumb3.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/client1.png" afterPath="$PROJECT_DIR$/public/project/client/images/service/client1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/client2.png" afterPath="$PROJECT_DIR$/public/project/client/images/service/client2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/client3.png" afterPath="$PROJECT_DIR$/public/project/client/images/service/client3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/contact.png" afterPath="$PROJECT_DIR$/public/project/client/images/contact.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/gallery/gallery1.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/gallery/gallery1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/gallery/gallery2.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/gallery/gallery2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/gallery/gallery3.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/gallery/gallery3.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/gallery/gallery4.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/gallery/gallery4.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/gallery/gallery5.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/gallery/gallery5.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/gallery/gallery6.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/gallery/gallery6.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ico/apple-touch-icon-114-precomposed.png" afterPath="$PROJECT_DIR$/public/project/client/images/ico/apple-touch-icon-114-precomposed.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ico/apple-touch-icon-144-precomposed.png" afterPath="$PROJECT_DIR$/public/project/client/images/ico/apple-touch-icon-144-precomposed.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ico/apple-touch-icon-57-precomposed.png" afterPath="$PROJECT_DIR$/public/project/client/images/ico/apple-touch-icon-57-precomposed.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ico/apple-touch-icon-72-precomposed.png" afterPath="$PROJECT_DIR$/public/project/client/images/ico/apple-touch-icon-72-precomposed.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ico/favicon.ico" afterPath="$PROJECT_DIR$/public/project/client/images/ico/favicon.ico" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/image_bg.png" afterPath="$PROJECT_DIR$/public/project/client/images/service/image_bg.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/logo.png" afterPath="$PROJECT_DIR$/public/project/client/images/logo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/man1.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/man1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/man2.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/man2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/man3.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/man3.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/man4.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/man4.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/map.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/map.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/partners/partner1.png" afterPath="$PROJECT_DIR$/public/project/client/images/partners/partner1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/partners/partner2.png" afterPath="$PROJECT_DIR$/public/project/client/images/partners/partner2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/partners/partner3.png" afterPath="$PROJECT_DIR$/public/project/client/images/partners/partner3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/partners/partner4.png" afterPath="$PROJECT_DIR$/public/project/client/images/partners/partner4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/partners/partner5.png" afterPath="$PROJECT_DIR$/public/project/client/images/partners/partner5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/partners/partner_bg.png" afterPath="$PROJECT_DIR$/public/project/client/images/partners/partner_bg.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item1.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item10.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item10.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item11.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item11.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item12.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item12.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item2.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item3.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item4.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item5.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item6.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item7.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item7.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item8.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item8.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/full/item9.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/full/item9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item1.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item10.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item10.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item11.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item11.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item12.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item12.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item2.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item3.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item4.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item5.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item6.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item7.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item7.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item8.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item8.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/portfolio/recent/item9.png" afterPath="$PROJECT_DIR$/public/project/client/images/portfolio/recent/item9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_rounded/btnNext.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_square/btnNext.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_rounded/btnPrevious.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_square/btnPrevious.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_rounded/contentPattern.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_rounded/contentPattern.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_rounded/default_thumbnail.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_square/default_thumbnail.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_rounded/loader.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_square/loader.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_rounded/sprite.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_rounded/sprite.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_square/btnNext.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_rounded/btnNext.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_square/btnPrevious.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_rounded/btnPrevious.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_square/contentPattern.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_square/contentPattern.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_square/default_thumbnail.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_rounded/default_thumbnail.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_square/loader.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_rounded/loader.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/dark_square/sprite.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_square/sprite.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/default/default_thumb.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/default/default_thumb.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/default/loader.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/default/loader.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/default/sprite.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/default/sprite.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/default/sprite_next.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/default/sprite_next.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/default/sprite_prev.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/default/sprite_prev.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/default/sprite_x.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/default/sprite_x.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/default/sprite_y.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/default/sprite_y.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/facebook/btnNext.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/facebook/btnNext.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/facebook/btnPrevious.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/facebook/btnPrevious.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/facebook/contentPatternBottom.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/facebook/contentPatternBottom.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/facebook/contentPatternLeft.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/facebook/contentPatternLeft.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/facebook/contentPatternRight.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/facebook/contentPatternRight.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/facebook/contentPatternTop.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/facebook/contentPatternTop.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/facebook/default_thumbnail.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/facebook/default_thumbnail.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/facebook/loader.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_square/loader.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/facebook/sprite.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/facebook/sprite.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_rounded/btnNext.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_square/btnNext.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_rounded/btnPrevious.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_square/btnPrevious.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_rounded/default_thumbnail.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_square/default_thumbnail.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_rounded/loader.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_rounded/loader.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_rounded/sprite.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/light_rounded/sprite.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_square/btnNext.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_rounded/btnNext.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_square/btnPrevious.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_rounded/btnPrevious.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_square/default_thumbnail.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_rounded/default_thumbnail.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_square/loader.gif" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/facebook/loader.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/prettyPhoto/light_square/sprite.png" afterPath="$PROJECT_DIR$/public/project/client/images/prettyPhoto/dark_square/sprite.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ribon_one.png" afterPath="$PROJECT_DIR$/public/project/client/images/ribon_one.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/ribon_two.png" afterPath="$PROJECT_DIR$/public/project/client/images/ribon_two.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/search_icon.png" afterPath="$PROJECT_DIR$/public/project/client/images/search_icon.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/service/client1.png" afterPath="$PROJECT_DIR$/public/project/client/images/client1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/service/client2.png" afterPath="$PROJECT_DIR$/public/project/client/images/client2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/service/client3.png" afterPath="$PROJECT_DIR$/public/project/client/images/client3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/service/image_bg.png" afterPath="$PROJECT_DIR$/public/project/client/images/image_bg.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/service/logo.png" afterPath="$PROJECT_DIR$/public/project/client/images/service/logo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/services/bg_services.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/services/bg_services.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/services/bg_services.png" afterPath="$PROJECT_DIR$/public/project/client/images/services/bg_services.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/services/services1.png" afterPath="$PROJECT_DIR$/public/project/client/images/services/services1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/services/services2.png" afterPath="$PROJECT_DIR$/public/project/client/images/services/services2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/services/services3.png" afterPath="$PROJECT_DIR$/public/project/client/images/services/services3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/services/services4.png" afterPath="$PROJECT_DIR$/public/project/client/images/services/services4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/services/services5.png" afterPath="$PROJECT_DIR$/public/project/client/images/services/services5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/services/services6.png" afterPath="$PROJECT_DIR$/public/project/client/images/services/services6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/services/slider-bg.png" afterPath="$PROJECT_DIR$/public/project/client/images/services/slider-bg.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/slider/bg1.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/slider/bg1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/slider/bg2.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/slider/bg2.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/slider/bg3.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/slider/bg3.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/slider/img1.png" afterPath="$PROJECT_DIR$/public/project/client/images/slider/img1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/slider/img2.png" afterPath="$PROJECT_DIR$/public/project/client/images/slider/img2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/slider/img3.png" afterPath="$PROJECT_DIR$/public/project/client/images/slider/img3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/slider_one.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/slider_one.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/tab1.png" afterPath="$PROJECT_DIR$/public/project/client/images/tab1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/tab2.png" afterPath="$PROJECT_DIR$/public/project/client/images/tab2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/team-member.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/team-member.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/testimonials1.png" afterPath="$PROJECT_DIR$/public/project/client/images/testimonials1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/index.html" afterPath="$PROJECT_DIR$/public/project/client/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/index2.html" afterPath="$PROJECT_DIR$/public/project/client/index2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/angular-route.1.5.0.min.js" afterPath="$PROJECT_DIR$/public/project/client/js/angular-route.1.5.0.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/angular.1.5.0.min.js" afterPath="$PROJECT_DIR$/public/project/client/js/angular.1.5.0.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/public/project/client/js/bootstrap.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/html5shiv.js" afterPath="$PROJECT_DIR$/public/project/client/js/html5shiv.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/jquery.isotope.min.js" afterPath="$PROJECT_DIR$/public/project/client/js/jquery.isotope.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/jquery.js" afterPath="$PROJECT_DIR$/public/project/client/js/jquery.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/jquery.prettyPhoto.js" afterPath="$PROJECT_DIR$/public/project/client/js/jquery.prettyPhoto.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/main.js" afterPath="$PROJECT_DIR$/public/project/client/js/main.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/respond.min.js" afterPath="$PROJECT_DIR$/public/project/client/js/respond.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/js/wow.min.js" afterPath="$PROJECT_DIR$/public/project/client/js/wow.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/services/book.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/book.service.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/services/home.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/home.service.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/services/location.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/location.service.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/services/maker.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/maker.service.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/services/user.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/user.service.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/services/wishlist.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/wishlist.service.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/book/book.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/book/book.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/book/book.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/book/book.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/details/details.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/details/details.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/details/details.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/details/details.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/editions/editions.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/editions/editions.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/editions/editions.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/editions/editions.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/header/header.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/header/header.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/header/header.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/header/header.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/home/home.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/home/home.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/home/home.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/home/home.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/location/location.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/location/location.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/location/location.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/location/location.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/main/main.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/main/main.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/maker/maker.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/maker/maker.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/maker/maker.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/maker/maker.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/search/search.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/search/search.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/search/search.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/search/search.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/sidebar/sidebar.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/sidebar/sidebar.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/sidebar/sidebar.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/sidebar/sidebar.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/tab/tab.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/tab/tab.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/user/user.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/user/user.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/user/user.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/user/user.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/wishlist/wishlist.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/wishlist/wishlist.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/wishlist/wishlist.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/wishlist/wishlist.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/client/services/user.service.client.js" afterPath="$PROJECT_DIR$/public/assignment/client/services/user.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/client/views/register/register.controller.js" afterPath="$PROJECT_DIR$/public/assignment/client/views/register/register.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/app.js" afterPath="$PROJECT_DIR$/public/assignment/server/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/models/user.model.server.js" afterPath="$PROJECT_DIR$/public/assignment/server/models/user.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" afterPath="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.view.js.html" afterPath="$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.view.js.html" />
     </list>
     <ignored path="webdev2016.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -267,21 +43,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homeauth.view.js.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="homeauth.view.js.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.view.js.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.9313501">
+              <caret line="123" column="3" selection-start-line="123" selection-start-column="3" selection-end-line="123" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homeauth.controller.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="homeauth.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.625">
+              <caret line="62" column="89" selection-start-line="0" selection-start-column="0" selection-end-line="123" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -302,16 +88,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-9.208333">
               <caret line="16" column="59" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.service.client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/services/user.service.client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -364,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/assignment/client/js/jquery-1.12.0.min.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/js/bootstrap.3.3.6.min.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/js/jquery-ui.1.11.4.min.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/js/angular1.5.0.min.js" />
@@ -415,6 +190,7 @@
         <option value="$PROJECT_DIR$/public/project/client/config.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.controller.js.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.controller.js" />
+        <option value="$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.view.js.html" />
       </list>
     </option>
   </component>
@@ -1309,18 +1085,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-38.75">
-          <caret line="62" column="89" selection-start-line="62" selection-start-column="89" selection-end-line="62" selection-end-column="89" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#section#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#section#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.4583335">
@@ -1625,18 +1389,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.view.js.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625">
+          <caret line="62" column="89" selection-start-line="0" selection-start-column="0" selection-end-line="123" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/homeauth/homeauth.view.js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9313501">
+          <caret line="123" column="3" selection-start-line="123" selection-start-column="3" selection-end-line="123" selection-end-column="3" />
           <folding />
         </state>
       </provider>
