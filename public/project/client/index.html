@@ -18,6 +18,7 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- CSS Carry-over from POC.  May or may not be needed.  Mod or delete as applicable
     <link href="css/dashboard.css" rel="stylesheet">
@@ -39,12 +40,15 @@
     <script src="js/wow.min.js"></script>
     <script src="js/angular.1.5.0.min.js"></script>
     <script src="js/angular-route.1.5.0.min.js"></script>
+    <script src="js/angular-animate.1.5.0.min.js"></script>
+    <script src="js/angular-touch.1.5.0.min.js"></script>
 
     <!-- Angular App and Routing -->
     <script src="app.js"></script>
     <script src="config.js"></script>
 
     <!-- Controllers -->
+    <script src="views/authenticate/authenticate.controller.js"></script>
     <script src="views/book/book.controller.js"></script>
     <script src="views/details/details.controller.js"></script>
     <script src="views/editions/editions.controller.js"></script>
@@ -74,6 +78,7 @@
 <div ng-include="'views/header/header.view.html'"></div>
 
 <!-- Main body: injected content -->
+<!--<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 main" ng-view></div>-->
 <div ng-view></div>
 
 <!-- <div class="container-fluid">

@@ -32,8 +32,13 @@ var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || '3000';
 app.listen(port, ipaddress);
 
-// For assignments only
-require('./public/assignment/server/app.js')(app, mongoose);
+// Define User Models. NOTE: Must be done at this level for Passport security.
+var assignmentUserModel = require("./public/assignment/server/models/user.model.server.js")(mongoose);
+var projectUserModel = require("./public/project/server/models/user.model.server.js")(mongoose);
+
+// app.js for assignments and project
+require('./public/assignment/server/app.js')(app, mongoose, assignmentUserModel);
+require('./public/project/server/app.js')(app, mongoose, assignmentUserModel, projectUserModel);
 
 // Section below under development for project ////////////////////////////
 app.get('/rest/edition/:editionKey', getEditionData);

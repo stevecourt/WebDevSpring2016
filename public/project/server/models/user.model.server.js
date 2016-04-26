@@ -6,13 +6,16 @@ var bcrypt = require("bcrypt-nodejs");
 module.exports = function (mongoose) {
 
     var userSchema = require('./user.schema.server.js')(mongoose);
-    var userModel = mongoose.model("user", userSchema);
+    var userModel = mongoose.model("exchanger", userSchema);
 
     var api = {
         createUser: createUser,
+
         findAllUsers: findAllUsers,
         findUserById: findUserById,
+
         findUserByUsername: findUserByUsername,
+
         findUserByCredentials: findUserByCredentials,
         updateUserById: updateUserById,
         deleteUserById: deleteUserById
@@ -56,18 +59,13 @@ module.exports = function (mongoose) {
 
     function findUserByUsername(usernameGiven) {
 
-        console.log("assignment user model - findUserByUsername - usernameGiven");
-        console.log(usernameGiven);
+        console.log("user.model - findByUserName");
 
         var deferred = q.defer();
         userModel.findOne({username: usernameGiven}, function (err, user){
             if (err) {
                 deferred.reject(err);
             } else {
-
-                console.log("assignment user model - findUserByUsername - user found");
-                console.log(user);
-
                 deferred.resolve(user);
             }
         });

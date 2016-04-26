@@ -2,6 +2,10 @@
  * Style adjustments
  */
 
+.dark-heading{
+    color: #4e4e4e;
+}
+
 /* DOMAIN PAGES */
 /* Allow text properties to wrap on small screens */
 .wrapInMobile{

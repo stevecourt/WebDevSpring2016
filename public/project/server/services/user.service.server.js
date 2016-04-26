@@ -9,11 +9,12 @@ module.exports = function (app, userModel) {
     var auth = authenticated;
 
     // User authentification endpoints
-    //app.post ("/api/assignment/login", passport.authenticate("local"), login);
-    //app.get ("/api/assignment/loggedin", loggedin);
-    //app.post ("/api/assignment/logout", logout);
-    //app.post ("/api/assignment/register", register);
-    //app.put("/api/assignment/user/:userId", auth, updateUser);
+    //app.post ("/api/project/register", register);
+
+    //app.post ("/api/project/login", passport.authenticate("local"), login);
+    //app.get ("/api/project/loggedin", loggedin);
+    //app.post ("/api/project/logout", logout);
+    app.put("/api/project/user/:userId", auth, updateUser);
 
     // Admin user endpoints
     app.post ("/api/assignment/admin/user", isAdmin, createUser);
@@ -24,7 +25,7 @@ module.exports = function (app, userModel) {
 
     function authenticated (req, res, next) {
 
-        console.log("in authenticated (assignment)");
+        console.log("in authenticated (project)");
 
         if (!req.isAuthenticated()) {
             res.send(401);
@@ -35,7 +36,7 @@ module.exports = function (app, userModel) {
 
     function isAdmin(req, res, next) {
 
-        console.log("in isAdmin (assignment)");
+        console.log("in isAdmin (project)");
 
         if (req.isAuthenticated()) {
             userModel
@@ -52,11 +53,11 @@ module.exports = function (app, userModel) {
             res.send(403);
         }
     }
-/*
-    passport.use(new LocalStrategy(localStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
 
+    //passport.use(new LocalStrategy(localStrategy));
+    //passport.serializeUser(serializeUser);
+    //passport.deserializeUser(deserializeUser);
+/*
     function localStrategy(username, password, done) {
         userModel
             .findUserByCredentials({username: username, password: password})
@@ -103,8 +104,7 @@ module.exports = function (app, userModel) {
 
     function register(req, res) {
         var newUser = req.body;
-        newUser.emails = newUser.emails.split(",");
-        newUser.roles = ["student"];
+        newUser.roles = ["basic"];
         newUser.password = bcrypt.hashSync(newUser.password);
 
         userModel

@@ -17,11 +17,18 @@
             }
             else
             {
+
+                console.log("assignment register controller - register");
+                console.log(user);
+
                 UserService
                     .register(user)
                     .then(
                         function(response) {
                             var registeredUser = response.data;
+
+                            console.log("back in assignment register controller - register");
+                            console.log(registeredUser);
 
                             // Converts emails, phones and roles from arrays to comma separated strings.
                             var clientUser = arraysToCsv(registeredUser);
