@@ -24,7 +24,7 @@
                             //var clientUser = arraysToCsv(loggedInUser);
 
                             $rootScope.currentUser = loggedInUser;
-                            $location.url("/profile");
+                            $location.url("/homeauth");
                         },
                         function(err) {
                             alert("The username or password entered is not recognized.");
@@ -62,7 +62,7 @@
                             console.log(registeredUser);
 
                             if(user != null) {
-                                $location.url("/profile");
+                                $location.url("/homeauth");
                             }
                         },
                         function(err) {

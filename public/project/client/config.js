@@ -40,7 +40,11 @@
                 })
                 .when("/home", {
                     templateUrl: "views/home/home.view.html",
-                    controller: "HomeController",
+                    controller: "HomeController"
+                })
+                .when("/homeauth", {
+                    templateUrl: "views/homeauth/homeauth.view.html",
+                    controller: "HomeauthController",
                     resolve: {
                         loggedin: checkLoggedin
                     }

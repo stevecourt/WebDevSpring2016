@@ -41,14 +41,14 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="#/">Book Exchanger</a>
+                <a class="navbar-brand" href="#/homeauth">Book Exchanger</a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li ng-show="currentUser"><a href="#/profile">Welcome: {{currentUser.username}}</a></li>
+                    <li ng-show="currentUser"><a href="#/homeauth">Welcome: {{currentUser.username}}</a></li>
                     <li class="dropdown, active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <i class="fa fa-angle-down"></i></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown">Account <i class="fa fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
                             <li ng-hide="currentUser"><a href="#/authenticate">Login/Register</a></li>
                             <li ng-show="currentUser"ng-click=logout()><a href="">Logout</a></li>
