@@ -12,6 +12,7 @@
             login: login,
             register: register,
             logout: logout,
+            updateUserProfile: updateUserProfile,
 
             createUser: createUser,
             findAllUsers: findAllUsers,
@@ -34,6 +35,19 @@
 
         function logout() {
             return $http.post("/api/project/logout");
+        }
+
+        function updateUserProfile(userId, updatedUser) {
+            var deferred = $q.defer();
+
+            $http.put("/api/project/user/" + userId, updatedUser)
+                .then(function(users){
+                    deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
+                });
+
+            return deferred.promise;
         }
 
         function createUser(user, callback) {

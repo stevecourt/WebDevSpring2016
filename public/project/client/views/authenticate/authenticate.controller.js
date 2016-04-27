@@ -21,9 +21,12 @@
                             var loggedInUser = response.data;
 
                             // Converts emails, phones and roles from arrays to comma separated strings.
-                            //var clientUser = arraysToCsv(loggedInUser);
+                            var clientUser = arraysToCsv(loggedInUser);
 
-                            $rootScope.currentUser = loggedInUser;
+                            $rootScope.currentUser = clientUser;
+
+                            console.log($rootScope.currentUser.roles);
+
                             $location.url("/homeauth");
                         },
                         function(err) {
@@ -70,6 +73,29 @@
                         }
                     );
             }
+        }
+
+        function arraysToCsv(userFound) {
+            var clientUser = userFound;
+            var userRoles = arrayToCsv(userFound.roles);
+            clientUser.roles = userRoles;
+            return clientUser;
+        }
+
+        function arrayToCsv(array) {
+            var commaSeparatedString = "";
+            for (var i = 0; i < array.length; i++) {
+                if (i < array.length - 1) {
+                    commaSeparatedString = commaSeparatedString + array[i] + ",";
+                } else {
+                    commaSeparatedString = commaSeparatedString + array[i];
+                }
+            }
+
+            console.log("arrayToCsv");
+            console.log(commaSeparatedString);
+
+            return commaSeparatedString;
         }
     }
 })();

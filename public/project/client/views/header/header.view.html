@@ -52,18 +52,16 @@
                         <ul class="dropdown-menu">
                             <li ng-hide="currentUser"><a href="#/authenticate">Login/Register</a></li>
                             <li ng-show="currentUser"ng-click=logout()><a href="">Logout</a></li>
-                            <li ng-show="currentUser"><a href="404.html">View/Edit</a></li>
-                            <li ng-show="currentUser"><a href="404.html">Search</a></li>
+                            <li ng-show="currentUser"><a href="#/profile">View/Edit</a></li>
+                            <li ng-show="currentUser"><a href="#/user">Admin</a></li>
                         </ul>
                     </li>
-                    <li><a ng-show="currentUser" href="about-us.html">Books</a></li>
-                    <li><a ng-show="currentUser" href="services.html">Wishlist</a></li>
+                    <li ng-show="currentUser"><a href="#/user">Exchangers</a></li>
                     <li ng-show="currentUser" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Locations <i class="fa fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="blog-item.html">Register Location</a></li>
                             <li><a href="pricing.html">Search</a></li>
-                            <li><a href="404.html">View/Edit</a></li>
                         </ul>
                     </li>
                 </ul>

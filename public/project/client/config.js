@@ -9,6 +9,13 @@
                     templateUrl: "views/authenticate/authenticate.view.html",
                     controller: "AuthenticateController"
                 })
+                .when("/profile", {
+                    templateUrl: "views/profile/profile.view.html",
+                    controller: "ProfileController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
+                })
                 .when("/book", {
                     templateUrl: "views/book/book.view.html",
                     controller: "BookController",

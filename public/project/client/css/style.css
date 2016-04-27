@@ -6,6 +6,15 @@
     color: #4e4e4e;
 }
 
+.input-align{
+    top: 7px;
+    left: 13px;
+}
+
+.buttonInputAlign{
+    margin-bottom: 0px;
+}
+
 /* DOMAIN PAGES */
 /* Allow text properties to wrap on small screens */
 .wrapInMobile{
