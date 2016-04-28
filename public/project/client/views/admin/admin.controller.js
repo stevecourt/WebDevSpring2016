@@ -3,13 +3,14 @@
 (function () {
     angular
         .module("BookExchangeApp")
-        .controller("UserController", userController);
+        .controller("AdminController", adminController);
 
-    function userController($scope, UserService) {
+    function adminController($scope, UserService) {
 
+        $scope.createUser = createUser;
         $scope.findAllUsers = findAllUsers;
-        $scope.addFollow = addFollow;
         $scope.findUserById = findUserById;
+        $scope.deleteUserById = deleteUserById;
         $scope.updateUserById = updateUserById;
 
         // Get the current users for rendering.
@@ -18,7 +19,7 @@
             UserService.findAllUsers()
                 .then (function (returnedUsers) {
 
-                    console.log("user controller - returned users");
+                    console.log("admin controller - returned users");
                     console.log(returnedUsers.data);
 
                     var convertedUsers = convertRoles(returnedUsers.data);
@@ -28,13 +29,17 @@
                 });
         }
 
-        function addFollow(index) {
-            UserService.addFollowById($scope.users[index]._id)
+        function createUser(newUser) {
+
+            console.log("new user sent");
+            console.log(newUser);
+
+            UserService.createUser(newUser)
                 .then (function (returnedUsers) {
                     var convertedUsers = convertRoles(returnedUsers.data);
                     $scope.users = convertedUsers;
                 }, function (returnedUsers) {
-                    console.log("Error: Could not update user.");
+                    console.log("Error: Could not add user.");
                 });
         }
 
@@ -46,6 +51,16 @@
                     $scope.user = $scope.selectedUser;
                 }, function (returnedUser) {
                     console.log("Error: Could not select user.");
+                });
+        }
+
+        function deleteUserById(index) {
+            UserService.deleteUserById($scope.users[index]._id)
+                .then (function (returnedUsers) {
+                    var convertedUsers = convertRoles(returnedUsers.data);
+                    $scope.users = convertedUsers;
+                }, function (returnedUsers) {
+                    console.log("Error: Could not delete user.");
                 });
         }
 

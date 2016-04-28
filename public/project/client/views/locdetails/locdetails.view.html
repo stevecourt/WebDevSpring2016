@@ -1,0 +1,101 @@
+<!-- Location Details Fields -->
+<form class="form-horizontal">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 main">
+        <h1 class="page-header dark-heading">Location Details</h1>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Name:</label>
+            <div class="col-sm-10 input-align">
+                {{currentLocation.name}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Street:</label>
+            <div class="col-sm-10 input-align">
+                {{currentLocation.street}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Apartment:</label>
+            <div class="col-sm-10 input-align">
+                {{currentLocation.apartment}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">City:</label>
+            <div class="col-sm-10 input-align">
+                {{currentLocation.city}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">State:</label>
+            <div class="col-sm-10 input-align">
+                {{currentLocation.state}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">ZIP:</label>
+            <div class="col-sm-10 input-align">
+                {{currentLocation.zip}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Capacity:</label>
+            <div class="col-sm-10 input-align">
+                {{currentLocation.capacity}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Type:</label>
+            <div class="col-sm-10 input-align">
+                {{currentLocation.type}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Notes:</label>
+            <div class="col-sm-10 input-align">
+                {{currentLocation.notes}}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button ng-click="searchBooks()"
+                        class="btn btn-success"
+                        type="submit">
+                    Add Book
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Users Table -->
+<div class="table-responsive col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+    <h1 class="page-header dark-heading">Inventory</h1>
+    <table class="table table-striped">
+
+        <thead class="text-nowrap">
+        <tr>
+            <th>
+                <label>ISBN</label>
+            </th>
+            <th>
+                <label>Delete</label>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="isbn in currentLocation.inventory">
+            <td>{{isbn}}</td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="deleteBookByLocationId($index)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>

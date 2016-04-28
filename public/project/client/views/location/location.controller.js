@@ -7,75 +7,73 @@
 
     function locationController($scope, LocationService) {
 
-        $scope.addLocation = addLocation;
-        $scope.selectLocation = selectLocation;
-        $scope.changeLocation = changeLocation;
-        $scope.removeLocation = removeLocation;
+        $scope.findAllLocations = findAllLocations;
+        $scope.addLike = addLike;
+        $scope.findUserById = findUserById;
+        $scope.updateUserById = updateUserById;
 
-        // Get all locations for rendering.
-        getAllLocations();
-        function getAllLocations() {
-            var callback = function (locations) {
-                $scope.allLocations = locations;
-            };
-            LocationService.findAllLocations(callback);
+        // Get the current locations for rendering.
+        findAllLocations();
+        function findAllLocations() {
+            LocationService.findAllLocations()
+                .then (function (returnedLocations) {
+
+                    console.log("location controller - returned locations");
+                    console.log(returnedLocations.data);
+
+                    $scope.locations = returnedLocations.data;
+                }, function (returnedLocations) {
+                    console.log("Error: Could not retrieve users.");
+                });
         }
 
-        function addLocation(location) {
-            var callback = function (locations) {
-                // Get all locations for rendering.
-                LocationService.findAllLocations(
-                    function (locations) {
-                        $scope.allLocations = locations;
-                    }
-                )
-            };
-            LocationService.createLocation(location, callback);
+        function addLike(index) {
+            LocationService.addLikeById($scope.locations[index]._id)
+                .then (function (returnedLocations) {
+                    $scope.locations = returnedLocations.data;
+                }, function (returnedLocations) {
+                    console.log("Error: Could not add like to location.");
+                });
         }
 
-        function selectLocation(index) {
-            $scope.selectedLocationIndex = index;
-            $scope.location = {
-                id: $scope.allLocations[index].id,
-                street: $scope.allLocations[index].street,
-                apartment: $scope.allLocations[index].apartment,
-                city: $scope.allLocations[index].city,
-                state: $scope.allLocations[index].state,
-                zip: $scope.allLocations[index].zip,
-                country: $scope.allLocations[index].country,
-                capacity: $scope.allLocations[index].capacity,
-                type: $scope.allLocations[index].type,
-                open: $scope.allLocations[index].open,
-                close: $scope.allLocations[index].close,
-                notes: $scope.allLocations[index].notes,
-                application: $scope.allLocations[index].application,
-                userId: $scope.allLocations[index].userId
-            };
+        function findUserById(index) {
+            UserService.findUserById($scope.users[index]._id)
+                .then (function (returnedUser) {
+                    $scope.selectedUser = returnedUser.data;
+                    $scope.selectedUser.roles = arrayToCsv($scope.selectedUser.roles);
+                    $scope.user = $scope.selectedUser;
+                }, function (returnedUser) {
+                    console.log("Error: Could not select user.");
+                });
         }
 
-        function changeLocation(location) {
-            var callback = function (newLocation) {
-                $scope.allLocations[$scope.selectedLocationIndex] = newLocation;
-                // Get all locations for rendering.
-                LocationService.findAllLocations(
-                    function (locations) {
-                        $scope.allLocations = locations;
-                    }
-                )
-            };
-            LocationService.updateLocation(location, callback);
+        function updateUserById(updatedUser) {
+            UserService.updateUserById(updatedUser._id, updatedUser)
+                .then (function (returnedUsers) {
+                    var convertedUsers = convertRoles(returnedUsers.data);
+                    $scope.users = convertedUsers;
+                }, function (returnedUsers) {
+                    console.log("Error: Could not update user.");
+                });
         }
 
-        function removeLocation(location) {
-            var callback = function (locations) {
-                // Get all locations for rendering.
-                LocationService.findAllLocations(
-                    function (locations) {
-                        $scope.allLocations = locations;
-                    }
-                )
-            };
-            LocationService.deleteLocation(location, callback);
+        function convertRoles(userArray) {
+            for (var i = 0; i < userArray.length; i++) {
+                userArray[i].roles = arrayToCsv(userArray[i].roles);
+            }
+            return userArray;
+        }
+
+        function arrayToCsv(array) {
+            var commaSeparatedString = "";
+            for (var i = 0; i < array.length; i++) {
+                if (i < array.length - 1) {
+                    commaSeparatedString = commaSeparatedString + array[i] + ",";
+                } else {
+                    commaSeparatedString = commaSeparatedString + array[i];
+                }
+            }
+            return commaSeparatedString;
         }
     }
 })();

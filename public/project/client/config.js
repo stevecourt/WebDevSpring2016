@@ -37,10 +37,9 @@
                         loggedin: checkLoggedin
                     }
                 })
-                // TODO: Update with rest keyword and check functionality.
-                .when("/editions/:edition_key", {
-                    templateUrl: "views/editions/editions.view.html",
-                    controller: "EditionsController",
+                .when("/locationDetails/:locationId", {
+                    templateUrl: "views/locdetails/locdetails.view.html",
+                    controller: "LocDetailsController",
                     resolve: {
                         loggedin: checkLoggedin
                     }
@@ -77,6 +76,13 @@
                         loggedin: checkLoggedin
                     }
                 })
+                .when("/search/:locationId", {
+                    templateUrl: "views/search/search.view.html",
+                    controller: "SearchController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
+                })
                 .when("/search/:title?/:author?/:isbn?/:subject?/:place?/:person?/:publisher?", {
                     templateUrl: "views/search/search.view.html",
                     controller: "SearchController",
@@ -87,6 +93,20 @@
                 .when("/user", {
                     templateUrl: "views/user/user.view.html",
                     controller: "UserController",
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
+                })
+                .when("/admin", {
+                    templateUrl: "views/admin/admin.view.html",
+                    controller: "AdminController",
+                    resolve: {
+                        loggedin: checkAdmin
+                    }
+                })
+                .when("/reglocation", {
+                    templateUrl: "views/reglocation/reglocation.view.html",
+                    controller: "ReglocationController",
                     resolve: {
                         loggedin: checkLoggedin
                     }

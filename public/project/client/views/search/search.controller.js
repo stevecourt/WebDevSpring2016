@@ -6,7 +6,12 @@
         .module("BookExchangeApp")
         .controller("SearchController", SearchController);
 
-    function SearchController($scope, $routeParams, BookService) {
+    function SearchController($scope, $routeParams, $rootScope, BookService, LocationService) {
+
+        $scope.addBookByLocationId = addBookByLocationId;
+
+        // Form ID from the URL pattern
+        $scope.locationId = $routeParams.locationId;
 
         function init() {
             var bookTitle = $routeParams.title;
@@ -45,6 +50,30 @@
                 var searchPicUrl = "http://covers.openlibrary.org/b/id/" + docs[i].cover_i +"-M.jpg";
                 docs[i].cover = searchPicUrl;
             }
+        }
+
+        function addBookByLocationId(index) {
+
+            // Get book ISBN from data.docs
+            var isbn = $scope.data.docs[index].isbn[0];
+
+            console.log("in addBookByLocationId");
+            console.log(isbn);
+            console.log($rootScope.locationId);
+
+            // Call service function and send locationId and ISBN.
+            LocationService
+                .addBookByLocationId(isbn, $rootScope.locationId)
+                .then(
+                    function(response) {
+
+                        console.log("back in controller");
+
+                    },
+                    function(err) {
+                        $scope.error = err;
+                    }
+                );
         }
     }
 })();

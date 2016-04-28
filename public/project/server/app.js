@@ -5,9 +5,11 @@ module.exports = function (app, mongoose, assignmentUserModel, projectUserModel)
     // Define models
     //var assignmentUserModel = require("../../assignment/server/models/user.model.server.js")(mongoose);
     //var projectUserModel = require("./models/user.model.server.js")(mongoose);
+    var locationModel = require("./models/location.model.server.js")(mongoose);
 
     // Define services
     var userService = require("./services/user.service.server.js");
+    var locationService = require("./services/location.service.server.js");
 
     // Define security
     var security = require("../../security/security.js");
@@ -15,4 +17,5 @@ module.exports = function (app, mongoose, assignmentUserModel, projectUserModel)
     // Pass models to services
     userService(app, projectUserModel);
     security(app, assignmentUserModel, projectUserModel);
+    locationService(app, locationModel, projectUserModel);
 };

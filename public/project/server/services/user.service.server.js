@@ -15,13 +15,15 @@ module.exports = function (app, userModel) {
     //app.get ("/api/project/loggedin", loggedin);
     //app.post ("/api/project/logout", logout);
     app.put("/api/project/user/:userId", auth, updateUser);
+    app.put ("/api/project/follow/:userId", auth, addFollowById);
 
     // Admin user endpoints
-    app.post ("/api/assignment/admin/user", isAdmin, createUser);
-    app.get ("/api/assignment/admin/user", isAdmin, findAllUsers);
-    app.get ("/api/assignment/admin/user/:userId", isAdmin, findUserById);
-    app.delete("/api/assignment/admin/user/:userId", isAdmin, deleteUser);
-    app.put ("/api/assignment/admin/user/:userId", isAdmin, updateUser);
+    app.post ("/api/project/admin/user", isAdmin, createUser);
+    app.get ("/api/project/admin/user", auth, findAllUsers);
+    app.get ("/api/project/admin/user/:userId", isAdmin, findUserById);
+    app.delete("/api/project/admin/user/:userId", isAdmin, deleteUser);
+    app.put ("/api/project/admin/user/:userId", isAdmin, updateUser);
+
 
     function authenticated (req, res, next) {
 
@@ -144,9 +146,15 @@ module.exports = function (app, userModel) {
         if (newUser.roles) {
             newUser.roles = newUser.roles.split(",");
         } else {
-            newUser.roles = ["student"];
+            newUser.roles = ["basic"];
+        }
+        if (!newUser.follows) {
+            newUser.follows = 0;
         }
         newUser.password = bcrypt.hashSync(newUser.password);
+
+        console.log("web service - newUser");
+        console.log(newUser);
 
         // first check if a user already exists with the username
         userModel
@@ -251,6 +259,36 @@ module.exports = function (app, userModel) {
                 }
                 userModel
                     .updateUserById(req.params.userId, newUser)
+                    .then(
+                        function(user){
+                            return userModel.findAllUsers();
+                        },
+                        function(err){
+                            res.status(400).send(err);
+                        }
+                    )
+                    .then(
+                        function(users){
+                            res.json(users);
+                        },
+                        function(err){
+                            res.status(400).send(err);
+                        }
+                    );
+            }, function (err) {
+                res.status(400).send(err);
+            });
+    }
+
+    function addFollowById(req, res) {
+        var userId = req.params.userId;
+
+        userModel
+            .findUserById(userId)
+            .then(function (user) {
+                user.follows = user.follows + 1;
+                userModel
+                    .updateUserById(userId, user)
                     .then(
                         function(user){
                             return userModel.findAllUsers();

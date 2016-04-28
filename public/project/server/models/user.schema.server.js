@@ -2,7 +2,7 @@
 
 module.exports = function (mongoose) {
 
-    var roleTypes = ["basic", "location", "maker", "admin"];
+    var roleTypes = ["basic", "location", "admin"];
 
     var userSchema = mongoose.Schema(
         {
@@ -12,8 +12,7 @@ module.exports = function (mongoose) {
             "lastName": String,
             "email": [String],
             "roles": [{type: String, enum: roleTypes, default: "basic"}],
-            "follows": [String],
-            "likes": [String]
+            "follows": Number
         },
         {collection: "exchanger"}
     );

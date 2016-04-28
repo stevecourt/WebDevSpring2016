@@ -13,11 +13,14 @@
             register: register,
             logout: logout,
             updateUserProfile: updateUserProfile,
-
-            createUser: createUser,
+            findUserByUsername: findUserByUsername,
+            findUserByCredentials: findUserByCredentials,
+            findUserById: findUserById,
             findAllUsers: findAllUsers,
-            updateUser: updateUser,
-            deleteUser: deleteUser
+            createUser: createUser,
+            deleteUserById: deleteUserById,
+            updateUserById: updateUserById,
+            addFollowById: addFollowById
         };
         return api;
 
@@ -50,43 +53,139 @@
             return deferred.promise;
         }
 
-        function createUser(user, callback) {
-            // Creates a new object to be added.
-            var newUser = {
-                id: (new Date).getTime(),
-                firstName: user.firstName,
-                lastName: user.lastName,
-                email: user.email,
-                username: user.username,
-                password: user.password,
-                type: user.type
-            };
-            users.push(newUser);
-            callback(users);
+        function findUserByUsername(username) {
+            var deferred = $q.defer();
+
+            $http.get("/api/project/user?username=" + username)
+                .then(function (user) {
+                    deferred.resolve(user);
+                }, function(user) {
+                    deferred.reject(user);
+                });
+
+            return deferred.promise;
         }
 
-        function findAllUsers(callback) {
-            callback(users);
+        function findUserByCredentials(username, password) {
+            var deferred = $q.defer();
+
+            $http.get("/api/project/user?username=" + username + "&password=" + password)
+                .then(function(user){
+                    deferred.resolve(user);
+                }, function (user) {
+                    deferred.reject(user);
+                });
+
+            return deferred.promise;
         }
 
-        function updateUser(user, callback) {
-            // Creates a new object to be updated.
-            var newUser = {
-                id: user.id,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                email: user.email,
-                username: user.username,
-                password: user.password,
-                type: user.type
-            };
-            callback(newUser);
+        function findUserById(userId) {
+            var deferred = $q.defer();
+
+            $http.get("/api/project/admin/user/" + userId)
+                .then(function(user){
+                    deferred.resolve(user);
+                }, function (user) {
+                    deferred.reject(user);
+                });
+
+            return deferred.promise;
         }
 
-        function deleteUser(user, callback) {
-            var index = users.indexOf(user);
-            users.splice(index, 1);
-            callback(users);
+        function findAllUsers() {
+            var deferred = $q.defer();
+
+            $http.get("/api/project/admin/user")
+                .then(function(users){
+                    deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
+                });
+
+            return deferred.promise;
+        }
+
+        function createUser(newUser) {
+            var deferred = $q.defer();
+
+            $http.post("/api/project/admin/user", newUser)
+                .then(function(users){
+                    deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
+                });
+
+            return deferred.promise;
+        }
+
+        function deleteUserById(userId) {
+            var deferred = $q.defer();
+
+            $http.delete("/api/project/admin/user/" + userId)
+                .then(function(users){
+                    deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
+                });
+
+            return deferred.promise;
+        }
+
+        function updateUserById(userId, updatedUser) {
+            var deferred = $q.defer();
+
+            $http.put("/api/project/admin/user/" + userId, updatedUser)
+                .then(function(users){
+                    deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
+                });
+
+            return deferred.promise;
+        }
+
+        function updateUserProfile(userId, updatedUser) {
+            var deferred = $q.defer();
+
+            $http.put("/api/project/user/" + userId, updatedUser)
+                .then(function(users){
+                    deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
+                });
+
+            return deferred.promise;
+        }
+
+        function addFollowById(userId) {
+            var deferred = $q.defer();
+
+            $http.put("/api/project/follow/" + userId)
+                .then(function(users){
+                    deferred.resolve(users);
+                }, function (users) {
+                    deferred.reject(users);
+                });
+
+            return deferred.promise;
+        }
+
+        function emailAndPhoneToArray(user) {
+            var serverUser = user;
+            if (user.emails) {
+                var userEmails = csvToArray(user.emails);
+                serverUser.emails = userEmails;
+            }
+            if (user.phones) {
+                var userPhones = csvToArray(user.phones);
+                serverUser.phones = userPhones;
+            }
+            return serverUser;
+        }
+
+        function csvToArray(commaSeparatedString) {
+            var array = commaSeparatedString.split(",");
+            return array;
         }
     }
 })();
@@ -292,4 +391,45 @@ users = [
         "type": "admin"
     }
 ];
+    */
+
+/*
+function createUser(user, callback) {
+    // Creates a new object to be added.
+    var newUser = {
+        id: (new Date).getTime(),
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        username: user.username,
+        password: user.password,
+        type: user.type
+    };
+    users.push(newUser);
+    callback(users);
+}
+
+function findAllUsers(callback) {
+    callback(users);
+}
+
+function updateUser(user, callback) {
+    // Creates a new object to be updated.
+    var newUser = {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        username: user.username,
+        password: user.password,
+        type: user.type
+    };
+    callback(newUser);
+}
+
+function deleteUser(user, callback) {
+    var index = users.indexOf(user);
+    users.splice(index, 1);
+    callback(users);
+}
     */

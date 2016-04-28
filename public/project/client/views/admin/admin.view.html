@@ -1,0 +1,98 @@
+<!-- Users Table -->
+<div class="table-responsive col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+    <h1 class="page-header dark-heading">Admin</h1>
+    <table class="table table-striped">
+
+        <thead class="text-nowrap">
+        <tr>
+            <th>
+                <label for="usernameInput">Username</label>
+                <input ng-model="user.username"
+                       type="text"
+                       class="form-control"
+                       id="usernameInput"
+                       placeholder="Username">
+            </th>
+            <th>
+                <label for="passwordInput">Password</label>
+                <input ng-model="user.password"
+                       type="password"
+                       class="form-control"
+                       id="passwordInput"
+                       placeholder="Password">
+            </th>
+            <th>
+                <label for="firstNameInput">First Name</label>
+                <input ng-model="user.firstName"
+                       type="text"
+                       class="form-control"
+                       id="firstNameInput"
+                       placeholder="First Name">
+            </th>
+            <th>
+                <label for="lastNameInput">Last Name</label>
+                <input ng-model="user.lastName"
+                       type="text"
+                       class="form-control"
+                       id="lastNameInput"
+                       placeholder="Last Name">
+            </th>
+            <th>
+                <label for="rolesInput">Roles</label>
+                <input ng-model="user.roles"
+                       type="text"
+                       class="form-control"
+                       id="rolesInput"
+                       placeholder="Roles">
+            </th>
+            <th>
+                <label for="followersInput">Followers</label>
+                <input ng-model="user.follows"
+                       type="text"
+                       class="form-control"
+                       id="followersInput"
+                       placeholder="Followers">
+            </th>
+            <th>
+                <label>
+                    Action
+                </label>
+                <p class="headerIconInputAlign buttonInputAlign">
+                    <button type="button" class="btn btn-default" ng-click="createUser(user)">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                </p>
+            </th>
+            <th>
+                <p class="headerIconInputAlign buttonInputAlign">
+                    <button type="button" class="btn btn-default" ng-click="updateUserById(user)">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </button>
+                </p>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="user in users">
+            <td>{{user.username}}</td>
+            <td></td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.roles}}</td>
+            <td>{{user.follows}}</td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="deleteUserById($index)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="findUserById($index)">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>

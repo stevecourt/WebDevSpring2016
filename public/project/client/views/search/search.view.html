@@ -86,20 +86,29 @@
     <tr>
         <th>Cover</th>
         <th>Title</th>
-        <th>Editions</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Add</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="book in data.docs">
         <td>
-            <!-- TODO update URLs. Probably with rest/editions/{{???}}.  See Passing Path Parameters EX.-->
-            <a href="#/details/{{book.cover}}"><img img height="100px" ng-src="{{book.cover}}"/></a>
+            <img img height="100px" ng-src="{{book.cover}}"/>
         </td>
         <td>
-            <a href="#/details/{{book.title}}">{{book.title}}</a>
+            {{book.title}}
         </td>
         <td>
-            <a href="#/details/{{book.edition_count}}">{{book.edition_count}}</a>
+            {{book.author_name[0]}}
+        </td>
+        <td>
+            {{book.isbn[0]}}
+        </td>
+        <td>
+            <button type="button" class="btn btn-default" ng-click="addBookByLocationId($index)">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
         </td>
     </tr>
     </tbody>
