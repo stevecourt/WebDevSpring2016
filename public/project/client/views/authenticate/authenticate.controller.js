@@ -10,8 +10,7 @@
         $scope.login = login;
         $scope.register = register;
 
-        function login(user)
-        {
+        function login(user) {
             if(user) {
                 UserService
                     .login(user)
@@ -24,9 +23,6 @@
                             var clientUser = arraysToCsv(loggedInUser);
 
                             $rootScope.currentUser = clientUser;
-
-                            console.log($rootScope.currentUser.roles);
-
                             $location.url("/homeauth");
                         },
                         function(err) {
@@ -39,31 +35,15 @@
 
         function register(user)
         {
-            if(user.password != user.password2 || !user.password || !user.password2)
-            {
+            if(user.password != user.password2 || !user.password || !user.password2) {
                 $scope.error = "Your passwords don't match";
-            }
-            else
-            {
-
-                console.log("controller");
-                console.log(user);
-
+            } else {
                 UserService
                     .register(user)
                     .then(
                         function(response) {
                             var registeredUser = response.data;
-
-                            console.log("back in controller");
-                            console.log(registeredUser);
-                            console.log("");
-
                             $rootScope.currentUser = registeredUser;
-
-                            console.log("current user = ");
-                            console.log(registeredUser);
-
                             if(user != null) {
                                 $location.url("/homeauth");
                             }
@@ -91,10 +71,6 @@
                     commaSeparatedString = commaSeparatedString + array[i];
                 }
             }
-
-            console.log("arrayToCsv");
-            console.log(commaSeparatedString);
-
             return commaSeparatedString;
         }
     }

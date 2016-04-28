@@ -10,12 +10,9 @@ module.exports = function (mongoose) {
 
     var api = {
         createUser: createUser,
-
         findAllUsers: findAllUsers,
         findUserById: findUserById,
-
         findUserByUsername: findUserByUsername,
-
         findUserByCredentials: findUserByCredentials,
         updateUserById: updateUserById,
         deleteUserById: deleteUserById
@@ -58,9 +55,6 @@ module.exports = function (mongoose) {
     }
 
     function findUserByUsername(usernameGiven) {
-
-        console.log("user.model - findByUserName");
-
         var deferred = q.defer();
         userModel.findOne({username: usernameGiven}, function (err, user){
             if (err) {

@@ -15,33 +15,10 @@ module.exports = function (app, locationModel) {
     app.delete ("/api/project/location/:locationId/:isbn", auth, deleteBook);
 
     function authenticated (req, res, next) {
-
-        console.log("in authenticated (project)");
-
         if (!req.isAuthenticated()) {
             res.send(401);
         } else {
             next();
-        }
-    }
-
-    function isAdmin(req, res, next) {
-
-        console.log("in isAdmin (project)");
-
-        if (req.isAuthenticated()) {
-            userModel
-                .findUserById(req.user._id)
-                .then(function(user) {
-                    delete user.password;
-                    if(user.roles.indexOf("admin") > -1) {
-                        return next();
-                    } else {
-                        res.redirect('/#/login');
-                    }
-                });
-        } else {
-            res.send(403);
         }
     }
 
@@ -52,10 +29,6 @@ module.exports = function (app, locationModel) {
             newLocation.likes = 0;
         }
         newLocation.inventory = [];
-
-        console.log("regLocation");
-        console.log(newLocation);
-
         locationModel
             .findLocationByName(newLocation.name)
             .then(
@@ -86,16 +59,9 @@ module.exports = function (app, locationModel) {
     }
 
     function findLocationById(req, res) {
-
-        console.log("in findLocationById - server service");
-
         locationModel.findLocationById(req.params.locationId)
             .then(function (locationFound) {
                 if (locationFound) {
-
-                    console.log("returned from model");
-                    console.log(locationFound);
-
                     res.json(locationFound);
                 } else {
                     res.send(404);
@@ -137,10 +103,6 @@ module.exports = function (app, locationModel) {
         var locationId = req.params.locationId;
         var isbn = req.params.isbn;
 
-        console.log("in addBook");
-        console.log(locationId);
-        console.log(isbn);
-
         locationModel
             .findLocationById(locationId)
             .then(function (location) {
@@ -171,10 +133,6 @@ module.exports = function (app, locationModel) {
     function deleteBook(req, res) {
         var locationId = req.params.locationId;
         var isbn = req.params.isbn;
-
-        console.log("in deleteBook");
-        console.log(locationId);
-        console.log(isbn);
 
         locationModel
             .findLocationById(locationId)

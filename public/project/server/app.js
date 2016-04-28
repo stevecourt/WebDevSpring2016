@@ -3,8 +3,6 @@
 module.exports = function (app, mongoose, assignmentUserModel, projectUserModel) {
 
     // Define models
-    //var assignmentUserModel = require("../../assignment/server/models/user.model.server.js")(mongoose);
-    //var projectUserModel = require("./models/user.model.server.js")(mongoose);
     var locationModel = require("./models/location.model.server.js")(mongoose);
 
     // Define services

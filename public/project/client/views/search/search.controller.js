@@ -57,18 +57,11 @@
             // Get book ISBN from data.docs
             var isbn = $scope.data.docs[index].isbn[0];
 
-            console.log("in addBookByLocationId");
-            console.log(isbn);
-            console.log($rootScope.locationId);
-
             // Call service function and send locationId and ISBN.
             LocationService
                 .addBookByLocationId(isbn, $rootScope.locationId)
                 .then(
                     function(response) {
-
-                        console.log("back in controller");
-
                     },
                     function(err) {
                         $scope.error = err;

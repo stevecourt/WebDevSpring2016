@@ -16,27 +16,6 @@
                         loggedin: checkLoggedin
                     }
                 })
-                .when("/book", {
-                    templateUrl: "views/book/book.view.html",
-                    controller: "BookController",
-                    resolve: {
-                        loggedin: checkLoggedin
-                    }
-                })
-                .when("/details", {
-                    templateUrl: "views/details/details.view.html",
-                    controller: "DetailsController",
-                    resolve: {
-                        loggedin: checkLoggedin
-                    }
-                })
-                .when("/editions", {
-                    templateUrl: "views/editions/editions.view.html",
-                    controller: "EditionsController",
-                    resolve: {
-                        loggedin: checkLoggedin
-                    }
-                })
                 .when("/locationDetails/:locationId", {
                     templateUrl: "views/locdetails/locdetails.view.html",
                     controller: "LocDetailsController",
@@ -62,13 +41,6 @@
                         loggedin: checkLoggedin
                     }
                 })
-                .when("/maker", {
-                    templateUrl: "views/maker/maker.view.html",
-                    controller: "MakerController",
-                    resolve: {
-                        loggedin: checkLoggedin
-                    }
-                })
                 .when("/search", {
                     templateUrl: "views/search/search.view.html",
                     controller: "SearchController",
@@ -76,13 +48,7 @@
                         loggedin: checkLoggedin
                     }
                 })
-                .when("/search/:locationId", {
-                    templateUrl: "views/search/search.view.html",
-                    controller: "SearchController",
-                    resolve: {
-                        loggedin: checkLoggedin
-                    }
-                })
+
                 .when("/search/:title?/:author?/:isbn?/:subject?/:place?/:person?/:publisher?", {
                     templateUrl: "views/search/search.view.html",
                     controller: "SearchController",
@@ -107,13 +73,6 @@
                 .when("/reglocation", {
                     templateUrl: "views/reglocation/reglocation.view.html",
                     controller: "ReglocationController",
-                    resolve: {
-                        loggedin: checkLoggedin
-                    }
-                })
-                .when("/wishlist", {
-                    templateUrl: "views/wishlist/wishlist.view.html",
-                    controller: "WishlistController",
                     resolve: {
                         loggedin: checkLoggedin
                     }

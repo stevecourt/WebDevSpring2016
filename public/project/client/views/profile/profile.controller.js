@@ -16,10 +16,6 @@
                     for (var i = 0; i < returnedUsers.data.length; i++) {
                         if (returnedUsers.data[i]._id == user._id) {
                             var userFound = returnedUsers.data[i];
-
-                            console.log("profile controller - update");
-                            console.log(userFound);
-
                             // Converts emails, phones and roles from arrays to comma separated strings.
                             var clientUser = arraysToCsv(userFound);
 

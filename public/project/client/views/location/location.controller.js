@@ -17,10 +17,6 @@
         function findAllLocations() {
             LocationService.findAllLocations()
                 .then (function (returnedLocations) {
-
-                    console.log("location controller - returned locations");
-                    console.log(returnedLocations.data);
-
                     $scope.locations = returnedLocations.data;
                 }, function (returnedLocations) {
                     console.log("Error: Could not retrieve users.");
